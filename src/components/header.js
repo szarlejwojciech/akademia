@@ -1,42 +1,62 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
-import React from "react"
+import React from 'react'
+import { Link } from 'gatsby'
+import styled from 'styled-components'
+import HamburgerBtn from './HamburgerBtn'
+import StyledNavList from './styled/StyledNavList'
+import StyledLogo from './styled/StyledLogo'
+import StyledContactInfo from './styled/StyledContactInfo'
+import StyledHeader from './styled/StyledHeader'
+import CustomLink from './CustomLink'
+import '../utils/fontawesome'
 
-const Header = ({ siteTitle }) => (
-  <header
-    style={{
-      background: `rebeccapurple`,
-      marginBottom: `1.45rem`,
-    }}
-  >
-    <div
-      style={{
-        margin: `0 auto`,
-        maxWidth: 960,
-        padding: `1.45rem 1.0875rem`,
-      }}
-    >
-      <h1 style={{ margin: 0 }}>
-        <Link
-          to="/"
-          style={{
-            color: `white`,
-            textDecoration: `none`,
-          }}
-        >
-          {siteTitle}
-        </Link>
-      </h1>
-    </div>
-  </header>
+const Header = () => (
+  <StyledHeader>
+    <HamburgerBtn />
+    <StyledLogo />
+    <StyledNavList>
+      <ul>
+        <li>
+          <Link to="/" activeClassName="active">
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/onas" activeClassName="active">
+            O nas
+          </Link>
+        </li>
+        <li>
+          <Link to="/oferta" activeClassName="active">
+            Oferta
+          </Link>
+        </li>
+        <li>
+          <Link to="/zabiegi" activeClassName="active">
+            Zabiegi
+          </Link>
+        </li>
+        <li>
+          <Link to="/kontakt" activeClassName="active">
+            Kontakt
+          </Link>
+        </li>
+      </ul>
+    </StyledNavList>
+    <StyledContactInfo>
+      <li>
+        <CustomLink icon="envelope" url="mailto:akademiaurody@biuro.pl">
+          akademiaurody@biuro.pl
+        </CustomLink>
+      </li>
+      <li>
+        <CustomLink icon="phone" url="tel:+48 123 465 789">
+          +48 123 465 789
+        </CustomLink>
+      </li>
+      <li>
+        <CustomLink icon={['fab', 'facebook']} url="http://facebook.pl" />
+      </li>
+    </StyledContactInfo>
+  </StyledHeader>
 )
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
-}
-
 export default Header

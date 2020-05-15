@@ -1,14 +1,14 @@
 import React from 'react'
 // import { Link } from 'gatsby'
 
-// import Image from '../components/image'
+// import Image from '../assects/images/image'
 // import SEO from '../components/seo'
-import Home from '../components/Home'
-const IndexPage = () => (
+
+const ContactPage = () => (
   <>
     {/* <SEO title="Home" /> */}
-    <Home />
+    <h1>kontakt</h1>
   </>
 )
 
-export default IndexPage
+export default ContactPage

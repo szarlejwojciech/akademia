@@ -3,12 +3,12 @@ import React from 'react'
 
 // import Image from '../components/image'
 // import SEO from '../components/seo'
-import Home from '../components/Home'
-const IndexPage = () => (
+
+const treatmentsPage = () => (
   <>
     {/* <SEO title="Home" /> */}
-    <Home />
+    <h1>zabiegi</h1>
   </>
 )
 
-export default IndexPage
+export default treatmentsPage
