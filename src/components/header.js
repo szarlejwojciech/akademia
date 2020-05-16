@@ -49,7 +49,7 @@ const Header = () => (
         </CustomLink>
       </li>
       <li>
-        <CustomLink icon="phone" url="tel:+48 123 465 789">
+        <CustomLink icon="phone-alt" url="tel:+48 123 465 789">
           +48 123 465 789
         </CustomLink>
       </li>

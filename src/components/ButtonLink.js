@@ -3,10 +3,10 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import '../utils/fontawesome'
 import StyledButtonLink from './styled/StyledButtonLink'
 
-const ButtonLink = ({ url, children, icon }) => {
+const ButtonLink = ({ children, icon, ...props }) => {
   return (
-    <StyledButtonLink to={url}>
-      {children}
+    <StyledButtonLink {...props}>
+      <span>{children}</span>
       <FontAwesomeIcon icon={icon} />
     </StyledButtonLink>
   )

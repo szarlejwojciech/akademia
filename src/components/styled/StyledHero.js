@@ -18,6 +18,10 @@ const StyledHero = styled.div`
     max-width: 23ch;
     text-align: center;
     margin-left: 5vw;
+
+    p {
+      margin: 1.15em 0;
+    }
   }
 
   @media (orientation: landscape) and (max-width: 767.9px) {
