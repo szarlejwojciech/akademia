@@ -105,12 +105,12 @@ const StyledWrapper = styled.section`
 const PageIsBuilding = () => {
   return (
     <StyledWrapper>
-      {/* <div class="logo">
-        <img src="/logo.png" alt="logo akademii urody" />
+      {/* <div className="logo">
+        <img src="logo.png" alt="logo akademii urody" />
       </div> */}
-      <div class="content">
-        <div class="gears">
-          <div class="small">
+      <div className="content">
+        <div className="gears">
+          <div className="small">
             <svg
               width="83"
               height="83"
@@ -127,7 +127,7 @@ const PageIsBuilding = () => {
               </g>
             </svg>
           </div>
-          <div class="big">
+          <div className="big">
             <svg
               width="147"
               height="147"
@@ -145,7 +145,7 @@ const PageIsBuilding = () => {
             </svg>
           </div>
         </div>
-        <div class="text">Strona w budowie...</div>
+        <div className="text">Strona w budowie...</div>
       </div>
     </StyledWrapper>
   )

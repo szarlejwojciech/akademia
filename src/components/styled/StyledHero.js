@@ -5,7 +5,7 @@ const StyledHero = styled.div`
   height: calc(100vh - var(--padding-top));
   width: 100%;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
-  background: url('/hero.jpg') center no-repeat;
+  background: url('hero.jpg') center no-repeat;
   background-size: cover;
   background-position-x: 10vw;
   display: flex;

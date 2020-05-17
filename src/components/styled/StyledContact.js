@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StyledContact = styled.section`
   padding: 3rem 2rem;
-  background: url('/contact-bg.jpg') center no-repeat;
+  background: url('contact-bg.jpg') center no-repeat;
   background-size: cover;
   .section-wrapper {
     max-width: 120rem;

@@ -9,19 +9,25 @@ import {
   faChevronRight,
   faClock,
   faMapMarkedAlt,
+  faPlus,
+  faMinus,
+  faAngleRight,
 } from '@fortawesome/free-solid-svg-icons'
 import { fab, faFacebook } from '@fortawesome/free-brands-svg-icons'
 
 library.add(
+  fab,
+  faFacebook,
   fas,
   faPhoneAlt,
   faEnvelope,
   faHandPointUp,
-  fab,
-  faFacebook,
   faLongArrowAltRight,
   faChevronLeft,
   faChevronRight,
   faClock,
-  faMapMarkedAlt
+  faMapMarkedAlt,
+  faPlus,
+  faMinus,
+  faAngleRight
 )

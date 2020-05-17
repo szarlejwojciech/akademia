@@ -2,6 +2,7 @@ import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 
 const StyledButtonLink = styled(Link)`
+  display: inline-block;
   position: relative;
   font-size: 0.8rem;
   padding: 1em 4.125em;

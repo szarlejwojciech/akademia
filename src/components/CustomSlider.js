@@ -7,63 +7,63 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 const testItems = [
   {
     url: '/oferta',
-    image: '/menard-authent-mask-ii.jpg',
+    image: 'menard-authent-mask-ii.jpg',
     title: 'MENARD Authent Mask II',
     description:
       'Authent Mask II to nowa wersja doskonałej maski w płatach na twarz oraz szyję i dekolt.',
   },
   {
     url: '/oferta',
-    image: '/menard-embellir-day-cream.jpg',
+    image: 'menard-embellir-day-cream.jpg',
     title: 'MENARD Embellir Day Cream A 34ml',
     description:
       'Linia EMBELLIR została stworzona, aby usuwać przyczyny starzenia się i dysfunkcji komórek skóry.',
   },
   {
     url: '/oferta',
-    image: '/menard-authent-ii.jpg',
+    image: 'menard-authent-ii.jpg',
     title: 'MENARD Authent II',
     description:
       'Luksusowy krem Authent II pozwala skórze odrodzić się na nowo. Zaawansowany preparat, efekt wieloletnich badań laboratoriów... ',
   },
   {
     url: '/oferta',
-    image: '/menard-authent-mask-ii.jpg',
+    image: 'menard-authent-mask-ii.jpg',
     title: 'MENARD Authent Maskd II',
     description:
       'Authent Mask II to nowa wersja doskonałej maski w płatach na twarz oraz szyję i dekolt.',
   },
   {
     url: '/oferta',
-    image: '/menard-embellir-day-cream.jpg',
+    image: 'menard-embellir-day-cream.jpg',
     title: 'MENARD Embellir Day sCream A 34ml',
     description:
       'Linia EMBELLIR została stworzona, aby usuwać przyczyny starzenia się i dysfunkcji komórek skóry.',
   },
   {
     url: '/oferta',
-    image: '/menard-authent-ii.jpg',
+    image: 'menard-authent-ii.jpg',
     title: 'MENARD Authentf II',
     description:
       'Luksusowy krem Authent II pozwala skórze odrodzić się na nowo. Zaawansowany preparat, efekt wieloletnich badań laboratoriów... ',
   },
   {
     url: '/oferta',
-    image: '/menard-authent-mask-ii.jpg',
+    image: 'menard-authent-mask-ii.jpg',
     title: 'MENARD Authent Mrask II',
     description:
       'Authent Mask II to nowa wersja doskonałej maski w płatach na twarz oraz szyję i dekolt.',
   },
   {
     url: '/oferta',
-    image: '/menard-embellir-day-cream.jpg',
+    image: 'menard-embellir-day-cream.jpg',
     title: 'MENARD Embellir Dayy Cream A 34ml',
     description:
       'Linia EMBELLIR została stworzona, aby usuwać przyczyny starzenia się i dysfunkcji komórek skóry.',
   },
   {
     url: '/oferta',
-    image: '/menard-authent-ii.jpg',
+    image: 'menard-authent-ii.jpg',
     title: 'MENARD Authent iII',
     description:
       'Luksusowy krem Authent II pozwala skórze odrodzić się na nowo. Zaawansowany preparat, efekt wieloletnich badań laboratoriów... ',

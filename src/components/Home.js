@@ -10,9 +10,9 @@ const Home = () => {
     <>
       <StyledHero>
         <div className="cta">
-          <img src="/menard-logo.svg" alt="twarz kobiety" />
+          <img src="menard-logo.svg" alt="twarz kobiety" />
           <p>Dla kobiet poszukujących prawdziwego piękna na całym świecie.</p>
-          <ButtonLink to="/ofarta/menard" icon="long-arrow-alt-right">
+          <ButtonLink to="/ofarta" icon="long-arrow-alt-right">
             Przeglądaj
           </ButtonLink>
         </div>
@@ -42,13 +42,13 @@ const Home = () => {
             </div>
             <div className="images">
               <div className="images-wrapper">
-                <img src="/salon-1.jpg" alt="zdjęcia salonu w holu" />
-                <img src="/salon-2.jpg" alt="zdjęcia salonu w holu 2" />
+                <img src="salon-1.jpg" alt="zdjęcia salonu w holu" />
+                <img src="salon-2.jpg" alt="zdjęcia salonu w holu 2" />
               </div>
             </div>
           </div>
         </StyledSection>
-        <StyledSection background="/section-bg.jpg" dark={true}>
+        <StyledSection background="section-bg.jpg" dark={true}>
           <div className="wrapper">
             <div className="box">
               <h2>
