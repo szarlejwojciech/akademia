@@ -1,4 +1,4 @@
 export const contact = {
-  phone: '+48 132 456 789',
-  email: 'akademiaurody@biuro.pl',
+  phone: '+48 722 396 495',
+  email: 'salon@akademia-urody.eu',
 }

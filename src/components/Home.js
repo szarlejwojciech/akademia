@@ -61,7 +61,7 @@ const Home = () => {
                 nie oddaje jednak w pełni niepowtarzalnego nastroju salonu.
               </p>
               <ButtonLink to="/kontakt" icon="phone-alt" color="light">
-                O nas
+                Kontakt
               </ButtonLink>
             </div>
           </div>

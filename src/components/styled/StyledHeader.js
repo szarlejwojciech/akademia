@@ -12,6 +12,13 @@ const StyledHeader = styled.header`
   align-items: center;
   background: ${({ theme }) => theme.colors.secondaryDark};
 
+  .logo-link:hover {
+    opacity: 0.8;
+  }
+  .logo-link:active {
+    opacity: 0.7;
+  }
+
   @media (min-width: 768px) {
     height: 6.2rem;
   }
