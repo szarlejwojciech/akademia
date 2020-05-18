@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
 import HamburgerBtn from './HamburgerBtn'
 import MobileNav from './MobileNav'
@@ -8,21 +8,18 @@ import StyledContactInfo from './styled/StyledContactInfo'
 import StyledHeader from './styled/StyledHeader'
 import CustomLink from './CustomLink'
 import { contact } from '../utils/contact'
+import { useNavState } from '../hooks/localeState'
 
-const Header = () => {
-  const [isNavOpen, setIsNavOpen] = useState(false)
-  const toggleNav = () => {
-    setIsNavOpen(!isNavOpen)
-  }
-
+const Header = ({ location }) => {
+  const { navOpen, toggleNav } = useNavState()
   useEffect(() => {
-    console.log('reload!!')
-  })
+    if (navOpen) toggleNav()
+  }, [location])
 
   return (
     <StyledHeader>
-      <HamburgerBtn click={toggleNav} />
-      <MobileNav isNavOpen={isNavOpen} toggleNav={toggleNav} />
+      <HamburgerBtn />
+      <MobileNav />
       <Link className="logo-link" to="/">
         <StyledLogo role="img" aria-label="Logo firmy" title="Stroma główna" />
       </Link>

@@ -2,17 +2,19 @@ import React from 'react'
 import StyledMobileNav from './styled/StyledMobileNav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
+import { useNavState } from '../hooks/localeState'
 
-const MobileNav = ({ isNavOpen, toggleNav }) => {
+const MobileNav = () => {
+  const { navOpen } = useNavState()
   return (
     <StyledMobileNav
-      className={isNavOpen && 'is-open'}
+      className={navOpen && 'is-open'}
       aria-label="mobile-menu"
       aria-hidden={true}
     >
       <ul role="menubar">
         <li role="none">
-          <Link onClick={toggleNav} to="/" role="menuitem" tabIndex="-1">
+          <Link to="/" role="menuitem" tabIndex="-1">
             <span className="text">Home</span>
             <span className="icon">
               <FontAwesomeIcon icon="angle-right" />
@@ -20,7 +22,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
           </Link>
         </li>
         <li role="none">
-          <Link onClick={toggleNav} to="/onas" role="menuitem" tabIndex="-1">
+          <Link to="/onas" role="menuitem" tabIndex="-1">
             <span className="text">O nas</span>
             <span className="icon">
               <FontAwesomeIcon icon="angle-right" />
@@ -41,12 +43,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
           </button>
           <ul className="sub-menu" role="menu">
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/zabiegi"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
                 <span className="text">wszystko</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -54,12 +51,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
               </Link>
             </li>
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/zabiegi"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
                 <span className="text">zabieg 1</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -67,12 +59,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
               </Link>
             </li>
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/zabiegi"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
                 <span className="text">zabieg 2</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -80,12 +67,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
               </Link>
             </li>
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/zabiegi"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
                 <span className="text">zabieg 3</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -108,12 +90,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
           </button>
           <ul className="sub-menu" role="menu">
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/oferta"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/oferta" role="menuitem" tabIndex="-1">
                 <span className="text">wszystko</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -121,12 +98,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
               </Link>
             </li>
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/oferta"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/oferta" role="menuitem" tabIndex="-1">
                 <span className="text">oferta 1</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -134,12 +106,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
               </Link>
             </li>
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/oferta"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/oferta" role="menuitem" tabIndex="-1">
                 <span className="text">oferta 2</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -147,12 +114,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
               </Link>
             </li>
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/oferta"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/oferta" role="menuitem" tabIndex="-1">
                 <span className="text">oferta 3</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -160,12 +122,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
               </Link>
             </li>
             <li role="none">
-              <Link
-                onClick={toggleNav}
-                to="/oferta"
-                role="menuitem"
-                tabIndex="-1"
-              >
+              <Link to="/oferta" role="menuitem" tabIndex="-1">
                 <span className="text">oferta 4</span>
                 <span className="icon">
                   <FontAwesomeIcon icon="angle-right" />
@@ -175,7 +132,7 @@ const MobileNav = ({ isNavOpen, toggleNav }) => {
           </ul>
         </li>
         <li role="none">
-          <Link onClick={toggleNav} to="/kontakt" role="menuitem" tabIndex="-1">
+          <Link to="/kontakt" role="menuitem" tabIndex="-1">
             <span className="text">kontakt</span>
             <span className="icon">
               <FontAwesomeIcon icon="angle-right" />

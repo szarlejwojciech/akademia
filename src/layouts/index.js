@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { ThemeProvider } from 'styled-components'
 import GlobalStyle from '../assets/styles/GlobalStyle'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
+import { MobileNavStateProvider, useNavState } from '../hooks/localeState'
 
 const theme = {
   colors: {
@@ -21,13 +22,22 @@ const theme = {
     fw600: 600,
   },
 }
-const GlobalLayout = ({ children }) => {
+const GlobalLayout = props => {
+  const { navOpen, toggleNav } = useNavState
+
+  console.log(props)
+  useEffect(() => {
+    // console.log('reload!')
+    if (navOpen) toggleNav()
+  })
   return (
     <>
       <ThemeProvider theme={theme}>
         <GlobalStyle />
-        <Header />
-        {children}
+        <MobileNavStateProvider>
+          <Header location={props.location} />
+          {props.children}
+        </MobileNavStateProvider>
         <Footer />
       </ThemeProvider>
     </>

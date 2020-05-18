@@ -1,9 +1,12 @@
 import React from 'react'
 import StyledHamburgerBtn from './styled/StyledHamburgerBtn'
+import { useNavState } from '../hooks/localeState'
 
-const HamburgerBtn = ({ click }) => {
+const HamburgerBtn = () => {
+  const { toggleNav } = useNavState()
+
   return (
-    <StyledHamburgerBtn onClick={click}>
+    <StyledHamburgerBtn onClick={toggleNav}>
       <span></span>
       <span></span>
       <span></span>
