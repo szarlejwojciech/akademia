@@ -106,7 +106,7 @@ const PageIsBuilding = () => {
   return (
     <StyledWrapper>
       {/* <div className="logo">
-        <img src="logo.png" alt="logo akademii urody" />
+        <img src="/logo.png" alt="logo akademii urody" />
       </div> */}
       <div className="content">
         <div className="gears">

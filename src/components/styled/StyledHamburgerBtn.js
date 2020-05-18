@@ -2,8 +2,8 @@ import styled from 'styled-components'
 
 const StyledHamburgerBtn = styled.button`
   position: relative;
-  width: 1.8rem;
-  height: 1.3rem;
+  width: 2.7rem;
+  height: 2rem;
   padding: 1rem;
   background: none;
   border: none;
@@ -16,8 +16,8 @@ const StyledHamburgerBtn = styled.button`
     position: absolute;
     left: 1rem;
     right: 1rem;
-    height: 1px;
-    background: ${({ theme }) => theme.colors.primaryDark};
+    height: 2px;
+    background: ${({ theme }) => theme.colors.primaryLight};
 
     &:first-child {
       top: 1rem;

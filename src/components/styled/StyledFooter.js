@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.accent};
   color: ${({ theme }) => theme.colors.secondaryLight};
-  font-size: 1rem;
+  font-size: 1.2rem;
   font-weight: ${({ theme }) => theme.font.fw400};
 
   .wrapper {
@@ -41,7 +41,8 @@ const StyledFooter = styled.footer`
             }
             span {
               /* text-decoration: underline; */
-              border-bottom: 1.5px solid ${({ theme }) => theme.secondaryDark};
+              border-bottom: 1px solid
+                ${({ theme }) => theme.colors.secondaryDark};
             }
           }
           svg {
@@ -65,7 +66,7 @@ const StyledFooter = styled.footer`
   }
 
   @media (min-width: 768px) {
-    font-size: 1.2rem;
+    font-size: 1.35rem;
     .wrapper {
       flex-direction: row-reverse;
       align-items: center;
@@ -85,9 +86,9 @@ const StyledFooter = styled.footer`
   }
 
   @media (min-width: 1024px) {
-    font-size: 1.4rem;
+    font-size: 1.45rem;
     .wrapper {
-      max-width: 64rem;
+      max-width: 66rem;
       .logo {
         margin: 0 0 0 4rem;
         img {

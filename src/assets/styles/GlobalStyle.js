@@ -12,7 +12,7 @@ const GlobalStyle = createGlobalStyle`
   
 
   body{
-    --padding-top: 4rem;
+    --padding-top: 5rem;
 
     padding: var(--padding-top) 0rem 0;
     margin: 0;

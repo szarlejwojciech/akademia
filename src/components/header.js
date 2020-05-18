@@ -18,58 +18,67 @@ const Header = ({ location }) => {
 
   return (
     <StyledHeader>
-      <HamburgerBtn />
       <MobileNav />
-      <Link className="logo-link" to="/">
-        <StyledLogo role="img" aria-label="Logo firmy" title="Stroma główna" />
-      </Link>
-      <StyledNavList>
-        <ul>
+      <div className="top-bar">
+        <HamburgerBtn />
+        <Link className="logo-link" to="/">
+          <StyledLogo
+            role="img"
+            aria-label="Logo firmy"
+            title="Stroma główna"
+          />
+        </Link>
+        <StyledNavList>
+          <ul>
+            <li>
+              <Link to="/" activeClassName="active">
+                Home
+              </Link>
+            </li>
+            <li>
+              <Link to="/onas" activeClassName="active">
+                O nas
+              </Link>
+            </li>
+            <li>
+              <Link to="/oferta" activeClassName="active">
+                Oferta
+              </Link>
+            </li>
+            <li>
+              <Link to="/zabiegi" activeClassName="active">
+                Zabiegi
+              </Link>
+            </li>
+            <li>
+              <Link to="/kontakt" activeClassName="active">
+                Kontakt
+              </Link>
+            </li>
+          </ul>
+        </StyledNavList>
+        <StyledContactInfo>
           <li>
-            <Link to="/" activeClassName="active">
-              Home
-            </Link>
+            <CustomLink icon="envelope" url={`mailto:${contact.email}`}>
+              {contact.email}
+            </CustomLink>
           </li>
           <li>
-            <Link to="/onas" activeClassName="active">
-              O nas
-            </Link>
+            <CustomLink
+              icon="phone-alt"
+              url={`tel:${contact.phone.replace(/ /g, '')}`}
+            >
+              {contact.phone}
+            </CustomLink>
           </li>
           <li>
-            <Link to="/oferta" activeClassName="active">
-              Oferta
-            </Link>
+            <CustomLink
+              icon={['fab', 'facebook']}
+              url="https://bit.ly/2LzJc14"
+            />
           </li>
-          <li>
-            <Link to="/zabiegi" activeClassName="active">
-              Zabiegi
-            </Link>
-          </li>
-          <li>
-            <Link to="/kontakt" activeClassName="active">
-              Kontakt
-            </Link>
-          </li>
-        </ul>
-      </StyledNavList>
-      <StyledContactInfo>
-        <li>
-          <CustomLink icon="envelope" url={`mailto:${contact.email}`}>
-            {contact.email}
-          </CustomLink>
-        </li>
-        <li>
-          <CustomLink
-            icon="phone-alt"
-            url={`tel:${contact.phone.replace(/ /g, '')}`}
-          >
-            {contact.phone}
-          </CustomLink>
-        </li>
-        <li>
-          <CustomLink icon={['fab', 'facebook']} url="https://bit.ly/2LzJc14" />
-        </li>
-      </StyledContactInfo>
+        </StyledContactInfo>
+      </div>
     </StyledHeader>
   )
 }

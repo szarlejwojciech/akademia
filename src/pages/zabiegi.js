@@ -2,12 +2,12 @@ import React from 'react'
 // import { Link } from 'gatsby'
 import PageIsBuilding from '../components/PageIsBuilding'
 // import Image from '../components/image'
-// import SEO from '../components/seo'
+import SEO from '../components/Seo'
 
 const treatmentsPage = () => (
   <>
-    {/* <SEO title="Home" /> */}
-    <PageIsBuilding />{' '}
+    <SEO title="Akademia Urody | Zabiegi" />
+    <PageIsBuilding />
   </>
 )
 

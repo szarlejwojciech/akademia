@@ -1,8 +1,8 @@
 import styled from 'styled-components'
 
 const StyledLink = styled.a`
-  font-size: 1em;
-  color: ${({ theme }) => theme.colors.primaryDark};
+  font-size: 1.4em;
+  color: ${({ theme }) => theme.colors.primaryLight};
   will-change: opacity;
   transition: 0.15s opacity ease-in-out;
 
@@ -10,7 +10,7 @@ const StyledLink = styled.a`
     margin: 0 0.4em;
 
     path {
-      fill: ${({ theme }) => theme.colors.primaryDark};
+      fill: ${({ theme }) => theme.colors.primaryLight};
     }
   }
 
@@ -26,6 +26,9 @@ const StyledLink = styled.a`
     span {
       display: inline;
     }
+  }
+  @media (min-width: 1440px) {
+    font-size: 1.6em;
   }
 `
 

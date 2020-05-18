@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import '../utils/fontawesome'
+import '../utils/fontawesome.js'
 import StyledButtonLink from './styled/StyledButtonLink'
 
 const ButtonLink = ({ children, icon, ...props }) => {

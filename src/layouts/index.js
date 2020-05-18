@@ -24,12 +24,7 @@ const theme = {
 }
 const GlobalLayout = props => {
   const { navOpen, toggleNav } = useNavState
-
-  console.log(props)
-  useEffect(() => {
-    // console.log('reload!')
-    if (navOpen) toggleNav()
-  })
+  useEffect(() => navOpen && toggleNav())
   return (
     <>
       <ThemeProvider theme={theme}>

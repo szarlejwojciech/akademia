@@ -1,12 +1,14 @@
 import React from 'react'
 
-// import SEO from "../components/seo"
+import SEO from '../components/Seo'
+import { Link } from 'gatsby'
 
 const NotFoundPage = () => (
   <>
-    {/* <SEO title="404: Not found" /> */}
-    <h1>NOT FOUND</h1>
-    <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
+    <SEO title="Akademia Urody | Strona Błędu" />
+    <h1>Nie znaleziono</h1>
+    <p>Został wprowaszony adres który nie istnieje.</p>
+    <Link to="/">Strona główna</Link>
   </>
 )
 

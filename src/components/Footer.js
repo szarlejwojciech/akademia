@@ -8,7 +8,7 @@ const Footer = () => {
     <StyledFooter>
       <div className="wrapper">
         <div className="logo">
-          <img src="logo-big.png" alt="logo" />
+          <img src="/logo-big.png" alt="logo" />
         </div>
         <div className="personal-info">
           <ul>

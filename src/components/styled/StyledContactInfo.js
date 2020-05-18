@@ -7,7 +7,7 @@ const StyledContactInfo = styled.ul`
   @media (min-width: 1024px) {
     /* display: block; */
     flex-direction: column;
-    font-size: 1.5rem;
+    font-size: 1rem;
 
     li + li {
       margin-top: 0.25em;

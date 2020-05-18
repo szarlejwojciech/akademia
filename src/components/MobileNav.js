@@ -1,8 +1,47 @@
-import React from 'react'
+import React, { useState, useRef, useEffect } from 'react'
 import StyledMobileNav from './styled/StyledMobileNav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import { useNavState } from '../hooks/localeState'
+
+const Submenu = props => {
+  const [isCollapsed, setIsCollapsed] = useState(true)
+  const [height, setHeight] = useState(0)
+  const btnElement = useRef(null)
+  useEffect(() => {
+    setHeight(
+      isCollapsed
+        ? 0
+        : props.children.length * btnElement?.current?.offsetHeight
+    )
+  }, [isCollapsed])
+  const toggleCollapse = () => {
+    setIsCollapsed(!isCollapsed)
+  }
+  console.log(btnElement?.current?.offsetHeight)
+  console.log(props.children)
+  console.log('ul height:', height)
+  return (
+    <>
+      <button
+        ref={btnElement}
+        className={`submenu-toggler ${isCollapsed ? 'is-collapsed' : ''}`}
+        role="menuitem"
+        tabIndex="-1"
+        onClick={toggleCollapse}
+      >
+        <span className="text">{props.label}</span>
+        <span className="icon">
+          <FontAwesomeIcon icon="plus" />
+          <FontAwesomeIcon icon="minus" />
+        </span>
+      </button>
+      <ul style={{ height: height + 'px' }} className="sub-menu" role="menu">
+        {props.children}
+      </ul>
+    </>
+  )
+}
 
 const MobileNav = () => {
   const { navOpen } = useNavState()
@@ -10,9 +49,9 @@ const MobileNav = () => {
     <StyledMobileNav
       className={navOpen && 'is-open'}
       aria-label="mobile-menu"
-      aria-hidden={true}
+      aria-hidden={navOpen}
     >
-      <ul role="menubar">
+      <ul role="menubar" className="menubar">
         <li role="none">
           <Link to="/" role="menuitem" tabIndex="-1">
             <span className="text">Home</span>
@@ -30,18 +69,79 @@ const MobileNav = () => {
           </Link>
         </li>
         <li role="none">
-          <button
-            className="submenu-toggler  is-collapsed"
-            role="menuitem"
-            tabIndex="-1"
-          >
-            <span className="text">zabiegi</span>
-            <span className="icon">
-              <FontAwesomeIcon icon="plus" />
-              <FontAwesomeIcon icon="minus" />
-            </span>
-          </button>
-          <ul className="sub-menu" role="menu">
+          <Submenu label="oferta">
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
+            <li role="none">
+              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+                <span className="text">wszystko</span>
+                <span className="icon">
+                  <FontAwesomeIcon icon="angle-right" />
+                </span>
+              </Link>
+            </li>
             <li role="none">
               <Link to="/zabiegi" role="menuitem" tabIndex="-1">
                 <span className="text">wszystko</span>
@@ -74,21 +174,10 @@ const MobileNav = () => {
                 </span>
               </Link>
             </li>
-          </ul>
+          </Submenu>
         </li>
-        <li role="none">
-          <button
-            className="submenu-toggler is-collapsed"
-            role="menuitem"
-            tabIndex="-1"
-          >
-            <span className="text">oferta</span>
-            <span className="icon">
-              <FontAwesomeIcon icon="plus" />
-              <FontAwesomeIcon icon="minus" />
-            </span>
-          </button>
-          <ul className="sub-menu" role="menu">
+        <li>
+          <Submenu label="zabiegi">
             <li role="none">
               <Link to="/oferta" role="menuitem" tabIndex="-1">
                 <span className="text">wszystko</span>
@@ -129,7 +218,7 @@ const MobileNav = () => {
                 </span>
               </Link>
             </li>
-          </ul>
+          </Submenu>
         </li>
         <li role="none">
           <Link to="/kontakt" role="menuitem" tabIndex="-1">

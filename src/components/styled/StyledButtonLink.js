@@ -4,7 +4,7 @@ import { Link } from 'gatsby'
 const StyledButtonLink = styled(Link)`
   display: inline-block;
   position: relative;
-  font-size: 0.8rem;
+  font-size: 1rem;
   padding: 1em 4.125em;
   text-transform: uppercase;
   color: ${({ theme }) => theme.colors.accent};
@@ -83,7 +83,7 @@ const StyledButtonLink = styled(Link)`
     `}
 
   @media (min-width: 768px) {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   @media (min-width: 1440px) {

@@ -1,28 +1,52 @@
 import styled from 'styled-components'
 
 const StyledMobileNav = styled.nav`
+  --top-padding: 5rem;
+
   position: fixed;
-  top: 4rem;
+  top: var(--top-padding);
   left: 0;
   width: 100%;
+  max-width: 50rem;
   bottom: 0px;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
   z-index: 10;
   transform: translateX(-110%);
   will-change: transform;
   transition: 1.3s transform cubic-bezier(0.18, 0.47, 0, 1);
+  ul.menubar {
+    overflow-y: auto;
+    height: 100%;
+    background-color: inherit;
+  }
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0;
+    will-change: opacity;
+    transition: 0.5s opacity ease-in-out;
+    box-shadow: 150px 0px 200px 200px rgba(0, 0, 0, 0.6);
+    z-index: -1;
+  }
 
   &.is-open {
     transform: translateX(0%);
+    &::before {
+      opacity: 1;
+    }
   }
 
   [role='menuitem'] {
+    font-size: 1.5rem;
     width: 100%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 1.5rem;
-    font-size: 1.2rem;
+    padding: 1em 1.5em;
     font-weight: ${({ theme }) => theme.font.fw600};
     text-transform: uppercase;
     border: none;
@@ -33,6 +57,7 @@ const StyledMobileNav = styled.nav`
       height: 100%;
       width: 1em;
       svg {
+        font-size: 1.5em;
         width: 1em;
         height: 1em;
         position: absolute;
@@ -48,12 +73,19 @@ const StyledMobileNav = styled.nav`
   }
 
   .is-collapsed + ul {
-    height: 0;
+    height: 0px;
   }
   .sub-menu {
+    /* height: auto; */
+    /* max-height: 400px; */
     overflow: hidden;
     will-change: height;
     transition: 1.3s height cubic-bezier(0.18, 0.47, 0, 1);
+    padding-left: 1.5em;
+  }
+
+  @media (min-width: 768px) {
+    --top-padding: 6.2rem;
   }
 `
 export default StyledMobileNav
