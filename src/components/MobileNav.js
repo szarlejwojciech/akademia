@@ -1,43 +1,39 @@
 import React, { useState, useRef, useEffect } from 'react'
-import StyledMobileNav from './styled/StyledMobileNav'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
+import StyledMobileNav from './styled/StyledMobileNav'
 import { useNavState } from '../hooks/localeState'
 
-const Submenu = props => {
+const Submenu = ({ children, label }) => {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const [height, setHeight] = useState(0)
   const btnElement = useRef(null)
   useEffect(() => {
     setHeight(
-      isCollapsed
-        ? 0
-        : props.children.length * btnElement?.current?.offsetHeight
+      isCollapsed ? 0 : children.length * btnElement?.current?.offsetHeight
     )
   }, [isCollapsed])
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed)
   }
-  console.log(btnElement?.current?.offsetHeight)
-  console.log(props.children)
-  console.log('ul height:', height)
   return (
     <>
       <button
+        type="button"
         ref={btnElement}
         className={`submenu-toggler ${isCollapsed ? 'is-collapsed' : ''}`}
         role="menuitem"
         tabIndex="-1"
         onClick={toggleCollapse}
       >
-        <span className="text">{props.label}</span>
+        <span className="text">{label}</span>
         <span className="icon">
           <FontAwesomeIcon icon="plus" />
           <FontAwesomeIcon icon="minus" />
         </span>
       </button>
-      <ul style={{ height: height + 'px' }} className="sub-menu" role="menu">
-        {props.children}
+      <ul style={{ height: `${height}px` }} className="sub-menu" role="menu">
+        {children}
       </ul>
     </>
   )

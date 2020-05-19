@@ -3,7 +3,7 @@ import styled from 'styled-components'
 const StyledFooter = styled.footer`
   background-color: ${({ theme }) => theme.colors.accent};
   color: ${({ theme }) => theme.colors.secondaryLight};
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   font-weight: ${({ theme }) => theme.font.fw400};
 
   .wrapper {
@@ -66,7 +66,7 @@ const StyledFooter = styled.footer`
   }
 
   @media (min-width: 768px) {
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     .wrapper {
       flex-direction: row-reverse;
       align-items: center;
@@ -99,6 +99,7 @@ const StyledFooter = styled.footer`
   }
 
   @media (min-width: 1440px) {
+    font-size: 1.6em;
     .wrapper .logo img {
       height: 13rem;
     }

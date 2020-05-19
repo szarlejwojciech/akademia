@@ -7,9 +7,9 @@ const HamburgerBtn = () => {
 
   return (
     <StyledHamburgerBtn onClick={toggleNav}>
-      <span></span>
-      <span></span>
-      <span></span>
+      <span />
+      <span />
+      <span />
     </StyledHamburgerBtn>
   )
 }

@@ -12,7 +12,7 @@ const StyledContact = styled.section`
         0 5px 8px -2px rgba(0, 0, 0, 0.2);
     }
     .info-box {
-      max-width: 32rem;
+      max-width: 36rem;
       padding: 3rem 4rem;
       margin: 0 auto;
       background-color: ${({ theme }) => theme.colors.secondaryDark};
@@ -41,7 +41,7 @@ const StyledContact = styled.section`
               color: ${({ theme }) => theme.colors.primaryDark};
             }
             .info-text {
-              font-size: 1.1rem;
+              font-size: 1.4rem;
               margin-top: 0.2em;
               display: flex;
               align-items: flex-start;
@@ -94,6 +94,11 @@ const StyledContact = styled.section`
         .wrapper {
           li {
             .icon {
+            }
+            .content {
+              .info-text {
+                font-size: 1.5rem;
+              }
             }
           }
         }
