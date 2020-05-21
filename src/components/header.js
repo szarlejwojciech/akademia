@@ -7,8 +7,9 @@ import StyledLogo from './styled/StyledLogo'
 import StyledContactInfo from './styled/StyledContactInfo'
 import StyledHeader from './styled/StyledHeader'
 import CustomLink from './CustomLink'
-import { contact } from '../utils/contact'
+import contact from '../utils/contact'
 import { useNavState } from '../hooks/localeState'
+import PropTypes from 'prop-types'
 
 const Header = ({ location }) => {
   const { navOpen, toggleNav } = useNavState()
@@ -59,14 +60,19 @@ const Header = ({ location }) => {
         </StyledNavList>
         <StyledContactInfo>
           <li>
-            <CustomLink icon="envelope" url={`mailto:${contact.email}`}>
+            <CustomLink
+              icon="envelope"
+              href={`mailto:${contact.email}`}
+              title="Wyślij email!"
+            >
               {contact.email}
             </CustomLink>
           </li>
           <li>
             <CustomLink
               icon="phone-alt"
-              url={`tel:${contact.phone.replace(/ /g, '')}`}
+              href={`tel:${contact.phone.replace(/ /g, '')}`}
+              title="Zadzwoń!"
             >
               {contact.phone}
             </CustomLink>
@@ -74,7 +80,9 @@ const Header = ({ location }) => {
           <li>
             <CustomLink
               icon={['fab', 'facebook']}
-              url="https://bit.ly/2LzJc14"
+              href="https://bit.ly/2LzJc14"
+              title="Odwiedź naszego facebooka!"
+              target="_blanc"
             />
           </li>
         </StyledContactInfo>
@@ -83,3 +91,8 @@ const Header = ({ location }) => {
   )
 }
 export default Header
+
+Header.propTypes = {
+  location: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
+    .isRequired,
+}

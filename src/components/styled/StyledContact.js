@@ -1,6 +1,7 @@
 import styled from 'styled-components'
+import BackgroundImage from 'gatsby-background-image'
 
-const StyledContact = styled.section`
+const StyledContact = styled(BackgroundImage)`
   padding: 3rem 2rem;
   background: url('/contact-bg.jpg') center no-repeat;
   background-size: cover;

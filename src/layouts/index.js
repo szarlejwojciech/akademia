@@ -4,6 +4,7 @@ import GlobalStyle from '../assets/styles/GlobalStyle'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { MobileNavStateProvider, useNavState } from '../hooks/localeState'
+import PropTypes from 'prop-types'
 
 const theme = {
   colors: {
@@ -22,7 +23,7 @@ const theme = {
     fw600: 600,
   },
 }
-const GlobalLayout = props => {
+const GlobalLayout = ({ location, children }) => {
   const { navOpen, toggleNav } = useNavState
   useEffect(() => navOpen && toggleNav())
   return (
@@ -30,8 +31,8 @@ const GlobalLayout = props => {
       <ThemeProvider theme={theme}>
         <GlobalStyle />
         <MobileNavStateProvider>
-          <Header location={props.location} />
-          {props.children}
+          <Header location={location} />
+          {children}
         </MobileNavStateProvider>
         <Footer />
       </ThemeProvider>
@@ -40,3 +41,12 @@ const GlobalLayout = props => {
 }
 
 export default GlobalLayout
+
+GlobalLayout.defaultPropTypes = {
+  children: null,
+}
+
+GlobalLayout.propTypes = {
+  location: PropTypes.any.isRequired,
+  children: PropTypes.element,
+}

@@ -1,3 +1,4 @@
+/* eslint-disable no-undef */
 module.exports = {
   pathPrefix: '/akademiaurody',
   siteMetadata: {
@@ -35,25 +36,45 @@ module.exports = {
         ],
       },
     },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {
       resolve: 'gatsby-plugin-react-svg',
       options: {
         rule: {
-          include: /svg/, // See below to configure properly
+          include: /svg/,
         },
       },
     },
     {
-      resolve: 'gatsby-plugin-eslint',
+      resolve: 'gatsby-plugin-prettier-eslint',
       options: {
-        test: /\.js$|\.jsx$/,
-        exclude: /(node_modules|.cache|public)/,
-        stages: ['develop'],
-        options: {
-          emitWarning: true,
-          failOnError: false,
+        onChangeFullScanFormat: false,
+        onChangeFullScanLint: false,
+        prettier: {
+          patterns: [
+            // the pattern "**/*.{js,jsx,ts,tsx}" is not used because we will rely on `eslint --fix`
+            '**/*.{css,scss,less}',
+            '**/*.{json,json5}',
+            '**/*.{graphql}',
+            '**/*.{md,mdx}',
+            '**/*.{html}',
+            '**/*.{yaml,yml}',
+          ],
+        },
+        eslint: {
+          patterns: '**/*.{js,jsx,ts,tsx}',
+          customOptions: {
+            fix: true,
+            cache: true,
+          },
         },
       },
     },
@@ -66,11 +87,8 @@ module.exports = {
         background_color: '#4F5053',
         theme_color: '#1A171B',
         display: 'minimal-ui',
-        icon: 'src/assets/images/favicon.png', // This path is relative to the root of the site.
+        icon: 'src/assets/images/favicon.png',
       },
     },
-    // this (optional) plugin enables Progressive Web App + Offline functionality
-    // To learn more, visit: https://gatsby.dev/offline
-    // `gatsby-plugin-offline`,
   ],
 }

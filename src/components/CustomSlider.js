@@ -1,8 +1,10 @@
 import React from 'react'
 import Carousel, { consts } from 'react-elastic-carousel'
-import CarouselItem from './CarouselItem'
 import styled from 'styled-components'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import CarouselItem from './CarouselItem'
+import { graphql, useStaticQuery } from 'gatsby'
+import PropTypes from 'prop-types'
 
 const testItems = [
   {
@@ -92,15 +94,39 @@ const Arrow = styled.button`
   background-color: transparent;
 `
 
-const CustomSlider = () => {
-  const myArrow = ({ type, onClick }) => {
-    const pointer = type === consts.PREV ? 'chevron-left' : 'chevron-right'
-    return (
-      <Arrow onClick={onClick}>
-        <FontAwesomeIcon icon={pointer} />
-      </Arrow>
-    )
+const query = graphql`
+  {
+    allFile(filter: { extension: { regex: "/jpg|png/" } }) {
+      edges {
+        node {
+          childImageSharp {
+            fluid(maxHeight: 300, maxWidth: 300, quality: 90) {
+              ...GatsbyImageSharpFluid_tracedSVG
+            }
+          }
+          base
+        }
+      }
+    }
   }
+`
+const getImageFluid = (data, name) => {
+  const [image] = data.edges.filter(({ node }) => node.base.includes(name))
+  return image.node.childImageSharp.fluid
+}
+
+const MyArrow = ({ type, onClick }) => {
+  const pointer = type === consts.PREV ? 'chevron-left' : 'chevron-right'
+  const label = type === consts.PREV ? 'slide w lewo' : 'slide w prawo'
+  return (
+    <Arrow onClick={onClick} type="button" aria-label={label}>
+      <FontAwesomeIcon icon={pointer} />
+    </Arrow>
+  )
+}
+
+const CustomSlider = () => {
+  const { allFile } = useStaticQuery(query)
 
   return (
     <StyledCarousel
@@ -112,14 +138,21 @@ const CustomSlider = () => {
         { width: 1024, itemsToShow: 3 },
         { width: 1440, itemsToShow: 4 },
       ]}
-      renderArrow={myArrow}
+      renderArrow={MyArrow}
       pagination={false}
     >
-      {testItems.map(item => (
-        <CarouselItem key={item.title} {...item} />
-      ))}
+      {testItems.map(item => {
+        const [name] = item.image.match(/[a-z-]*[^/]/)
+        const fluid = getImageFluid(allFile, name)
+        return <CarouselItem fluid={fluid} key={item.title} {...item} />
+      })}
     </StyledCarousel>
   )
 }
 
 export default CustomSlider
+
+MyArrow.propTypes = {
+  type: PropTypes.string.isRequired,
+  onClick: PropTypes.func.isRequired,
+}

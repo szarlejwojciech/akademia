@@ -9,7 +9,6 @@ const GlobalStyle = createGlobalStyle`
   *,*::after,::before{
     box-sizing: inherit;
   }
-  
 
   body{
     --padding-top: 5rem;

@@ -1,6 +1,6 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { contact } from '../utils/contact'
+import contact from '../utils/contact'
 import StyledFooter from './styled/StyledFooter'
 
 const Footer = () => (
@@ -29,7 +29,7 @@ const Footer = () => (
           </li>
           <li>
             <FontAwesomeIcon icon="map-marker-alt" />
-            <span>Wt - Pt od 8⁰⁰ do 18⁰⁰, Sob od 8⁰⁰ do 16⁰⁰</span>
+            <span>Wt - Pt od 10⁰⁰ do 17⁰⁰, Sob od 8⁰⁰ do 13⁰⁰</span>
           </li>
         </ul>
       </div>

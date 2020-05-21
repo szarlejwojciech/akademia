@@ -1,7 +1,7 @@
 import React from 'react'
 
-import SEO from '../components/Seo'
 import { Link } from 'gatsby'
+import SEO from '../components/Seo'
 
 const NotFoundPage = () => (
   <>

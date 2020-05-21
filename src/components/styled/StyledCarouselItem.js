@@ -9,12 +9,17 @@ const StyledCarouselItem = styled.div`
   border: 2px solid ${({ theme }) => theme.colors.primaryLight};
   border-radius: 10px;
   overflow: hidden;
-
+  /* overflow: hidden; */
+  /* margin-bottom: 20px; */
+  /* box-shadow: 0 10px 10px #00000025; */
   figure {
     margin: 0;
 
-    img {
+    .custom-gatsby-img {
       height: 16rem;
+      img {
+        object-fit: contain !important;
+      }
     }
 
     figcaption {
@@ -117,7 +122,7 @@ const StyledCarouselItem = styled.div`
   @media (min-width: 1440px) {
     height: 47rem;
     figure {
-      img {
+      .custom-gatsby-img {
         height: 22rem;
       }
       figcaption {

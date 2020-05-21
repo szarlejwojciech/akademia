@@ -88,7 +88,7 @@ const StyledFooter = styled.footer`
   @media (min-width: 1024px) {
     font-size: 1.45rem;
     .wrapper {
-      max-width: 66rem;
+      max-width: 74rem;
       .logo {
         margin: 0 0 0 4rem;
         img {
@@ -99,7 +99,7 @@ const StyledFooter = styled.footer`
   }
 
   @media (min-width: 1440px) {
-    font-size: 1.6em;
+    font-size: 1.6rem;
     .wrapper .logo img {
       height: 13rem;
     }

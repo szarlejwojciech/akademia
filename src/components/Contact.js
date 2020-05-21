@@ -1,11 +1,26 @@
 import React from 'react'
-import StyledContact from './styled/StyledContact'
-import { contact } from '../utils/contact'
+import { graphql, useStaticQuery } from 'gatsby'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import StyledContact from './styled/StyledContact'
+import contact from '../utils/contact'
+
+const query = graphql`
+  {
+    file(name: { eq: "contact-bg" }) {
+      childImageSharp {
+        fluid(maxWidth: 1440, maxHeight: 780, quality: 90) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
+      }
+    }
+  }
+`
 
 const Contact = () => {
+  const data = useStaticQuery(query)
+  const sectionBg = data.file.childImageSharp.fluid
   return (
-    <StyledContact>
+    <StyledContact Tag="section" fluid={sectionBg}>
       <div className="section-wrapper">
         <div className="info-box">
           <ul className="wrapper">
@@ -40,7 +55,8 @@ const Contact = () => {
                 <div className="info-text">
                   <span className="label">Adres:</span>
                   <span>
-                    Ul. Kolejowa 2<br />
+                    Ul. Kolejowa 2
+                    <br />
                     34-400 Nowy Targ
                   </span>
                 </div>
@@ -58,7 +74,11 @@ const Contact = () => {
                 </div>
                 <div className="info-text">
                   <span className="label">Wtorek - Piątek:</span>
-                  <span>8⁰⁰ – 18⁰⁰</span>
+                  <span>10⁰⁰ – 17⁰⁰</span>
+                </div>
+                <div className="info-text">
+                  <span className="label">Sobota:</span>
+                  <span>8⁰⁰ – 13⁰⁰</span>
                 </div>
               </div>
             </li>
@@ -71,8 +91,8 @@ const Contact = () => {
             height="450"
             frameBorder="0"
             src="https://www.google.com/maps/embed/v1/place?q=place_id:ChIJO8tkGezkFUcREvSvbDn7juE&key=AIzaSyC2a09pWtEA-07G3aSq8lDB-JiQWpU_b3w"
-            allowFullScreen={true}
-          ></iframe>
+            allowFullScreen
+          />
         </div>
       </div>
     </StyledContact>

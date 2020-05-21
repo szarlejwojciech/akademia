@@ -6,7 +6,7 @@ const HamburgerBtn = () => {
   const { toggleNav } = useNavState()
 
   return (
-    <StyledHamburgerBtn onClick={toggleNav}>
+    <StyledHamburgerBtn onClick={toggleNav} type="button" aria-label="Menu">
       <span />
       <span />
       <span />

@@ -5,58 +5,65 @@ const StyledHero = styled.div`
   height: calc(100vh - var(--padding-top));
   width: 100%;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
-  background: url('/hero.jpg') center no-repeat;
-  background-size: cover;
-  background-position-x: 10vw;
+  position: relative;
   display: flex;
   align-items: center;
+  .image-wrapper {
+    height: 100%;
+    flex: 1;
+    .hero-gatsby-img {
+      height: inherit;
 
-  img {
+      img {
+        object-position: left center !important;
+      }
+    }
+  }
+
+  svg {
     width: 100%;
+    height: auto;
   }
   .cta {
     max-width: 23ch;
     text-align: center;
-    margin-left: 5vw;
-
+    margin: 5vw;
     p {
       margin: 1.15em 0;
     }
   }
-
   @media (orientation: landscape) and (max-width: 767.9px) {
-    background-position-x: 27vh;
+    &::before,
+    &::after {
+      background-position-x: 27vw !important;
+    }
     .cta {
-      margin-left: 14vh;
+      margin: 14vh;
     }
   }
-
   @media (min-width: 768px) {
     --padding-top: 6.2rem;
-    background-position-x: 21vw;
-
+    &::before,
+    &::after {
+      background-position-x: 21vw !important;
+    }
     .cta {
-      margin-left: 11vw;
+      margin: 11vw;
       max-width: 28ch;
     }
   }
-
   @media (min-width: 1024px) {
     --padding-top: 8rem;
-
     .cta {
-      margin-left: 13vw;
+      margin: 13vw;
       max-width: 28ch;
     }
   }
-
   @media (min-width: 1440px) {
     --padding-top: 10rem;
-
     .cta {
       max-width: 37ch;
     }
   }
 `
-
 export default StyledHero

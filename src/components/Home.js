@@ -1,20 +1,74 @@
 import React from 'react'
+import { useStaticQuery, graphql } from 'gatsby'
+import Img from 'gatsby-image'
+import BackgroundImage from 'gatsby-background-image'
 import ButtonLink from './ButtonLink'
 import StyledHero from './styled/StyledHero'
 import StyledSection from './styled/StyledSection'
-import HeadingDecoration from '../assets/svg/heading-decoration.svg'
 import CustomSlider from './CustomSlider'
+import HeadingDecoration from '../assets/svg/heading-decoration.svg'
+import MenardLogo from '../assets/svg/menard-logo.svg'
+
+const query = graphql`
+  query {
+    hero: file(name: { eq: "hero" }) {
+      childImageSharp {
+        fluid(maxWidth: 1807, maxHeight: 2000, quality: 90) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    salon1: file(name: { eq: "salon-1" }) {
+      childImageSharp {
+        fluid(maxWidth: 330, maxHeight: 200, quality: 80) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    salon2: file(name: { eq: "salon-2" }) {
+      childImageSharp {
+        fluid(maxWidth: 330, maxHeight: 200, quality: 80) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+    sectionBg: file(name: { eq: "section-bg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000, maxHeight: 2000, quality: 90) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
+    }
+  }
+`
 
 const Home = () => {
+  const data = useStaticQuery(query)
+  const hero = data.hero.childImageSharp.fluid
+  const salon1 = data.salon1.childImageSharp.fluid
+  const salon2 = data.salon2.childImageSharp.fluid
+  const sectionBg = data.sectionBg.childImageSharp.fluid
+
   return (
     <>
       <StyledHero>
         <div className="cta">
-          <img src="/menard-logo.svg" alt="twarz kobiety" />
+          <MenardLogo />
           <p>Dla kobiet poszukujących prawdziwego piękna na całym świecie.</p>
-          <ButtonLink to="/ofarta" icon="long-arrow-alt-right">
+          <ButtonLink
+            to="/oferta"
+            icon="long-arrow-alt-right"
+            title="Przeglądaj Menard"
+          >
             Przeglądaj
           </ButtonLink>
+        </div>
+        <div className="image-wrapper">
+          <Img
+            className="hero-gatsby-img"
+            fluid={hero}
+            backgroundColor={`#FFFFFF`}
+          />
         </div>
       </StyledHero>
       <main>
@@ -42,29 +96,43 @@ const Home = () => {
             </div>
             <div className="images">
               <div className="images-wrapper">
-                <img src="/salon-1.jpg" alt="zdjęcia salonu w holu" />
-                <img src="/salon-2.jpg" alt="zdjęcia salonu w holu 2" />
+                <Img
+                  className="top-photo"
+                  fluid={salon1}
+                  alt="zdjęcia salonu w holu"
+                />
+                <Img
+                  className="bottom-photo"
+                  fluid={salon2}
+                  alt="zdjęcia salonu w holu 2"
+                />
               </div>
             </div>
           </div>
         </StyledSection>
-        <StyledSection background="/section-bg.jpg" dark={true}>
-          <div className="wrapper">
-            <div className="box">
-              <h2>
-                <div>Odwiedź nasz salon</div>
-                <HeadingDecoration fill="#FFF" />
-              </h2>
-              <p>
-                O wyjątkowości tego miejsca możesz przekonać się już teraz
-                odwiedzając nasza galerię. Galeria zdjęć, choć profesjonalna,
-                nie oddaje jednak w pełni niepowtarzalnego nastroju salonu.
-              </p>
-              <ButtonLink to="/kontakt" icon="phone-alt" color="light">
-                Kontakt
-              </ButtonLink>
+        <StyledSection dark>
+          <BackgroundImage
+            Tag="div"
+            className="section-gatsby-img-bg"
+            fluid={sectionBg}
+          >
+            <div className="wrapper">
+              <div className="box">
+                <h2>
+                  <div>Odwiedź nasz salon</div>
+                  <HeadingDecoration fill="#FFF" />
+                </h2>
+                <p>
+                  O wyjątkowości tego miejsca możesz przekonać się już teraz
+                  odwiedzając nasza galerię. Galeria zdjęć, choć profesjonalna,
+                  nie oddaje jednak w pełni niepowtarzalnego nastroju salonu.
+                </p>
+                <ButtonLink to="/kontakt" icon="phone-alt" color="light">
+                  Kontakt
+                </ButtonLink>
+              </div>
             </div>
-          </div>
+          </BackgroundImage>
         </StyledSection>
         <StyledSection>
           <h1>

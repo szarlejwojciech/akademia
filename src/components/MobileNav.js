@@ -3,6 +3,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { Link } from 'gatsby'
 import StyledMobileNav from './styled/StyledMobileNav'
 import { useNavState } from '../hooks/localeState'
+import PropTypes from 'prop-types'
 
 const Submenu = ({ children, label }) => {
   const [isCollapsed, setIsCollapsed] = useState(true)
@@ -230,3 +231,8 @@ const MobileNav = () => {
 }
 
 export default MobileNav
+
+Submenu.propTypes = {
+  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  label: PropTypes.string.isRequired,
+}
