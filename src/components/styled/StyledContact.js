@@ -3,8 +3,11 @@ import BackgroundImage from 'gatsby-background-image'
 
 const StyledContact = styled(BackgroundImage)`
   padding: 3rem 2rem;
-  background: url('/contact-bg.jpg') center no-repeat;
-  background-size: cover;
+  &::before,
+  &::after {
+    background-attachment: fixed;
+  }
+
   .section-wrapper {
     max-width: 120rem;
     margin: 0 auto;
@@ -52,9 +55,10 @@ const StyledContact = styled(BackgroundImage)`
                 &.label {
                   opacity: 1;
                   margin-right: 0.8em;
-                  opacity: 0.7;
+                  font-weight: ${({ theme }) => theme.font.fw600};
                 }
                 a {
+                  display: block;
                   font-size: 1em;
                   border-bottom: 2px solid
                     ${({ theme }) => theme.colors.primaryLight};
@@ -74,14 +78,18 @@ const StyledContact = styled(BackgroundImage)`
       }
     }
     .map {
-      height: 32rem;
+      position: relative;
+      padding-bottom: 100%;
       margin-top: 2rem;
       border-radius: 10px;
       border: 3px solid ${({ theme }) => theme.colors.secondaryDark};
       overflow: hidden;
       iframe {
-        height: 32rem;
+        position: absolute;
+        top: 0;
+        left: 0;
         width: 100%;
+        height: 100%;
       }
     }
   }
@@ -97,6 +105,9 @@ const StyledContact = styled(BackgroundImage)`
             .icon {
             }
             .content {
+              h6 {
+                font-size: 1.8rem;
+              }
               .info-text {
                 font-size: 1.5rem;
               }
@@ -106,6 +117,7 @@ const StyledContact = styled(BackgroundImage)`
       }
       .map {
         flex: 2;
+        padding: 0;
         margin: 0 0 0 2rem;
       }
     }
@@ -145,10 +157,6 @@ const StyledContact = styled(BackgroundImage)`
       }
       .map {
         margin: 0 0 0 3rem;
-        height: 35.6rem;
-        iframe {
-          height: 35.6rem;
-        }
       }
     }
   }
@@ -168,20 +176,12 @@ const StyledContact = styled(BackgroundImage)`
             .content {
               h6 {
                 font-size: 2.2rem;
-                /* margin-bottom: 0.3em; */
               }
               .info-text {
-                /* margin-top: 0.3em; */
                 font-size: 1.6rem;
               }
             }
           }
-        }
-      }
-      .map {
-        height: 39rem;
-        iframe {
-          height: 39rem;
         }
       }
     }

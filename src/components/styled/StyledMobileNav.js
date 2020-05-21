@@ -29,7 +29,7 @@ const StyledMobileNav = styled.nav`
     opacity: 0;
     will-change: opacity;
     transition: 0.5s opacity ease-in-out;
-    box-shadow: 150px 0px 200px 200px rgba(0, 0, 0, 0.6);
+    box-shadow: 150px 0px 200px 400px rgba(0, 0, 0, 0.6);
     z-index: -1;
   }
 
@@ -63,10 +63,15 @@ const StyledMobileNav = styled.nav`
         position: absolute;
         right: 0;
         top: -0.4em;
+        will-change: transform;
+        transition: 0.15s transform ease-in-out;
         &.fa-plus,
         &.fa-minus {
           /* top: 0.125em; */
           height: 0.75em;
+        }
+        &.fa-plus {
+          transform: scaleY(0);
         }
       }
     }
@@ -74,6 +79,13 @@ const StyledMobileNav = styled.nav`
 
   .is-collapsed + ul {
     height: 0px;
+  }
+  .is-collapsed {
+    .icon {
+      svg.fa-plus {
+        transform: scaleY(1);
+      }
+    }
   }
   .sub-menu {
     /* height: auto; */

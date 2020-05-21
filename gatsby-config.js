@@ -7,7 +7,7 @@ module.exports = {
     description:
       'Akademia Urody, to nie tylko ekskluzywny salon, to przede wszystkim miejsce, którego urok urzeknie Cię swym ciepłem.',
     author: 'Wojciech Szarlej',
-    url: 'akademiaurody-nowytarg.pl',
+    url: 'http://www.akademiaurody-nowytarg.pl',
     image: '/logo.jpg',
   },
   plugins: [
@@ -78,17 +78,17 @@ module.exports = {
         },
       },
     },
-    {
-      resolve: 'gatsby-plugin-manifest',
-      options: {
-        name: 'AkademiaUrody',
-        short_name: 'Akademia',
-        start_url: '/',
-        background_color: '#4F5053',
-        theme_color: '#1A171B',
-        display: 'minimal-ui',
-        icon: 'src/assets/images/favicon.png',
-      },
-    },
+    // {
+    // resolve: 'gatsby-plugin-manifest',
+    // options: {
+    // name: 'AkademiaUrody',
+    // short_name: 'Akademia',
+    // start_url: '/',
+    // background_color: '#4F5053',
+    // theme_color: '#1A171B',
+    // display: 'minimal-ui',
+    // icon: 'src/assets/images/favicon.png',
+    // },
+    // },
   ],
 }

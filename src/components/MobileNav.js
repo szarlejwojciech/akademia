@@ -26,6 +26,7 @@ const Submenu = ({ children, label }) => {
         role="menuitem"
         tabIndex="-1"
         onClick={toggleCollapse}
+        disabled={true}
       >
         <span className="text">{label}</span>
         <span className="icon">

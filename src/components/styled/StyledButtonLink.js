@@ -68,7 +68,7 @@ const StyledButtonLink = styled(Link)`
     css`
       color: ${({ theme }) => theme.colors.primaryDark};
       border-color: ${({ theme }) => theme.colors.secondaryDark};
-
+      background-color: ${({ theme }) => theme.colors.secondaryDark};
       &::before {
         background-color: ${({ theme }) => theme.colors.secondaryDark};
         opacity: 1;
@@ -76,6 +76,7 @@ const StyledButtonLink = styled(Link)`
 
       &:hover {
         color: ${({ theme }) => theme.colors.secondaryDark};
+        background-color: transparent;
         &::before {
           opacity: 0;
         }

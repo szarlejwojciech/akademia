@@ -15,6 +15,11 @@ const StyledSection = styled.section`
   .section-gatsby-img-bg {
     margin: -4rem -2rem;
     padding: inherit;
+
+    &::before,
+    &::after {
+      background-attachment: ${({ fixed }) => (fixed ? 'fixed' : 'initial')};
+    }
   }
   .wrapper {
     max-width: 117rem;

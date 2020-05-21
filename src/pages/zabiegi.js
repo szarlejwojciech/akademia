@@ -6,7 +6,11 @@ import SEO from '../components/Seo'
 
 const treatmentsPage = () => (
   <>
-    <SEO title="Akademia Urody | Zabiegi" />
+    <SEO
+      title="Akademia Urody | Zabiegi"
+      description="Obejrzyj naszą oferte zabiegów na dłonie i paznokcie, stopy, twarz i włosy."
+      url="http://www.akademiaurody-nowytarg/zabiegi"
+    />
     <PageIsBuilding />
   </>
 )

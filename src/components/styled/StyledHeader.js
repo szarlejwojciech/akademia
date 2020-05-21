@@ -17,6 +17,10 @@ const StyledHeader = styled.header`
     box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
   }
   /* z-index: 15; */
+  .logo-link {
+    flex: 1;
+    display: block;
+  }
   .logo-link:hover {
     opacity: 0.8;
   }

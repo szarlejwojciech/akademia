@@ -2,8 +2,9 @@ import styled from 'styled-components'
 
 const StyledLogo = styled.div`
   --size: 17rem;
-  width: var(--size);
+  max-width: var(--size);
   height: calc(0.18 * var(--size));
+  margin: 0 auto;
   background: url('/logo.png') center no-repeat;
   background-size: contain;
 

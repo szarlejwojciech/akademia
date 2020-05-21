@@ -22,12 +22,13 @@ const Header = ({ location }) => {
       <MobileNav />
       <div className="top-bar">
         <HamburgerBtn />
-        <Link className="logo-link" to="/">
-          <StyledLogo
-            role="img"
-            aria-label="Logo firmy"
-            title="Stroma główna"
-          />
+        <Link
+          className="logo-link"
+          to="/"
+          aria-label="Logo firmy"
+          title="Stroma główna"
+        >
+          <StyledLogo role="img" />
         </Link>
         <StyledNavList>
           <ul>

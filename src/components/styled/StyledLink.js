@@ -7,7 +7,7 @@ const StyledLink = styled.a`
   transition: 0.15s opacity ease-in-out;
 
   svg {
-    margin: 0 0.4em;
+    margin: 0 0.2em;
 
     path {
       fill: ${({ theme }) => theme.colors.primaryLight};

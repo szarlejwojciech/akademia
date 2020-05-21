@@ -70,7 +70,7 @@ const StyledFooter = styled.footer`
     .wrapper {
       flex-direction: row-reverse;
       align-items: center;
-      max-width: 60rem;
+      max-width: 63rem;
       .logo {
         flex: 1;
         margin: 0 0 0 1.8rem;

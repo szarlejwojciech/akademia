@@ -29,12 +29,12 @@ const GlobalLayout = ({ location, children }) => {
   return (
     <>
       <ThemeProvider theme={theme}>
-        <GlobalStyle />
         <MobileNavStateProvider>
+          <GlobalStyle />
           <Header location={location} />
           {children}
+          <Footer />
         </MobileNavStateProvider>
-        <Footer />
       </ThemeProvider>
     </>
   )

@@ -110,7 +110,7 @@ const Home = () => {
             </div>
           </div>
         </StyledSection>
-        <StyledSection dark>
+        <StyledSection dark fixed>
           <BackgroundImage
             Tag="div"
             className="section-gatsby-img-bg"

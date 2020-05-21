@@ -2,8 +2,10 @@ import styled from 'styled-components'
 
 const StyledNavList = styled.nav`
   display: none;
+  flex: 2;
   ul {
     display: flex;
+    justify-content: center;
     /* margin-left: 4rem; */
     li + li {
       margin-left: 6rem;

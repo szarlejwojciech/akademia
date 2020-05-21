@@ -12,7 +12,6 @@ const GlobalStyle = createGlobalStyle`
 
   body{
     --padding-top: 5rem;
-
     padding: var(--padding-top) 0rem 0;
     margin: 0;
     font-family: 'Open Sans';
