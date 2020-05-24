@@ -78,17 +78,17 @@ module.exports = {
         },
       },
     },
-    // {
-    // resolve: 'gatsby-plugin-manifest',
-    // options: {
-    // name: 'AkademiaUrody',
-    // short_name: 'Akademia',
-    // start_url: '/',
-    // background_color: '#4F5053',
-    // theme_color: '#1A171B',
-    // display: 'minimal-ui',
-    // icon: 'src/assets/images/favicon.png',
-    // },
-    // },
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'AkademiaUrody',
+        short_name: 'Akademia',
+        start_url: '/',
+        background_color: '#4F5053',
+        theme_color: '#1A171B',
+        display: 'minimal-ui',
+        icon: 'src/assets/images/favicon.png',
+      },
+    },
   ],
 }

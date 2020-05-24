@@ -6,8 +6,8 @@ import PropTypes from 'prop-types'
 
 const ButtonLink = ({ children, icon, ...props }) => (
   <StyledButtonLink {...props}>
-    <span>{children}</span>
-    <FontAwesomeIcon icon={icon} />
+    {children}
+    {/* <FontAwesomeIcon icon={icon} /> */}
   </StyledButtonLink>
 )
 
@@ -17,11 +17,12 @@ ButtonLink.defaultPropTypes = {
   title: null,
   color: null,
   children: null,
+  icon: null,
 }
 ButtonLink.propTypes = {
   to: PropTypes.string.isRequired,
-  icon: PropTypes.string.isRequired,
+  icon: PropTypes.string,
   color: PropTypes.string,
   title: PropTypes.string,
-  children: PropTypes.string,
+  children: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),
 }

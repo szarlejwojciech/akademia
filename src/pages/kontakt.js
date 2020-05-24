@@ -3,6 +3,7 @@ import React from 'react'
 import Contact from '../components/Contact'
 // import Image from '../assets/images/image'
 import SEO from '../components/Seo'
+import HeaderImageLayout from '../layouts/HeaderImageLayout'
 
 const ContactPage = () => (
   <>
@@ -11,7 +12,9 @@ const ContactPage = () => (
       description="Już dziś umów swoją wizytę i odwiedź Akademie Urody w Nowym Targu an ulicy Kolejowej 2."
       url="http://www.akademiaurody-nowytarg/kontakt"
     />
-    <Contact />
+    <HeaderImageLayout>
+      <Contact />
+    </HeaderImageLayout>
   </>
 )
 

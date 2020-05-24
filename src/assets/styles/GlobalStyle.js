@@ -47,7 +47,7 @@ const GlobalStyle = createGlobalStyle`
     list-style: none;
   }
 
-  h1, h2, h3 {
+  h1, h2, h3, h4, h5 {
     font-family: 'Lora';
     margin: 0;
     font-weight: ${({ theme }) => theme.font.fw400};
@@ -62,6 +62,10 @@ const GlobalStyle = createGlobalStyle`
 
   h2 {
     font-size: 2.2rem;
+  }
+
+  h5 {
+    font-size: 1.5rem;
   }
 
   h6 {
@@ -100,6 +104,9 @@ const GlobalStyle = createGlobalStyle`
     h2 {
       font-size: 3.2rem;
     }
+    h5 {
+      font-size: 2.1rem;
+    }
 
     h6 {
       font-size: 1.9rem;
@@ -119,6 +126,9 @@ const GlobalStyle = createGlobalStyle`
     h2 {
       font-size: 4.1rem;
     }
+    h5 {
+      font-size: 2.4rem;
+    }
 
     p {
       font-size: 1.6rem;
@@ -137,6 +147,9 @@ const GlobalStyle = createGlobalStyle`
 
     h2 {
       font-size: 4.8rem;
+    }
+    h5 {
+      font-size: 2.7rem;
     }
 
     h6 {

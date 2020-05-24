@@ -92,14 +92,6 @@ const StyledSection = styled.section`
   }
 
   @media (min-width: 768px) {
-    h1 {
-      font-size: 4rem;
-    }
-
-    h2 {
-      font-size: 3.2rem;
-    }
-
     .box {
       padding: 5rem;
       width: 65%;
@@ -115,12 +107,6 @@ const StyledSection = styled.section`
     .section-gatsby-img-bg {
       margin: -6rem -4rem;
       padding: inherit;
-    }
-    h1 {
-      font-size: 4.5rem;
-    }
-    h2 {
-      font-size: 4.1rem;
     }
 
     .box {
@@ -165,14 +151,6 @@ const StyledSection = styled.section`
   }
 
   @media (min-width: 1440px) {
-    h1 {
-      font-size: 5.8rem;
-    }
-
-    h2 {
-      font-size: 4.8rem;
-    }
-
     .box {
       margin-left: 10rem;
     }

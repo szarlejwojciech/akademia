@@ -174,7 +174,7 @@ const MobileNav = () => {
             </li>
           </Submenu>
         </li>
-        <li>
+        <li role="none">
           <Submenu label="zabiegi">
             <li role="none">
               <Link to="/oferta" role="menuitem" tabIndex="-1">

@@ -5,7 +5,8 @@ const StyledFooter = styled.footer`
   color: ${({ theme }) => theme.colors.secondaryLight};
   font-size: 1.3rem;
   font-weight: ${({ theme }) => theme.font.fw400};
-
+  position: relative;
+  z-index: 10;
   .wrapper {
     display: flex;
     flex-direction: column;

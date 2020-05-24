@@ -33,6 +33,10 @@ const StyledButtonLink = styled(Link)`
 
   &:hover {
     color: ${({ theme }) => theme.colors.secondaryLight};
+    svg {
+      fill: ${({ theme }) => theme.colors.secondaryLight};
+    }
+
     &::before {
       opacity: 1;
     }
@@ -44,6 +48,12 @@ const StyledButtonLink = styled(Link)`
 
   span {
     margin-right: 1em;
+  }
+  svg {
+    width: 1em;
+    margin-bottom: -0.1em;
+    height: auto;
+    fill: ${({ theme }) => theme.colors.primaryDark};
   }
 
   ${({ color }) =>
@@ -57,6 +67,9 @@ const StyledButtonLink = styled(Link)`
 
       &:hover {
         color: ${({ theme }) => theme.colors.accent};
+        svg {
+          fill: ${({ theme }) => theme.colors.accent};
+        }
         &::before {
           opacity: 0;
         }
@@ -77,6 +90,9 @@ const StyledButtonLink = styled(Link)`
       &:hover {
         color: ${({ theme }) => theme.colors.secondaryDark};
         background-color: transparent;
+        svg {
+          fill: ${({ theme }) => theme.colors.secondaryDark};
+        }
         &::before {
           opacity: 0;
         }
