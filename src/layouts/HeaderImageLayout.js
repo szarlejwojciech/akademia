@@ -1,21 +1,21 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import StyledSectionWrapper from '../components/styled/StyledSectionWrapper'
+import BgImg from 'gatsby-background-image'
+import StyledHeaderImage from '../components/styled/StyledHeaderImage'
 import HeadingDecoration from '../assets/svg/heading-decoration.svg'
 
 const HeaderImageLayout = ({ children, fluid, title, subTitle }) => {
   return (
     <main>
-      <StyledSectionWrapper style={{ height: '200px', background: 'red' }}>
-        <header>
-          <h1>O nas</h1>
-          <HeadingDecoration />
-          <span>
-            Odkryj swoje piękno. Kosmetyka to dziedzina, w której Akademia Urody
-            specjalizuje się szczególnie.
-          </span>
-        </header>
-      </StyledSectionWrapper>
+      <StyledHeaderImage>
+        <BgImg fluid={fluid}>
+          <header>
+            <h1>{title}</h1>
+            <HeadingDecoration />
+            <p>{subTitle}</p>
+          </header>
+        </BgImg>
+      </StyledHeaderImage>
       {children}
     </main>
   )

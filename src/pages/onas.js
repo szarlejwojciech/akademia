@@ -1,9 +1,6 @@
 import React from 'react'
 import { graphql } from 'gatsby'
 import PropTypes from 'prop-types'
-// import { Link } from 'gatsby'
-import PageIsBuilding from '../components/PageIsBuilding'
-// import Image from '../components/image'
 import SEO from '../components/Seo'
 import AboutUs from '../components/AboutUs'
 import HeaderImageLayout from '../layouts/HeaderImageLayout'
@@ -15,11 +12,9 @@ const AboutPage = ({ data }) => (
       description="Akademia Urody jest salonem o 12-letnim doświadczeniu posiadający metody nakładania produktów, metody których skuteczność potwierdziła się w setkach przypadków."
       url="http://www.akademiaurody-nowytarg/onas"
     />
-    {/* <PageIsBuilding /> */}
-    {console.log(data)}
     <HeaderImageLayout
       fluid={data.file.childImageSharp.fluid}
-      title="O nas"
+      title="O Nas"
       subTitle="Odkryj swoje piękno. Kosmetyka to dziedzina, w której Akademia Urody specjalizuje się szczególnie."
     >
       <AboutUs />

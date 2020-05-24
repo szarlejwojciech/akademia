@@ -13,6 +13,9 @@ const StyledSectionWrapper = styled(StyledSection)`
     padding: 0;
     letter-spacing: 0;
   }
+  && p {
+    padding: 0;
+  }
   .image-wrapper {
     width: 100%;
     max-width: 48rem;
@@ -231,12 +234,12 @@ const StyledSectionWrapper = styled(StyledSection)`
     }
   }
   @media (min-width: 1440px) {
-    padding: 6rem 14.5rem;
+    padding: 6rem 9vw;
     p {
       font-size: 1.6rem;
     }
     .image-wrapper {
-      flex: 4;
+      flex: 5;
       &.embellir {
         margin: 0 6rem 0 0;
       }
@@ -245,7 +248,7 @@ const StyledSectionWrapper = styled(StyledSection)`
       }
     }
     .content-wrapper {
-      flex: 5;
+      flex: 4;
 
       .bottle-decor {
         top: -1.7rem;
