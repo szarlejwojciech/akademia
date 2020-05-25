@@ -48,6 +48,8 @@ const StyledFooter = styled.footer`
           }
           svg {
             height: 1em;
+            width: auto;
+            fill: ${({ theme }) => theme.colors.secondaryLight};
           }
 
           span {

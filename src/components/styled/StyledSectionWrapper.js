@@ -8,6 +8,7 @@ const StyledSectionWrapper = styled(StyledSection)`
   align-items: center;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
+  overflow: hidden;
   p {
     font-size: 1.2rem;
     padding: 0;

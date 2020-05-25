@@ -2,7 +2,8 @@ import styled, { css } from 'styled-components'
 import { Link } from 'gatsby'
 
 const StyledButtonLink = styled(Link)`
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   position: relative;
   font-size: 1rem;
   padding: 1em 4.125em;
@@ -15,6 +16,12 @@ const StyledButtonLink = styled(Link)`
   z-index: 1;
   will-change: color;
   transition: 0.15s color ease-in-out;
+
+  svg {
+    width: 1em;
+    height: auto;
+    fill: ${({ theme }) => theme.colors.accent};
+  }
 
   &::before {
     content: '';
@@ -49,18 +56,14 @@ const StyledButtonLink = styled(Link)`
   span {
     margin-right: 1em;
   }
-  svg {
-    width: 1em;
-    margin-bottom: -0.1em;
-    height: auto;
-    fill: ${({ theme }) => theme.colors.primaryDark};
-  }
 
   ${({ color }) =>
     color === 'accent' &&
     css`
       color: ${({ theme }) => theme.colors.secondaryDark};
-
+      svg {
+        fill: ${({ theme }) => theme.colors.secondaryDark};
+      }
       &::before {
         opacity: 1;
       }
@@ -82,6 +85,9 @@ const StyledButtonLink = styled(Link)`
       color: ${({ theme }) => theme.colors.primaryDark};
       border-color: ${({ theme }) => theme.colors.secondaryDark};
       background-color: ${({ theme }) => theme.colors.secondaryDark};
+      svg {
+        fill: ${({ theme }) => theme.colors.primaryDark};
+      }
       &::before {
         background-color: ${({ theme }) => theme.colors.secondaryDark};
         opacity: 1;

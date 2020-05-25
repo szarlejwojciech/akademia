@@ -6,36 +6,31 @@ const StyledCarouselItem = styled.div`
   height: 35rem;
   padding: 3.5rem;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
-  border: 2px solid ${({ theme }) => theme.colors.primaryLight};
   border-radius: 10px;
   overflow: hidden;
-  /* overflow: hidden; */
-  /* margin-bottom: 20px; */
-  /* box-shadow: 0 10px 10px #00000025; */
+  margin-bottom: 1em;
+  box-shadow: 0 0.6em 1em -0.6em rgba(0, 0, 0, 0.3);
   figure {
     margin: 0;
-
     .custom-gatsby-img {
       height: 16rem;
       img {
         object-fit: contain !important;
       }
     }
-
     figcaption {
       font-family: 'Open Sans';
-
       h6 {
         margin: 3rem 0 1rem;
         color: ${({ theme }) => theme.colors.accent};
+        line-height: 1;
       }
-
       p {
         font-size: 1.2rem;
+        line-height: 1.5;
       }
     }
   }
-
   .link-wrapper {
     position: absolute;
     top: 0;
@@ -50,9 +45,10 @@ const StyledCarouselItem = styled.div`
     opacity: 0;
     will-change: transform, opacity;
     transition: 0.25s transform ease-in-out, 0.25s opacity ease-in-out;
-
     a {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-size: 3rem;
       width: 2.5em;
       height: 2.5em;
@@ -65,11 +61,13 @@ const StyledCarouselItem = styled.div`
       transition: 0.8s transform ease-out, 0.15s opacity ease-in-out;
       transition-delay: 0.3s, 0;
       transform: translate(100%, 100%);
-
+      svg {
+        width: 1.2em;
+        height: auto;
+      }
       &:hover {
         opacity: 0.8;
       }
-
       &:active {
         svg {
           transform: rotateX(30deg);
@@ -77,62 +75,33 @@ const StyledCarouselItem = styled.div`
       }
     }
   }
-
   &:hover .link-wrapper,
   &:focus-within .link-wrapper {
     transform: translate(0, 0);
     opacity: 1;
-
     a {
       transform: translate(0, 0);
     }
   }
-
   @media (min-width: 768px) {
-    height: 42rem;
+    height: 37.5rem;
     figure {
       height: 19rem;
       figcaption {
-        h6 {
-        }
         p {
           font-size: 1.5rem;
-          line-height: 1.6;
-          letter-spacing: 1px;
+          letter-spacing: 0;
         }
       }
     }
   }
   @media (min-width: 1024px) {
-    max-width: 37rem;
-    /* height: 42rem; */
-    figure {
-      /* height: 19rem; */
-      figcaption {
-        h6 {
-        }
-        p {
-          /* font-size: 1.5rem; */
-          /* line-height: 1.6; */
-          /* letter-spacing: 1px; */
-        }
-      }
-    }
   }
   @media (min-width: 1440px) {
-    height: 47rem;
+    height: 43.5rem;
     figure {
       .custom-gatsby-img {
         height: 22rem;
-      }
-      figcaption {
-        h6 {
-        }
-        p {
-          font-size: 1.6rem;
-          /* line-height: 1.6; */
-          /* letter-spacing: 1px; */
-        }
       }
     }
   }

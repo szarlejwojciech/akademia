@@ -1,8 +1,10 @@
 import React from 'react'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import contact from '../utils/contact'
 import StyledFooter from './styled/StyledFooter'
-
+import PhoneIcon from '../assets/svg/phone-icon.svg'
+import MessageIcon from '../assets/svg/message-icon.svg'
+import ClockIcon from '../assets/svg/clock-icon.svg'
+import LocationIcon from '../assets/svg/location-icon.svg'
 const Footer = () => (
   <StyledFooter>
     <div className="wrapper">
@@ -13,22 +15,22 @@ const Footer = () => (
         <ul>
           <li>
             <a href={`tel:${contact.phone.replace(/ /g, '')}`}>
-              <FontAwesomeIcon icon="phone-alt" />
+              <PhoneIcon />
               <span>{contact.phone}</span>
             </a>
           </li>
           <li>
             <a href={`mailto:${contact.email}`}>
-              <FontAwesomeIcon icon="envelope" />
+              <MessageIcon />
               <span>{contact.email}</span>
             </a>
           </li>
           <li>
-            <FontAwesomeIcon icon="clock" />
+            <ClockIcon />
             <span>ul. Kolejowa 2, 34-400 Nowy Targ</span>
           </li>
           <li>
-            <FontAwesomeIcon icon="map-marker-alt" />
+            <LocationIcon />
             <span>Wt - Pt od 10⁰⁰ do 17⁰⁰, Sob od 8⁰⁰ do 13⁰⁰</span>
           </li>
         </ul>

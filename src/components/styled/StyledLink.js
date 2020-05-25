@@ -7,7 +7,10 @@ const StyledLink = styled.a`
   transition: 0.15s opacity ease-in-out;
 
   svg {
+    width: 1em;
+    height: auto;
     margin: 0 0.2em;
+    vertical-align: middle;
 
     path {
       fill: ${({ theme }) => theme.colors.primaryLight};

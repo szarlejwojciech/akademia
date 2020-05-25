@@ -1,32 +1,19 @@
 import React from 'react'
-import { graphql, useStaticQuery } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import StyledContact from './styled/StyledContact'
 import contact from '../utils/contact'
-
-const query = graphql`
-  {
-    file(name: { eq: "contact-bg" }) {
-      childImageSharp {
-        fluid(maxWidth: 1440, maxHeight: 780, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
-        }
-      }
-    }
-  }
-`
+import LocationIcon from '../assets/svg/location-icon.svg'
+import PhoneIcon from '../assets/svg/phone-icon.svg'
+import ClockIcon from '../assets/svg/clock-icon.svg'
 
 const Contact = () => {
-  const data = useStaticQuery(query)
-  const sectionBg = data.file.childImageSharp.fluid
   return (
-    <StyledContact Tag="section" fluid={sectionBg}>
+    <StyledContact>
       <div className="section-wrapper">
         <div className="info-box">
           <ul className="wrapper">
             <li>
               <span className="icon">
-                <FontAwesomeIcon icon="phone-alt" />
+                <PhoneIcon />
               </span>
               <div className="content">
                 <h6>Kontakt:</h6>
@@ -48,7 +35,7 @@ const Contact = () => {
             </li>
             <li>
               <span className="icon">
-                <FontAwesomeIcon icon="map-marker-alt" />
+                <LocationIcon />
               </span>
               <div className="content">
                 <h6>Lokalizacja</h6>
@@ -64,7 +51,7 @@ const Contact = () => {
             </li>
             <li>
               <span className="icon">
-                <FontAwesomeIcon icon="clock" />
+                <ClockIcon />
               </span>
               <div className="content">
                 <h6>Godziny otwarcia</h6>

@@ -1,13 +1,8 @@
 import styled from 'styled-components'
-import BackgroundImage from 'gatsby-background-image'
 
-const StyledContact = styled(BackgroundImage)`
+const StyledContact = styled.section`
   padding: 3rem 2rem;
-  &::before,
-  &::after {
-    background-attachment: fixed;
-  }
-
+  background-color: ${({ theme }) => theme.colors.secondaryDark};
   .section-wrapper {
     max-width: 120rem;
     margin: 0 auto;
@@ -17,9 +12,9 @@ const StyledContact = styled(BackgroundImage)`
     }
     .info-box {
       max-width: 36rem;
-      padding: 3rem 4rem;
+      padding: 1rem 1.5rem;
       margin: 0 auto;
-      background-color: ${({ theme }) => theme.colors.secondaryDark};
+      background-color: ${({ theme }) => theme.colors.secondaryLight};
       border-radius: 10px;
       .wrapper {
         li + li {
@@ -94,6 +89,11 @@ const StyledContact = styled(BackgroundImage)`
     }
   }
 
+  @media (min-width: 380px) {
+    .section-wrapper .info-box {
+      padding: 3rem 4rem;
+    }
+  }
   @media (min-width: 768px) {
     padding: 3rem 3rem;
     .section-wrapper {

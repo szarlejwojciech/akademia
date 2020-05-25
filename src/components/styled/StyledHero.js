@@ -31,6 +31,11 @@ const StyledHero = styled.div`
     p {
       margin: 1.15em 0;
     }
+    a {
+      svg {
+        width: 1em;
+      }
+    }
   }
   @media (orientation: landscape) and (max-width: 767.9px) {
     &::before,

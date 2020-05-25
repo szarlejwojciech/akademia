@@ -1,10 +1,8 @@
 import React from 'react'
-import Carousel, { consts } from 'react-elastic-carousel'
+import Carousel from 'react-elastic-carousel'
 import styled from 'styled-components'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import CarouselItem from './CarouselItem'
 import { graphql, useStaticQuery } from 'gatsby'
-import PropTypes from 'prop-types'
+import CarouselItem from './CarouselItem'
 
 const testItems = [
   {
@@ -78,20 +76,34 @@ const StyledCarousel = styled(Carousel)`
   & > div > div {
     margin: 0;
   }
-
+  .rec-carousel {
+    position: relative;
+  }
+  .rec-arrow {
+    position: absolute;
+    left: 0;
+    background-color: transparent;
+    border: none;
+    box-shadow: none;
+    color: ${({ theme }) => theme.colors.active};
+    width: 5.5rem;
+    min-width: 5.5rem;
+    height: 5.5rem;
+    line-height: 5.5rem;
+    transform: translateX(-40%);
+    &.rec-arrow-right {
+      left: unset;
+      right: 0;
+      transform: translateX(50%);
+    }
+    &:hover {
+      color: inherit;
+      opacity: 0.7;
+    }
+  }
   @media (min-width: 768px) {
     margin-top: 3rem;
   }
-`
-
-const Arrow = styled.button`
-  position: relative;
-  top: calc(50% - 2em);
-  font-size: 2rem;
-  height: 2em;
-  border: none;
-  color: ${({ theme }) => theme.colors.accent};
-  background-color: transparent;
 `
 
 const query = graphql`
@@ -115,16 +127,6 @@ const getImageFluid = (data, name) => {
   return image.node.childImageSharp.fluid
 }
 
-const MyArrow = ({ type, onClick }) => {
-  const pointer = type === consts.PREV ? 'chevron-left' : 'chevron-right'
-  const label = type === consts.PREV ? 'slide w lewo' : 'slide w prawo'
-  return (
-    <Arrow onClick={onClick} type="button" aria-label={label}>
-      <FontAwesomeIcon icon={pointer} />
-    </Arrow>
-  )
-}
-
 const CustomSlider = () => {
   const { allFile } = useStaticQuery(query)
 
@@ -138,7 +140,6 @@ const CustomSlider = () => {
         { width: 1024, itemsToShow: 3 },
         { width: 1440, itemsToShow: 4 },
       ]}
-      renderArrow={MyArrow}
       pagination={false}
     >
       {testItems.map(item => {
@@ -149,10 +150,4 @@ const CustomSlider = () => {
     </StyledCarousel>
   )
 }
-
 export default CustomSlider
-
-MyArrow.propTypes = {
-  type: PropTypes.string.isRequired,
-  onClick: PropTypes.func.isRequired,
-}

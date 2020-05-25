@@ -8,6 +8,8 @@ import StyledSection from './styled/StyledSection'
 import CustomSlider from './CustomSlider'
 import HeadingDecoration from '../assets/svg/heading-decoration.svg'
 import MenardLogo from '../assets/svg/menard-logo.svg'
+import ArrowRightIcon from '../assets/svg/arrow-right-icon.svg'
+import PhoneIcon from '../assets/svg/phone-icon.svg'
 
 const query = graphql`
   query {
@@ -55,12 +57,9 @@ const Home = () => {
         <div className="cta">
           <MenardLogo />
           <p>Dla kobiet poszukujących prawdziwego piękna na całym świecie.</p>
-          <ButtonLink
-            to="/oferta"
-            icon="long-arrow-alt-right"
-            title="Przeglądaj Menard"
-          >
-            Przeglądaj
+          <ButtonLink to="/oferta" title="Przeglądaj Menard">
+            <span>Przeglądaj</span>
+            <ArrowRightIcon />
           </ButtonLink>
         </div>
         <div className="image-wrapper">
@@ -90,8 +89,9 @@ const Home = () => {
                 starania by oferować najlepsze produkty oraz dobre i rzetelne
                 porady.
               </p>
-              <ButtonLink to="/onas" icon="long-arrow-alt-right" color="accent">
-                O nas
+              <ButtonLink to="/onas" color="accent">
+                <span>O nas</span>
+                <ArrowRightIcon />
               </ButtonLink>
             </div>
             <div className="images">
@@ -127,8 +127,9 @@ const Home = () => {
                   odwiedzając nasza galerię. Galeria zdjęć, choć profesjonalna,
                   nie oddaje jednak w pełni niepowtarzalnego nastroju salonu.
                 </p>
-                <ButtonLink to="/kontakt" icon="phone-alt" color="light">
-                  Kontakt
+                <ButtonLink to="/kontakt" color="light">
+                  <span>Kontakt</span>
+                  <PhoneIcon />
                 </ButtonLink>
               </div>
             </div>

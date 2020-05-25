@@ -6,7 +6,7 @@ const StyledMobileNav = styled.nav`
   position: fixed;
   top: var(--top-padding);
   left: 0;
-  width: 100%;
+  width: 100vw;
   max-width: 50rem;
   bottom: 0px;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
@@ -52,28 +52,8 @@ const StyledMobileNav = styled.nav`
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     background-color: inherit;
-    .icon {
-      position: relative;
-      height: 100%;
-      width: 1em;
-      svg {
-        font-size: 1.5em;
-        width: 1em;
-        height: 1em;
-        position: absolute;
-        right: 0;
-        top: -0.4em;
-        will-change: transform;
-        transition: 0.15s transform ease-in-out;
-        &.fa-plus,
-        &.fa-minus {
-          /* top: 0.125em; */
-          height: 0.75em;
-        }
-        &.fa-plus {
-          transform: scaleY(0);
-        }
-      }
+    .icon::before {
+      transform: scaleY(0);
     }
   }
 
@@ -81,10 +61,8 @@ const StyledMobileNav = styled.nav`
     height: 0px;
   }
   .is-collapsed {
-    .icon {
-      svg.fa-plus {
-        transform: scaleY(1);
-      }
+    .icon::before {
+      transform: scaleY(1);
     }
   }
   .sub-menu {

@@ -1,9 +1,9 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import PropTypes from 'prop-types'
-import StyledCarouselItem from './styled/StyledCarouselItem'
 import Img from 'gatsby-image'
+import StyledCarouselItem from './styled/StyledCarouselItem'
+import HandIcon from '../assets/svg/hand-icon.svg'
 
 const CarouselItem = ({ fluid, title, description, url }) => {
   return (
@@ -17,7 +17,7 @@ const CarouselItem = ({ fluid, title, description, url }) => {
       </figure>
       <span className="link-wrapper">
         <Link to={url} aria-label={title} title={title}>
-          <FontAwesomeIcon icon="hand-point-up" />
+          <HandIcon />
         </Link>
       </span>
     </StyledCarouselItem>

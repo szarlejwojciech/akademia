@@ -10,6 +10,9 @@ import CustomLink from './CustomLink'
 import contact from '../utils/contact'
 import { useNavState } from '../hooks/localeState'
 import PropTypes from 'prop-types'
+import MessageIcon from '../assets/svg/message-icon.svg'
+import PhoneIcon from '../assets/svg/phone-icon.svg'
+import FacebookIcon from '../assets/svg/facebook-icon.svg'
 
 const Header = ({ location }) => {
   const { navOpen, toggleNav } = useNavState()
@@ -61,30 +64,28 @@ const Header = ({ location }) => {
         </StyledNavList>
         <StyledContactInfo>
           <li>
-            <CustomLink
-              icon="envelope"
-              href={`mailto:${contact.email}`}
-              title="Wyślij email!"
-            >
-              {contact.email}
+            <CustomLink href={`mailto:${contact.email}`} title="Wyślij email!">
+              <MessageIcon />
+              <span>{contact.email}</span>
             </CustomLink>
           </li>
           <li>
             <CustomLink
-              icon="phone-alt"
               href={`tel:${contact.phone.replace(/ /g, '')}`}
               title="Zadzwoń!"
             >
-              {contact.phone}
+              <PhoneIcon />
+              <span>{contact.phone}</span>
             </CustomLink>
           </li>
           <li>
             <CustomLink
-              icon={['fab', 'facebook']}
               href="https://bit.ly/2LzJc14"
               title="Odwiedź naszego facebooka!"
               target="_blanc"
-            />
+            >
+              <FacebookIcon />
+            </CustomLink>
           </li>
         </StyledContactInfo>
       </div>
