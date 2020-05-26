@@ -22,6 +22,13 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'gallery',
+        path: `${__dirname}/src/assets/gallery`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {
         fonts: [
