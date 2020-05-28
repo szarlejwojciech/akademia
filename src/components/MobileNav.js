@@ -77,6 +77,7 @@ const MobileNav = () => {
       className={navOpen && 'is-open'}
       aria-label="mobile-menu"
       aria-hidden={navOpen}
+      aria-labelledby="mobile-navigation"
     >
       <ul role="menubar" className="menubar">
         <li role="none">
@@ -176,36 +177,42 @@ const MobileNav = () => {
         <li role="none">
           <Submenu label="zabiegi">
             <li role="none">
-              <Link to="/oferta" role="menuitem" tabIndex="-1">
+              <Link to="/produkty" role="menuitem" tabIndex="-1">
                 <span className="text">wszystko</span>
                 <ArrowIcon role="none" className="icon" />
               </Link>
             </li>
             <li role="none">
-              <Link to="/oferta" role="menuitem" tabIndex="-1">
+              <Link to="/produkty" role="menuitem" tabIndex="-1">
                 <span className="text">oferta 1</span>
                 <ArrowIcon role="none" className="icon" />
               </Link>
             </li>
             <li role="none">
-              <Link to="/oferta" role="menuitem" tabIndex="-1">
+              <Link to="/produkty" role="menuitem" tabIndex="-1">
                 <span className="text">oferta 2</span>
                 <ArrowIcon role="none" className="icon" />
               </Link>
             </li>
             <li role="none">
-              <Link to="/oferta" role="menuitem" tabIndex="-1">
+              <Link to="/produkty" role="menuitem" tabIndex="-1">
                 <span className="text">oferta 3</span>
                 <ArrowIcon role="none" className="icon" />
               </Link>
             </li>
             <li role="none">
-              <Link to="/oferta" role="menuitem" tabIndex="-1">
+              <Link to="/produkty" role="menuitem" tabIndex="-1">
                 <span className="text">oferta 4</span>
                 <ArrowIcon role="none" className="icon" />
               </Link>
             </li>
           </Submenu>
+        </li>
+        <li role="none">
+          <Link to="/galeria" role="menuitem" tabIndex="-1">
+            <span className="text">Galeria</span>
+            <ArrowIcon role="none" className="icon" />
+          </Link>
         </li>
         <li role="none">
           <Link to="/kontakt" role="menuitem" tabIndex="-1">

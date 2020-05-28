@@ -1,5 +1,7 @@
 import React, { useEffect } from 'react'
 import { Link } from 'gatsby'
+import { useLocation } from '@reach/router'
+import { useNavState } from '../hooks/localeState'
 import HamburgerBtn from './HamburgerBtn'
 import MobileNav from './MobileNav'
 import StyledNavList from './styled/StyledNavList'
@@ -8,14 +10,14 @@ import StyledContactInfo from './styled/StyledContactInfo'
 import StyledHeader from './styled/StyledHeader'
 import CustomLink from './CustomLink'
 import contact from '../utils/contact'
-import { useNavState } from '../hooks/localeState'
-import PropTypes from 'prop-types'
 import MessageIcon from '../assets/svg/message-icon.svg'
 import PhoneIcon from '../assets/svg/phone-icon.svg'
 import FacebookIcon from '../assets/svg/facebook-icon.svg'
 
-const Header = ({ location }) => {
+const Header = () => {
   const { navOpen, toggleNav } = useNavState()
+  const location = useLocation()
+
   useEffect(() => {
     if (navOpen) toggleNav()
   }, [location])
@@ -28,12 +30,12 @@ const Header = ({ location }) => {
         <Link
           className="logo-link"
           to="/"
-          aria-label="Logo firmy"
+          aria-label="Strona główna"
           title="Stroma główna"
         >
           <StyledLogo role="img" />
         </Link>
-        <StyledNavList>
+        <StyledNavList aria-labelledby="primary-navigation">
           <ul>
             <li>
               <Link to="/" activeClassName="active">
@@ -46,13 +48,26 @@ const Header = ({ location }) => {
               </Link>
             </li>
             <li>
-              <Link to="/oferta" activeClassName="active">
+              <Link
+                to="/produkty"
+                activeClassName="active"
+                partiallyActive={true}
+              >
                 Oferta
               </Link>
             </li>
             <li>
-              <Link to="/zabiegi" activeClassName="active">
+              <Link
+                to="/zabiegi"
+                activeClassName="active"
+                partiallyActive={true}
+              >
                 Zabiegi
+              </Link>
+            </li>
+            <li>
+              <Link to="/galeria" activeClassName="active">
+                Galeria
               </Link>
             </li>
             <li>
@@ -93,8 +108,3 @@ const Header = ({ location }) => {
   )
 }
 export default Header
-
-Header.propTypes = {
-  location: PropTypes.oneOfType([PropTypes.string, PropTypes.object])
-    .isRequired,
-}

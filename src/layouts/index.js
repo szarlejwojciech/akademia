@@ -23,7 +23,7 @@ const theme = {
     fw600: 600,
   },
 }
-const GlobalLayout = ({ location, children }) => {
+const GlobalLayout = ({ children }) => {
   const { navOpen, toggleNav } = useNavState
   useEffect(() => navOpen && toggleNav())
   return (
@@ -31,7 +31,7 @@ const GlobalLayout = ({ location, children }) => {
       <ThemeProvider theme={theme}>
         <MobileNavStateProvider>
           <GlobalStyle />
-          <Header location={location} />
+          <Header />
           {children}
           <Footer />
         </MobileNavStateProvider>
@@ -47,6 +47,5 @@ GlobalLayout.defaultPropTypes = {
 }
 
 GlobalLayout.propTypes = {
-  location: PropTypes.any.isRequired,
   children: PropTypes.element,
 }

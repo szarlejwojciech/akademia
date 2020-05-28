@@ -8,7 +8,7 @@ const StyledNavList = styled.nav`
     justify-content: center;
     /* margin-left: 4rem; */
     li + li {
-      margin-left: 6rem;
+      margin-left: 4.5rem;
     }
 
     li {

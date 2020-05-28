@@ -29,6 +29,34 @@ module.exports = {
       },
     },
     {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'images',
+        path: `${__dirname}/src/assets/images`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'productsImages',
+        path: `${__dirname}/src/assets/productsImages`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'products',
+        path: `${__dirname}/src/data/products`,
+      },
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'treatments',
+        path: `${__dirname}/src/data/treatments`,
+      },
+    },
+    {
       resolve: 'gatsby-plugin-prefetch-google-fonts',
       options: {
         fonts: [
@@ -43,13 +71,7 @@ module.exports = {
         ],
       },
     },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
-        name: 'images',
-        path: `${__dirname}/src/assets/images`,
-      },
-    },
+    'gatsby-plugin-mdx',
     'gatsby-transformer-sharp',
     'gatsby-plugin-sharp',
     {

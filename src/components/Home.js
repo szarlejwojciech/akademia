@@ -57,7 +57,7 @@ const Home = () => {
         <div className="cta">
           <MenardLogo />
           <p>Dla kobiet poszukujących prawdziwego piękna na całym świecie.</p>
-          <ButtonLink to="/oferta" title="Przeglądaj Menard">
+          <ButtonLink to="/produkty" title="Przeglądaj Menard">
             <span>Przeglądaj</span>
             <ArrowRightIcon />
           </ButtonLink>
