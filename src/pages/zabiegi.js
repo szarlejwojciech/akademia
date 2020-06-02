@@ -2,22 +2,28 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { graphql } from 'gatsby'
 import SEO from '../components/Seo'
-import PageIsBuilding from '../components/PageIsBuilding'
 import TreatmentsPage from '../components/TreatmentsPage'
 
 const treatmentsPage = ({
   data: {
-    allMdx: { nodes, group },
+    treatmentsImages: { nodes },
+    bgImage: {
+      childImageSharp: { fluid },
+    },
   },
 }) => (
   <>
     <SEO
-      title="Akademia Urody | Zabiegi"
+      title="Akademia Urody | Zabiegi, Salon kosmetyczny Nowy Targ"
       description="Obejrzyj naszą oferte zabiegów na dłonie i paznokcie, stopy, twarz i włosy."
       url="http://www.akademiaurody-nowytarg/zabiegi"
     />
     {/* <PageIsBuilding /> */}
-    <TreatmentsPage products={nodes} type="zabiegi"></TreatmentsPage>
+    <TreatmentsPage
+      products={nodes}
+      type="zabiegi"
+      bgImageFluid={fluid}
+    ></TreatmentsPage>
   </>
 )
 
@@ -29,17 +35,33 @@ treatmentsPage.propTypes = {
 
 export const queryProducts = graphql`
   {
-    allMdx(filter: { frontmatter: { type: { eq: "treatments" } } }) {
-      group(field: frontmatter___categories) {
-        fieldValue
-      }
+    treatmentsImages: allMdx(
+      filter: { frontmatter: { type: { eq: "treatments" } } }
+    ) {
       nodes {
         frontmatter {
           title
-          type
           categories
+          featuredImage {
+            childImageSharp {
+              fluid(
+                maxWidth: 170
+                quality: 90
+                traceSVG: { color: "#4F5053", background: "#EEF6F7" }
+              ) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
         }
-        excerpt(pruneLength: 50)
+        excerpt(pruneLength: 70)
+      }
+    }
+    bgImage: file(name: { eq: "treatments-bg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
       }
     }
   }

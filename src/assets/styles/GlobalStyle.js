@@ -64,6 +64,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 2.2rem;
   }
 
+  h3 {
+    font-size: 2rem;
+  }
+
   h5 {
     font-size: 1.5rem;
   }
@@ -90,6 +94,9 @@ const GlobalStyle = createGlobalStyle`
     color: ${({ theme }) => theme.colors.primaryDark};
     text-decoration: none;
   }
+  figure{
+    margin: 0;
+  }
 
   
   @media (min-width: 768px) {
@@ -103,6 +110,9 @@ const GlobalStyle = createGlobalStyle`
 
     h2 {
       font-size: 3.2rem;
+    }
+    h3 {
+      font-size: 2.2rem;
     }
     h5 {
       font-size: 2.1rem;
@@ -126,6 +136,9 @@ const GlobalStyle = createGlobalStyle`
     h2 {
       font-size: 4.1rem;
     }
+    h3 {
+      font-size: 2.4rem;
+    }
     h5 {
       font-size: 2.4rem;
     }
@@ -147,6 +160,9 @@ const GlobalStyle = createGlobalStyle`
 
     h2 {
       font-size: 4.8rem;
+    }
+    h3 {
+      font-size: 2.6rem;
     }
     h5 {
       font-size: 2.7rem;

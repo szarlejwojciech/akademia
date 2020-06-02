@@ -12,9 +12,10 @@ ButtonLink.defaultPropTypes = {
   title: null,
   color: null,
   children: null,
+  to: null,
 }
 ButtonLink.propTypes = {
-  to: PropTypes.string.isRequired,
+  to: PropTypes.string,
   color: PropTypes.string,
   title: PropTypes.string,
   children: PropTypes.oneOfType([PropTypes.array, PropTypes.string]),

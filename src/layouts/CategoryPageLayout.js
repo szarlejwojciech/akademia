@@ -1,11 +1,10 @@
 import React from 'react'
 import styled from 'styled-components'
-import { Link } from 'gatsby'
 import PropTypes from 'prop-types'
 import { toCebabCase } from '../utils/toCebabCase'
-import useCategories from '../hooks/useCategories'
 import AsideNav from '../components/AsideNav'
 import PrevUrlButton from '../components/PrevUrlButton'
+import ProductPreview from '../components/ProductPreview'
 
 const StyledWrapper = styled.div`
   padding: 5rem 6rem;
@@ -43,14 +42,15 @@ const CategoryPageLayout = ({ path, pageContext: { products } }) => {
               },
               excerpt,
             }) => {
-              const slug = toCebabCase(title)
+              const slug = `${path}/${toCebabCase(title)}`
               return (
-                <div className="box" key={slug}>
-                  <img src={fluid.src} loading="lazy" alt={title} />
-                  <h3>{title}</h3>
-                  <p>{excerpt}</p>
-                  <Link to={`${path}/${slug}`}>Przejdź&gt;</Link>
-                </div>
+                <ProductPreview
+                  key={title}
+                  fluid={fluid}
+                  title={title}
+                  excerpt={excerpt}
+                  slug={slug}
+                />
               )
             }
           )}

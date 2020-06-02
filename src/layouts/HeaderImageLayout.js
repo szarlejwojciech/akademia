@@ -12,7 +12,7 @@ const HeaderImageLayout = ({ children, fluid, title, subTitle }) => {
           <header>
             <h1>{title}</h1>
             <HeadingDecoration />
-            <p>{subTitle}</p>
+            {subTitle && <p>{subTitle}</p>}
           </header>
         </BgImg>
       </StyledHeaderImage>
@@ -23,9 +23,9 @@ const HeaderImageLayout = ({ children, fluid, title, subTitle }) => {
 
 export default HeaderImageLayout
 
-// HeaderImageLayout.defaultPropTypes = {
-//   subTitle: null,
-// }
+HeaderImageLayout.defaultPropTypes = {
+  subTitle: null,
+}
 HeaderImageLayout.propTypes = {
   children: PropTypes.element.isRequired,
   fluid: PropTypes.oneOfType([PropTypes.object]).isRequired,

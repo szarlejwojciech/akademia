@@ -2,7 +2,12 @@ import React from 'react'
 import { MDXRenderer } from 'gatsby-plugin-mdx'
 import Img from 'gatsby-image'
 import { graphql } from 'gatsby'
+import PropTypes from 'prop-types'
 import PrevUrlButton from '../components/PrevUrlButton'
+import StyledProductLayout from '../components/styled/StyledProductLayout'
+import StyledOptionBar from '../components/styled/StyledOptionBar'
+import ProductDecor from '../assets/svg/product-decor.svg'
+import SEO from '../components/Seo'
 
 export const query = graphql`
   query singleProductQuery($title: String!) {
@@ -12,8 +17,8 @@ export const query = graphql`
         line
         featuredImage {
           childImageSharp {
-            fluid(maxWidth: 800, jpegQuality: 90) {
-              ...GatsbyImageSharpFluid_withWebp_tracedSVG
+            fluid(maxWidth: 500, quality: 90) {
+              ...GatsbyImageSharpFluid_tracedSVG
             }
           }
         }
@@ -23,6 +28,7 @@ export const query = graphql`
   }
 `
 const ProductLayout = ({
+  url,
   data: {
     mdx: {
       body,
@@ -35,16 +41,39 @@ const ProductLayout = ({
       },
     },
   },
-}) => {
-  return (
-    <>
-      <PrevUrlButton />
-      <h1>{title}</h1>
-      <div>{line}</div>
-      <Img fluid={fluid} />
-      <MDXRenderer>{body}</MDXRenderer>
-    </>
-  )
-}
+}) => (
+  <>
+    <SEO
+      title={`Akademia Urody Nowy Targ | ${title}`}
+      description={`${title} | Akademia Urody, salon kosmetyczny Nowy Targ, ul. Klejowa 2`}
+      url={`http://www.akademiaurody-nowytarg/${url}`}
+    />
+    <StyledProductLayout>
+      <StyledOptionBar>
+        <PrevUrlButton />
+      </StyledOptionBar>
+      <header>
+        <h1>{title}</h1>
+      </header>
+      {line !== 'none' && <p>{line}</p>}
+      <section>
+        <div className="mdx-wrapper">
+          <ProductDecor />
+          <MDXRenderer>{body}</MDXRenderer>
+        </div>
+        <div className="img-wrapper">
+          <figure>
+            <Img className="gatsby-image" fluid={fluid} />
+          </figure>
+        </div>
+      </section>
+    </StyledProductLayout>
+  </>
+)
 
 export default ProductLayout
+
+ProductLayout.propTypes = {
+  data: PropTypes.objectOf(PropTypes.object).isRequired,
+  url: PropTypes.string.isRequired,
+}

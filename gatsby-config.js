@@ -8,6 +8,8 @@ module.exports = {
       'Akademia Urody, to nie tylko ekskluzywny salon, to przede wszystkim miejsce, którego urok urzeknie Cię swym ciepłem.',
     author: 'Wojciech Szarlej',
     url: 'http://www.akademiaurody-nowytarg.pl',
+    keywords:
+      'salon kosmetyczny,menard, emberill, pedix, reviderm, allesandro, beuty, piękno, uroda, zabiegi kosmetyczne, manicure, pedicure',
     image: '/logo.jpg',
   },
   plugins: [
@@ -62,11 +64,13 @@ module.exports = {
         fonts: [
           {
             family: 'Open Sans',
-            variants: ['400', '600'],
+            variants: ['400', '400i', '600'],
+            subsets: ['latin-ext'],
           },
           {
             family: 'Lora',
             variants: ['500'],
+            subsets: ['latin-ext'],
           },
         ],
       },

@@ -47,16 +47,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               type
               featuredImage {
                 childImageSharp {
-                  fluid(maxWidth: 300, quality: 90) {
+                  fluid(
+                    maxWidth: 170
+                    quality: 90
+                    traceSVG: { color: "#4F5053", background: "#EEF6F7" }
+                  ) {
+                    aspectRatio
+                    sizes
                     src
                     srcSet
                     tracedSVG
-                    sizes
                   }
                 }
               }
             }
-            excerpt(pruneLength: 50)
+            excerpt(pruneLength: 70)
           }
         }
       }
@@ -71,16 +76,21 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               type
               featuredImage {
                 childImageSharp {
-                  fluid(maxWidth: 300, quality: 90) {
+                  fluid(
+                    maxWidth: 170
+                    quality: 90
+                    traceSVG: { color: "#4F5053", background: "#EEF6F7" }
+                  ) {
+                    aspectRatio
+                    sizes
                     src
                     srcSet
                     tracedSVG
-                    sizes
                   }
                 }
               }
             }
-            excerpt(pruneLength: 50)
+            excerpt(pruneLength: 70)
           }
         }
       }
@@ -115,7 +125,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
   treatmentCategories.forEach(({ fieldValue, nodes }) =>
     createPage({
       path: `zabiegi/${toCebabCase(fieldValue)}`,
-      component: path.resolve('./src/layouts/CategoryPageLayout.js'),
+      component: path.resolve('src/layouts/CategoryPageLayout.js'),
       context: {
         category: fieldValue,
         products: nodes,
@@ -131,7 +141,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         path: `${type === 'products' ? 'produkty' : 'zabiegi'}/${toCebabCase(
           fieldValue
         )}/${toCebabCase(title)}`,
-        component: path.resolve('./src/layouts/ProductLayout.js'),
+        component: path.resolve('src/layouts/ProductLayout.js'),
         context: {
           title,
         },
