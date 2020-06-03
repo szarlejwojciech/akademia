@@ -3,6 +3,7 @@ import styled from 'styled-components'
 const StyledProductPreview = styled.article`
   position: relative;
   padding: 0 2.5rem 3rem;
+  margin: 0 auto;
 
   h1,
   h3 {
@@ -44,6 +45,8 @@ const StyledProductPreview = styled.article`
     display: flex;
     flex-direction: column;
     min-height: 280px;
+    max-width: 120rem;
+
     .mdx-wrapper {
       position: relative;
       margin-bottom: 2rem;
@@ -117,7 +120,6 @@ const StyledProductPreview = styled.article`
       line-height: 160%;
     }
     section {
-      max-width: 120rem;
       .mdx-wrapper {
         padding-right: 4rem;
         svg {

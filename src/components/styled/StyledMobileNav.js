@@ -77,7 +77,11 @@ const StyledMobileNav = styled.nav`
     transition: 1.3s height cubic-bezier(0.18, 0.47, 0, 1);
     padding-left: 1.5em;
   }
-
+  &.aside-nav {
+    top: 0;
+    z-index: 20;
+    height: 100vh;
+  }
   @media (min-width: 768px) {
     --top-padding: 6.2rem;
     &.aside-nav {

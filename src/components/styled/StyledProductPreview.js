@@ -54,22 +54,55 @@ const StyledProductPreview = styled(Link)`
   }
   @media (min-width: 755px) {
     max-width: calc(100% / 3 - 2 * var(--margin));
-    figure {
-      .gatsby-image {
-      }
-    }
   }
   @media (min-width: 768px) {
     --margin: 1.5rem;
     max-width: calc(50% - 2 * var(--margin));
+    h6 {
+      transform: translateY(0);
+    }
     figure {
       padding: 2rem 1.5rem;
+      position: relative;
       .gatsby-image {
-        width: 13rem;
+        width: 70%;
         height: 0;
-        padding-top: 100%;
+        padding-top: 70%;
+        transform: scale(1);
+        transform-origin: bottom;
+        will-change: transform;
+        transition: 0.5s transform ease-in;
       }
-      padding: 1.5rem 0;
+      p {
+        transform: translateX(0%);
+      }
+      .btn {
+        position: absolute;
+        top: 70%;
+        left: 50%;
+        transform: translateX(150%);
+      }
+    }
+    h6,
+    p,
+    .btn {
+      will-change: transform;
+      transition: 0.3s transform ease-in;
+    }
+    &:hover,
+    &:focus {
+      h6 {
+        transform: translateY(-120%);
+      }
+      .gatsby-image {
+        transform: scale(1.2);
+      }
+      p {
+        transform: translateX(-150%);
+      }
+      .btn {
+        transform: translateX(-50%);
+      }
     }
   }
   @media (min-width: 1024px) {

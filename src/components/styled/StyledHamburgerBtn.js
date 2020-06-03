@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled, { css } from 'styled-components'
 
 const StyledHamburgerBtn = styled.button`
   position: relative;
@@ -18,7 +18,8 @@ const StyledHamburgerBtn = styled.button`
     right: 1rem;
     height: 2px;
     background: ${({ theme }) => theme.colors.primaryLight};
-
+    will-change: transform;
+    transition: 0.4s transform ease-in-out;
     &:first-child {
       top: 1rem;
     }
@@ -29,12 +30,49 @@ const StyledHamburgerBtn = styled.button`
   }
 
   @media (min-width: 768px) {
-    .aside-nav {
+    &.aside-nav {
       display: none;
     }
   }
   @media (min-width: 1024px) {
     display: none;
   }
+
+  ${({ navOpen }) =>
+    navOpen &&
+    css`
+      span {
+        &:first-child {
+          top: initial;
+          transform: rotate(-135deg);
+        }
+        &:nth-child(2) {
+          transform: scale(0);
+        }
+        &:last-child {
+          bottom: initial;
+          transform: rotate(135deg);
+        }
+      }
+    `}
+  ${({ categoryNavOpen }) =>
+    categoryNavOpen &&
+    css`
+      span {
+        margin: 1rem;
+        margin-left: auto;
+        &:first-child {
+          top: initial;
+          transform: rotate(-135deg);
+        }
+        &:nth-child(2) {
+          transform: scale(0);
+        }
+        &:last-child {
+          bottom: initial;
+          transform: rotate(135deg);
+        }
+      }
+    `}
 `
 export default StyledHamburgerBtn

@@ -1,14 +1,15 @@
 import React from 'react'
 import PropTypes from 'prop-types'
 import AsideNav from './AsideNav'
+import { useNavState } from '../hooks/localeState'
 import HeaderImageLayout from '../layouts/HeaderImageLayout'
 import { toCebabCase } from '../utils/toCebabCase'
 import ProductPreview from './ProductPreview'
-import HamburgerBtn from './HamburgerBtn'
-import StyledOptionBar from './styled/StyledOptionBar'
-import StyledProductsPage from './styled/StyledProductsPage'
-import { useNavState } from '../hooks/localeState'
 import PrevUrlButton from './PrevUrlButton'
+import StyledProductsPage from './styled/StyledProductsPage'
+import StyledCategoryBtn from './styled/StyledCategoryBtn'
+import StyledOptionBar from './styled/StyledOptionBar'
+import ListIcon from '../assets/svg/list-icon.svg'
 
 const ProductPage = ({ products, type, bgImageFluid, subTitle }) => {
   const { categoryNavOpen, toggleCategoryNav } = useNavState()
@@ -17,7 +18,10 @@ const ProductPage = ({ products, type, bgImageFluid, subTitle }) => {
     <HeaderImageLayout fluid={bgImageFluid} title={type} subTitle={subTitle}>
       <StyledProductsPage as="section">
         <StyledOptionBar>
-          <HamburgerBtn label="aside-nav" onClick={toggleCategoryNav} />
+          <StyledCategoryBtn aria-label="Kategorie" onClick={toggleCategoryNav}>
+            <ListIcon />
+            <span>Kategorie</span>
+          </StyledCategoryBtn>
           <PrevUrlButton />
         </StyledOptionBar>
         <div className="wrapper">
