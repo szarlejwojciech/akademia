@@ -81,18 +81,24 @@ const StyledMobileNav = styled.nav`
     top: 0;
     z-index: 20;
     height: 100vh;
+    & > button {
+      margin: 1rem;
+    }
   }
   @media (min-width: 768px) {
     --top-padding: 6.2rem;
     &.aside-nav {
       position: static;
+      width: 100%;
+      height: auto;
+      max-width: 32rem;
       padding-right: 1rem;
       flex: 1;
-      width: 100%;
-      max-width: 32rem;
       z-index: 0;
       transform: translateX(0);
-
+      & > button {
+        display: none;
+      }
       ul.menubar {
         height: unset;
         box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);

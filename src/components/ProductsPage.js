@@ -13,7 +13,6 @@ import ListIcon from '../assets/svg/list-icon.svg'
 
 const ProductPage = ({ products, type, bgImageFluid, subTitle }) => {
   const { categoryNavOpen, toggleCategoryNav } = useNavState()
-
   return (
     <HeaderImageLayout fluid={bgImageFluid} title={type} subTitle={subTitle}>
       <StyledProductsPage as="section">
@@ -27,31 +26,36 @@ const ProductPage = ({ products, type, bgImageFluid, subTitle }) => {
         <div className="wrapper">
           <AsideNav type={type} isOpen={categoryNavOpen} />
           <div className="products-grid">
-            {products.map(
-              ({
-                excerpt,
-                frontmatter: {
-                  categories,
-                  title,
-                  featuredImage: {
-                    childImageSharp: { fluid },
-                  },
-                },
-              }) => {
-                const slug = `/${type}/${toCebabCase(
-                  categories[0]
-                )}/${toCebabCase(title)}`
-                return (
-                  <ProductPreview
-                    key={slug}
-                    excerpt={excerpt}
-                    title={title}
-                    slug={slug}
-                    fluid={fluid}
-                  ></ProductPreview>
-                )
-              }
+            {(!products || !products.length) && (
+              <p>Dokładamy wszelkich starań aby uzupełnić ofertę.</p>
             )}
+            {products &&
+              !!products.length &&
+              products.map(
+                ({
+                  excerpt,
+                  frontmatter: {
+                    categories,
+                    title,
+                    featuredImage: {
+                      childImageSharp: { fluid },
+                    },
+                  },
+                }) => {
+                  const slug = `/${type}/${toCebabCase(
+                    categories[0]
+                  )}/${toCebabCase(title)}`
+                  return (
+                    <ProductPreview
+                      key={slug}
+                      excerpt={excerpt}
+                      title={title}
+                      slug={slug}
+                      fluid={fluid}
+                    ></ProductPreview>
+                  )
+                }
+              )}
           </div>
         </div>
       </StyledProductsPage>

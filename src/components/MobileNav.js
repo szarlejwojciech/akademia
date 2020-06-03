@@ -4,6 +4,8 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import StyledMobileNav from './styled/StyledMobileNav'
 import { useNavState } from '../hooks/localeState'
+import useCategories from '../hooks/useCategories'
+import { useLocation } from '@reach/router'
 
 const ArrowIcon = styled.span`
   position: relative;
@@ -37,15 +39,20 @@ const PlusIcon = styled.span`
   }
 `
 
-const Submenu = ({ children, label }) => {
+const Submenu = ({ children, label, length }) => {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const [height, setHeight] = useState(0)
   const btnElement = useRef(null)
+  const { pathname } = useLocation()
+
   useEffect(() => {
-    setHeight(
-      isCollapsed ? 0 : children.length * btnElement?.current?.offsetHeight
-    )
+    setHeight(isCollapsed ? 0 : length * btnElement?.current?.offsetHeight)
   }, [isCollapsed])
+
+  useEffect(() => {
+    setIsCollapsed(true)
+  }, [pathname])
+
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed)
   }
@@ -54,11 +61,12 @@ const Submenu = ({ children, label }) => {
       <button
         type="button"
         ref={btnElement}
-        className={`submenu-toggler ${isCollapsed ? 'is-collapsed' : ''}`}
+        className={`submenu-toggler ${isCollapsed ? 'is-collapsed' : ''} ${
+          pathname.includes(label) ? 'active' : ''
+        }`}
         role="menuitem"
         tabIndex="-1"
         onClick={toggleCollapse}
-        disabled={true}
       >
         <span className="text">{label}</span>
         <PlusIcon role="none" className="icon" />
@@ -72,6 +80,8 @@ const Submenu = ({ children, label }) => {
 
 const MobileNav = () => {
   const { navOpen } = useNavState()
+  const productsCategories = useCategories('products')
+  const treatmentsCategories = useCategories('treatments')
   return (
     <StyledMobileNav
       className={navOpen && 'is-open'}
@@ -81,141 +91,104 @@ const MobileNav = () => {
     >
       <ul role="menubar" className="menubar">
         <li role="none">
-          <Link to="/" role="menuitem" tabIndex="-1">
+          <Link activeClassName="active" to="/" role="menuitem" tabIndex="-1">
             <span className="text">Home</span>
             <ArrowIcon role="none" className="icon" />
           </Link>
         </li>
         <li role="none">
-          <Link to="/onas" role="menuitem" tabIndex="-1">
+          <Link
+            activeClassName="active"
+            to="/onas"
+            role="menuitem"
+            tabIndex="-1"
+          >
             <span className="text">O nas</span>
             <ArrowIcon role="none" className="icon" />
           </Link>
         </li>
         <li role="none">
-          <Submenu label="oferta">
+          <Submenu length={productsCategories.length} label="produkty">
             <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
+              <Link
+                activeClassName="active"
+                partiallyActive={true}
+                to="/produkty"
+                role="menuitem"
+                tabIndex="-1"
+              >
                 <span className="text">wszystko</span>
                 <ArrowIcon role="none" className="icon" />
               </Link>
             </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">zabieg 1</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">zabieg 2</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/zabiegi" role="menuitem" tabIndex="-1">
-                <span className="text">zabieg 3</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
+            {productsCategories &&
+              !!productsCategories.length &&
+              productsCategories.map(({ name, path }) => (
+                <li key={path} role="none">
+                  <Link
+                    activeClassName="active"
+                    partiallyActive={true}
+                    to={path}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span className="text">{name.replace('-', ' ')}</span>
+                    <ArrowIcon role="none" className="icon" />
+                  </Link>
+                </li>
+              ))}
           </Submenu>
         </li>
         <li role="none">
-          <Submenu label="zabiegi">
+          <Submenu length={treatmentsCategories.length} label="zabiegi">
             <li role="none">
-              <Link to="/produkty" role="menuitem" tabIndex="-1">
+              <Link
+                activeClassName="active"
+                partiallyActive={true}
+                to="/zabiegi"
+                role="menuitem"
+                tabIndex="-1"
+              >
                 <span className="text">wszystko</span>
                 <ArrowIcon role="none" className="icon" />
               </Link>
             </li>
-            <li role="none">
-              <Link to="/produkty" role="menuitem" tabIndex="-1">
-                <span className="text">oferta 1</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/produkty" role="menuitem" tabIndex="-1">
-                <span className="text">oferta 2</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/produkty" role="menuitem" tabIndex="-1">
-                <span className="text">oferta 3</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            <li role="none">
-              <Link to="/produkty" role="menuitem" tabIndex="-1">
-                <span className="text">oferta 4</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
+            {treatmentsCategories &&
+              !!treatmentsCategories.length &&
+              treatmentsCategories.map(({ name, path }) => (
+                <li key={path} role="none">
+                  <Link
+                    activeClassName="active"
+                    partiallyActive={true}
+                    to={path}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span className="text">{name.replace('-', ' ')}</span>
+                    <ArrowIcon role="none" className="icon" />
+                  </Link>
+                </li>
+              ))}
           </Submenu>
         </li>
         <li role="none">
-          <Link to="/galeria" role="menuitem" tabIndex="-1">
+          <Link
+            activeClassName="active"
+            to="/galeria"
+            role="menuitem"
+            tabIndex="-1"
+          >
             <span className="text">Galeria</span>
             <ArrowIcon role="none" className="icon" />
           </Link>
         </li>
         <li role="none">
-          <Link to="/kontakt" role="menuitem" tabIndex="-1">
+          <Link
+            activeClassName="active"
+            to="/kontakt"
+            role="menuitem"
+            tabIndex="-1"
+          >
             <span className="text">kontakt</span>
             <ArrowIcon role="none" className="icon" />
           </Link>
@@ -228,6 +201,8 @@ const MobileNav = () => {
 export default MobileNav
 
 Submenu.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.element).isRequired,
+  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array])
+    .isRequired,
   label: PropTypes.string.isRequired,
+  length: PropTypes.number.isRequired,
 }

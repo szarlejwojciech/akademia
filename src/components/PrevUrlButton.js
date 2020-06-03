@@ -1,8 +1,10 @@
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
+import { Link } from 'gatsby'
+import { useLocation } from '@reach/router'
 import ArrowIcon from '../assets/svg/arrow-right-icon.svg'
 
-const Button = styled.button`
+const PrevLink = styled.a`
   padding: 1em;
   height: 100%;
   color: ${({ theme }) => theme.colors.accent};
@@ -33,11 +35,19 @@ const Button = styled.button`
 `
 
 const PrevUrlButton = () => {
+  const { pathname } = useLocation()
+  const [prevPath, setPrevPath] = useState('')
+  useEffect(() => {
+    const path =
+      pathname === '/' ? '/' : pathname.split('/').slice(0, -1).join('/')
+    setPrevPath(path)
+  }, [pathname])
   return (
-    <Button type="button" onClick={() => window.history.back()}>
+    <PrevLink as={Link} to={prevPath} aria-label="powrót">
+      {console.log(prevPath)}
       <ArrowIcon />
       <span>wróć</span>
-    </Button>
+    </PrevLink>
   )
 }
 

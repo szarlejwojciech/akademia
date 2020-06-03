@@ -59,7 +59,6 @@ const StyledHamburgerBtn = styled.button`
     categoryNavOpen &&
     css`
       span {
-        margin: 1rem;
         margin-left: auto;
         &:first-child {
           top: initial;

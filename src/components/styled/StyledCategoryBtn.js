@@ -9,7 +9,7 @@ const StyledCategoryBtn = styled.button`
     width: 1.2em;
     height: auto;
     margin-right: 1em;
-    vertical-align: center;
+    vertical-align: middle;
   }
   &:hover {
     opacity: 0.7;
