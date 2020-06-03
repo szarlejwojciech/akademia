@@ -23,6 +23,7 @@ const treatmentsPage = ({
       products={nodes}
       type="zabiegi"
       bgImageFluid={fluid}
+      subTitle="Od najmłodszych lat nasza skóra musi się mierzyć z różnymi problemami i walczyć z rosnącymi zagrożeniami."
     ></TreatmentsPage>
   </>
 )
@@ -30,7 +31,10 @@ const treatmentsPage = ({
 export default treatmentsPage
 
 treatmentsPage.propTypes = {
-  data: PropTypes.objectOf(PropTypes.objectOf(PropTypes.array)).isRequired,
+  data: PropTypes.shape({
+    treatmentsImages: PropTypes.objectOf(PropTypes.array),
+    bgImage: PropTypes.objectOf(PropTypes.object),
+  }).isRequired,
 }
 
 export const queryProducts = graphql`

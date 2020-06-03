@@ -16,6 +16,9 @@ const StyledHeaderImage = styled.section`
       opacity: 0.5;
       z-index: -1;
     }
+    h1 {
+      text-transform: capitalize;
+    }
     svg {
       margin: 0 auto;
       width: 7rem;
@@ -24,7 +27,6 @@ const StyledHeaderImage = styled.section`
     p {
       max-width: 50ch;
       margin: 0 auto;
-      font-size: 1.2rem;
       letter-spacing: 0;
     }
   }
@@ -33,9 +35,6 @@ const StyledHeaderImage = styled.section`
       padding: 5rem 0;
       svg {
         width: 11rem;
-      }
-      p {
-        font-size: inherit;
       }
     }
   }

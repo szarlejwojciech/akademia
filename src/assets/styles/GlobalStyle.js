@@ -73,7 +73,7 @@ const GlobalStyle = createGlobalStyle`
   }
 
   h6 {
-    font-size: 1.6rem;
+    font-size: 1.8rem;
     font-family: 'Open Sans';
     margin: 0;
     font-weight: ${({ theme }) => theme.font.fw600};
@@ -119,7 +119,7 @@ const GlobalStyle = createGlobalStyle`
     }
 
     h6 {
-      font-size: 1.9rem;
+      font-size: 2rem;
     }
 
     p {

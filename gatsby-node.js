@@ -45,6 +45,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             frontmatter {
               title
               type
+              categories
               featuredImage {
                 childImageSharp {
                   fluid(
@@ -74,6 +75,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             frontmatter {
               title
               type
+              categories
               featuredImage {
                 childImageSharp {
                   fluid(

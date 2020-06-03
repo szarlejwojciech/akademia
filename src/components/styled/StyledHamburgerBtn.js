@@ -28,6 +28,11 @@ const StyledHamburgerBtn = styled.button`
     }
   }
 
+  @media (min-width: 768px) {
+    .aside-nav {
+      display: none;
+    }
+  }
   @media (min-width: 1024px) {
     display: none;
   }

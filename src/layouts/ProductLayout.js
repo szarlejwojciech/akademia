@@ -59,6 +59,7 @@ const ProductLayout = ({
       <section>
         <div className="mdx-wrapper">
           <ProductDecor />
+          <h3>Opis:</h3>
           <MDXRenderer>{body}</MDXRenderer>
         </div>
         <div className="img-wrapper">

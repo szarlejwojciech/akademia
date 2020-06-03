@@ -8,20 +8,18 @@ import HandIcon from '../assets/svg/hand-icon.svg'
 
 const ProductPreview = ({ excerpt, title, slug, fluid }) => {
   return (
-    <StyledProductPreview>
-      <Link to={slug}>
-        <figure>
-          <Img fluid={fluid} alt={title} />
-          <figcaption>
-            <h3>{title}</h3>
-            <p>{excerpt}</p>
-            <ButtonLink as="div">
-              <span>Przejdź</span>
-              <HandIcon />
-            </ButtonLink>
-          </figcaption>
-        </figure>
-      </Link>
+    <StyledProductPreview to={slug} title={title} aria-label={title}>
+      <h6>{title}</h6>
+      <figure>
+        <Img className="gatsby-image" fluid={fluid} alt={title} title={title} />
+        <figcaption>
+          <p>{excerpt}</p>
+          <ButtonLink className="btn" as="div">
+            <span>Przejdź</span>
+            <HandIcon />
+          </ButtonLink>
+        </figcaption>
+      </figure>
     </StyledProductPreview>
   )
 }

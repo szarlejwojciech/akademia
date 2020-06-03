@@ -1,61 +1,51 @@
 import React from 'react'
-import styled from 'styled-components'
 import PropTypes from 'prop-types'
-import { toCebabCase } from '../utils/toCebabCase'
-import AsideNav from '../components/AsideNav'
-import PrevUrlButton from '../components/PrevUrlButton'
-import ProductPreview from '../components/ProductPreview'
+import { useStaticQuery, graphql } from 'gatsby'
+import ProductPage from '../components/ProductsPage'
 
-const StyledWrapper = styled.div`
-  padding: 5rem 6rem;
-  min-height: 60vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  .box {
-    flex: 0 1 200px;
-    margin: 20px;
-    img {
-      height: 150px;
-      width: 100%;
-      object-fit: cover;
+const query = graphql`
+  {
+    treatmentsBgImage: file(name: { eq: "treatments-bg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
+      }
+    }
+
+    productsBgImage: file(name: { eq: "products-bg" }) {
+      childImageSharp {
+        fluid(maxWidth: 2000, quality: 100) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
+      }
     }
   }
 `
+const subTitle = {
+  products:
+    'Aby jak najdłużej zachować piękną i zdrową skórę należy podtrzymywać jej równowagę poprzez codzienne dostarczanie niezbędnych elementów.',
+  treatments:
+    'Od najmłodszych lat nasza skóra musi się mierzyć z różnymi problemami i walczyć z rosnącymi zagrożeniami.',
+}
 
 const CategoryPageLayout = ({ path, pageContext: { products } }) => {
   const type = path.split('/')[1]
+  const {
+    productsBgImage: {
+      childImageSharp: { fluid: productsBgImage },
+    },
+    treatmentsBgImage: {
+      childImageSharp: { fluid: treatmentsBgImage },
+    },
+  } = useStaticQuery(query)
   return (
-    <>
-      <AsideNav type={type} />
-      <PrevUrlButton />
-      <StyledWrapper>
-        {products &&
-          products.length !== 0 &&
-          products.map(
-            ({
-              frontmatter: {
-                title,
-                featuredImage: {
-                  childImageSharp: { fluid },
-                },
-              },
-              excerpt,
-            }) => {
-              const slug = `${path}/${toCebabCase(title)}`
-              return (
-                <ProductPreview
-                  key={title}
-                  fluid={fluid}
-                  title={title}
-                  excerpt={excerpt}
-                  slug={slug}
-                />
-              )
-            }
-          )}
-      </StyledWrapper>
-    </>
+    <ProductPage
+      products={products}
+      type={type}
+      bgImageFluid={type === 'produkty' ? productsBgImage : treatmentsBgImage}
+      subTitle={type === 'produkty' ? subTitle.products : subTitle.treatments}
+    />
   )
 }
 

@@ -20,12 +20,20 @@ const productsPage = ({
       url="http://www.akademiaurody-nowytarg/produkty"
     />
     {/* <PageIsBuilding /> */}
-    <ProductsPage products={nodes} bgImageFluid={fluid} type="produkty" />
+    <ProductsPage
+      products={nodes}
+      bgImageFluid={fluid}
+      type="produkty"
+      subTitle="Aby jak najdłużej zachować piękną i zdrową skórę należy podtrzymywać jej równowagę poprzez codzienne dostarczanie niezbędnych elementów."
+    />
   </>
 )
 export default productsPage
 productsPage.propTypes = {
-  data: PropTypes.objectOf(PropTypes.objectOf(PropTypes.array)).isRequired,
+  data: PropTypes.shape({
+    productsImages: PropTypes.objectOf(PropTypes.array),
+    bgImage: PropTypes.objectOf(PropTypes.object),
+  }).isRequired,
 }
 export const queryProducts = graphql`
   {

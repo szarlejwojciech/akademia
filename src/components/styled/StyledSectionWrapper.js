@@ -10,7 +10,6 @@ const StyledSectionWrapper = styled(StyledSection)`
   background-color: ${({ theme }) => theme.colors.secondaryLight};
   overflow: hidden;
   p {
-    font-size: 1.2rem;
     padding: 0;
     letter-spacing: 0;
   }
@@ -109,7 +108,6 @@ const StyledSectionWrapper = styled(StyledSection)`
     padding: 3rem 3rem;
     flex-direction: row;
     p {
-      font-size: 1.4rem;
       line-height: 1.6;
       letter-spacing: 1px;
     }

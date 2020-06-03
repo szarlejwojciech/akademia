@@ -52,6 +52,12 @@ const StyledMobileNav = styled.nav`
     border: none;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     background-color: inherit;
+    .text {
+      margin-right: 0.75em;
+    }
+    &.active {
+      background-color: ${({ theme }) => theme.colors.secondaryDark};
+    }
     .icon::before {
       transform: scaleY(0);
     }
@@ -66,8 +72,6 @@ const StyledMobileNav = styled.nav`
     }
   }
   .sub-menu {
-    /* height: auto; */
-    /* max-height: 400px; */
     overflow: hidden;
     will-change: height;
     transition: 1.3s height cubic-bezier(0.18, 0.47, 0, 1);
@@ -76,6 +80,20 @@ const StyledMobileNav = styled.nav`
 
   @media (min-width: 768px) {
     --top-padding: 6.2rem;
+    &.aside-nav {
+      position: static;
+      padding-right: 1rem;
+      flex: 1;
+      width: 100%;
+      max-width: 32rem;
+      z-index: 0;
+      transform: translateX(0);
+
+      ul.menubar {
+        height: unset;
+        box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+      }
+    }
   }
 `
 export default StyledMobileNav
