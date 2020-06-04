@@ -32,7 +32,7 @@ const query = graphql`
       edges {
         node {
           childImageSharp {
-            fluid {
+            fluid(maxWidth: 1500, quality: 100) {
               sizes
               src
               srcSet

@@ -18,7 +18,6 @@ const AsideNav = ({ type, isOpen }) => {
           <Link
             to="/produkty"
             role="menuitem"
-            tabIndex="1"
             activeClassName="active"
             partiallyActive={true}
           >
@@ -30,7 +29,6 @@ const AsideNav = ({ type, isOpen }) => {
           <Link
             to="/zabiegi"
             role="menuitem"
-            tabIndex="1"
             activeClassName="active"
             partiallyActive={true}
           >
@@ -44,7 +42,6 @@ const AsideNav = ({ type, isOpen }) => {
               <Link
                 to={path}
                 role="menuitem"
-                tabIndex="1"
                 activeClassName="active"
                 partiallyActive={true}
               >

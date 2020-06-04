@@ -1,15 +1,16 @@
 import styled from 'styled-components'
+import Logo from '../../assets/svg/logo.svg'
 
-const StyledLogo = styled.div`
-  --size: 17rem;
+const StyledLogo = styled(Logo)`
+  --size: 22rem;
   max-width: var(--size);
-  height: calc(0.18 * var(--size));
+  width: 100%;
+  height: auto;
   margin: 0 auto;
-  background: url('/logo.png') center no-repeat;
-  background-size: contain;
-
+  vertical-align: middle;
+  padding: 0.8rem 0;
   @media (min-width: 768px) {
-    --size: 22rem;
+    --size: 24rem;
   }
 
   @media (min-width: 1440px) {

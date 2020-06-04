@@ -1,18 +1,29 @@
-import styled from 'styled-components'
+import styled, { keyframes } from 'styled-components'
+
+const scaling = keyframes`
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.1);
+  }
+`
 
 const StyledHero = styled.div`
-  --padding-top: 4rem;
+  --padding-top: 5rem;
   height: calc(100vh - var(--padding-top));
   width: 100%;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
   position: relative;
   display: flex;
   align-items: center;
+  overflow: hidden;
   .image-wrapper {
     height: 100%;
     flex: 1;
     .hero-gatsby-img {
       height: inherit;
+      animation: ${scaling} 10s ease-in-out infinite alternate;
 
       img {
         object-position: left center !important;

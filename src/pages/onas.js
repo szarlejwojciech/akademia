@@ -31,7 +31,7 @@ export const query = graphql`
     file(name: { eq: "about-us-header-bg" }) {
       childImageSharp {
         fluid(maxWidth: 2000, maxHeight: 556, quality: 90) {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }

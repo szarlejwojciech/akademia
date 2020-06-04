@@ -1,15 +1,14 @@
 import styled from 'styled-components'
 
 const StyledLink = styled.a`
-  font-size: 1.4em;
+  padding: 0.26em 0.44em;
+  font-size: 1.6em;
   color: ${({ theme }) => theme.colors.primaryLight};
   will-change: opacity;
   transition: 0.15s opacity ease-in-out;
-
   svg {
     width: 1em;
     height: auto;
-    margin: 0 0.2em;
     vertical-align: middle;
 
     path {
@@ -28,10 +27,10 @@ const StyledLink = styled.a`
   @media (min-width: 1024px) {
     span {
       display: inline;
+      svg {
+        margin-right: 0.5em;
+      }
     }
-  }
-  @media (min-width: 1440px) {
-    font-size: 1.6em;
   }
 `
 

@@ -3,73 +3,7 @@ import Carousel from 'react-elastic-carousel'
 import styled from 'styled-components'
 import { graphql, useStaticQuery } from 'gatsby'
 import CarouselItem from './CarouselItem'
-
-const testItems = [
-  {
-    url: '/produkty',
-    image: '/menard-authent-mask-ii.jpg',
-    title: 'MENARD Authent Mask II',
-    description:
-      'Authent Mask II to nowa wersja doskonałej maski w płatach na twarz oraz szyję i dekolt.',
-  },
-  {
-    url: '/produkty',
-    image: '/menard-embellir-day-cream.jpg',
-    title: 'MENARD Embellir Day Cream A 34ml',
-    description:
-      'Linia EMBELLIR została stworzona, aby usuwać przyczyny starzenia się i dysfunkcji komórek skóry.',
-  },
-  {
-    url: '/produkty',
-    image: '/menard-authent-ii.jpg',
-    title: 'MENARD Authent II',
-    description:
-      'Luksusowy krem Authent II pozwala skórze odrodzić się na nowo. Zaawansowany preparat, efekt wieloletnich badań laboratoriów... ',
-  },
-  {
-    url: '/produkty',
-    image: '/menard-authent-mask-ii.jpg',
-    title: 'MENARD Authent Maskd II',
-    description:
-      'Authent Mask II to nowa wersja doskonałej maski w płatach na twarz oraz szyję i dekolt.',
-  },
-  {
-    url: '/produkty',
-    image: '/menard-embellir-day-cream.jpg',
-    title: 'MENARD Embellir Day sCream A 34ml',
-    description:
-      'Linia EMBELLIR została stworzona, aby usuwać przyczyny starzenia się i dysfunkcji komórek skóry.',
-  },
-  {
-    url: '/produkty',
-    image: '/menard-authent-ii.jpg',
-    title: 'MENARD Authentf II',
-    description:
-      'Luksusowy krem Authent II pozwala skórze odrodzić się na nowo. Zaawansowany preparat, efekt wieloletnich badań laboratoriów... ',
-  },
-  {
-    url: '/produkty',
-    image: '/menard-authent-mask-ii.jpg',
-    title: 'MENARD Authent Mrask II',
-    description:
-      'Authent Mask II to nowa wersja doskonałej maski w płatach na twarz oraz szyję i dekolt.',
-  },
-  {
-    url: '/produkty',
-    image: '/menard-embellir-day-cream.jpg',
-    title: 'MENARD Embellir Dayy Cream A 34ml',
-    description:
-      'Linia EMBELLIR została stworzona, aby usuwać przyczyny starzenia się i dysfunkcji komórek skóry.',
-  },
-  {
-    url: '/produkty',
-    image: '/menard-authent-ii.jpg',
-    title: 'MENARD Authent iII',
-    description:
-      'Luksusowy krem Authent II pozwala skórze odrodzić się na nowo. Zaawansowany preparat, efekt wieloletnich badań laboratoriów... ',
-  },
-]
-
+import { toCebabCase } from '../utils/toCebabCase'
 const StyledCarousel = styled(Carousel)`
   margin: 0 auto;
   max-width: 120rem;
@@ -81,19 +15,19 @@ const StyledCarousel = styled(Carousel)`
   }
   .rec-arrow {
     position: absolute;
-    left: 0;
+    left: 0.4rem;
     background-color: transparent;
     border: none;
     box-shadow: none;
     color: ${({ theme }) => theme.colors.active};
-    width: 5.5rem;
-    min-width: 5.5rem;
-    height: 5.5rem;
-    line-height: 5.5rem;
+    width: 4.8rem;
+    min-width: 4.8rem;
+    height: 4.8rem;
+    line-height: 4.8rem;
     transform: translateX(-40%);
     &.rec-arrow-right {
       left: unset;
-      right: 0;
+      right: 0.4rem;
       transform: translateX(50%);
     }
     &:hover {
@@ -108,27 +42,30 @@ const StyledCarousel = styled(Carousel)`
 
 const query = graphql`
   {
-    allFile(filter: { extension: { regex: "/jpg|png/" } }) {
-      edges {
-        node {
-          childImageSharp {
-            fluid(maxHeight: 300, maxWidth: 300, quality: 90) {
-              ...GatsbyImageSharpFluid_tracedSVG
+    allMdx(limit: 10) {
+      nodes {
+        frontmatter {
+          title
+          type
+          categories
+          featuredImage {
+            childImageSharp {
+              fluid(maxWidth: 500, quality: 80) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
             }
           }
-          base
         }
+        excerpt(pruneLength: 70)
       }
     }
   }
 `
-const getImageFluid = (data, name) => {
-  const [image] = data.edges.filter(({ node }) => node.base.includes(name))
-  return image.node.childImageSharp.fluid
-}
 
 const CustomSlider = () => {
-  const { allFile } = useStaticQuery(query)
+  const {
+    allMdx: { nodes },
+  } = useStaticQuery(query)
 
   return (
     <StyledCarousel
@@ -142,11 +79,25 @@ const CustomSlider = () => {
       ]}
       pagination={false}
     >
-      {testItems.map(item => {
-        const [name] = item.image.match(/[a-z-]*[^/]/)
-        const fluid = getImageFluid(allFile, name)
-        return <CarouselItem fluid={fluid} key={item.title} {...item} />
-      })}
+      {nodes.map(
+        ({
+          excerpt,
+          frontmatter: { title, type, categories, featuredImage },
+        }) => {
+          const url = `/${
+            type === 'products' || type === 'produkty' ? 'produkty' : 'zabiegi'
+          }/${toCebabCase(categories[0])}/${toCebabCase(title)}`
+          return (
+            <CarouselItem
+              fluid={featuredImage.childImageSharp.fluid}
+              key={title}
+              title={title}
+              description={excerpt}
+              url={url}
+            />
+          )
+        }
+      )}
     </StyledCarousel>
   )
 }

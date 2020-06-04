@@ -102,6 +102,8 @@ const StyledMobileNav = styled.nav`
       ul.menubar {
         height: unset;
         box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 3rem;
       }
     }
   }

@@ -10,34 +10,35 @@ import HeadingDecoration from '../assets/svg/heading-decoration.svg'
 import MenardLogo from '../assets/svg/menard-logo.svg'
 import ArrowRightIcon from '../assets/svg/arrow-right-icon.svg'
 import PhoneIcon from '../assets/svg/phone-icon.svg'
+import StyledScrollIcon from './styled/StyledScrollIcon'
 
 const query = graphql`
   query {
     hero: file(name: { eq: "hero" }) {
       childImageSharp {
         fluid(maxWidth: 1807, maxHeight: 2000, quality: 90) {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     salon1: file(name: { eq: "salon-1" }) {
       childImageSharp {
         fluid(maxWidth: 330, maxHeight: 200, quality: 80) {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     salon2: file(name: { eq: "salon-2" }) {
       childImageSharp {
         fluid(maxWidth: 330, maxHeight: 200, quality: 80) {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
     sectionBg: file(name: { eq: "section-bg" }) {
       childImageSharp {
         fluid(maxWidth: 2000, maxHeight: 2000, quality: 90) {
-          ...GatsbyImageSharpFluid_tracedSVG
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
         }
       }
     }
@@ -69,6 +70,7 @@ const Home = () => {
             backgroundColor={`#FFFFFF`}
           />
         </div>
+        <StyledScrollIcon role="none" />
       </StyledHero>
       <main>
         <StyledSection>

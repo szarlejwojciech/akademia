@@ -28,7 +28,7 @@ export const query = graphql`
   }
 `
 const ProductLayout = ({
-  url,
+  path,
   data: {
     mdx: {
       body,
@@ -44,9 +44,9 @@ const ProductLayout = ({
 }) => (
   <>
     <SEO
-      title={`Akademia Urody Nowy Targ | ${title}`}
+      title={title}
       description={`${title} | Akademia Urody, salon kosmetyczny Nowy Targ, ul. Klejowa 2`}
-      url={`http://www.akademiaurody-nowytarg/${url}`}
+      url={`http://www.akademiaurody-nowytarg/${path}`}
     />
     <StyledProductLayout>
       <StyledOptionBar>
@@ -76,5 +76,5 @@ export default ProductLayout
 
 ProductLayout.propTypes = {
   data: PropTypes.objectOf(PropTypes.object).isRequired,
-  url: PropTypes.string.isRequired,
+  path: PropTypes.string.isRequired,
 }

@@ -18,7 +18,8 @@ const StyledFooter = styled.footer`
     .logo {
       text-align: center;
       margin-bottom: 3rem;
-      img {
+      svg {
+        height: auto;
         width: 73%;
       }
     }
@@ -77,7 +78,7 @@ const StyledFooter = styled.footer`
       .logo {
         flex: 1;
         margin: 0 0 0 1.8rem;
-        img {
+        svg {
           width: auto;
           height: 9rem;
         }
@@ -103,7 +104,7 @@ const StyledFooter = styled.footer`
 
   @media (min-width: 1440px) {
     font-size: 1.6rem;
-    .wrapper .logo img {
+    .wrapper .logo svg {
       height: 13rem;
     }
   }

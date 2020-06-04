@@ -3,7 +3,7 @@ module.exports = {
   pathPrefix: '/akademiaurody',
   siteMetadata: {
     lang: 'pl',
-    title: 'Akademia urody',
+    title: 'Akademia urody, salon kosmetyczny Nowy Targ, ul. Kolejowa 2',
     description:
       'Akademia Urody, to nie tylko ekskluzywny salon, to przede wszystkim miejsce, którego urok urzeknie Cię swym ciepłem.',
     author: 'Wojciech Szarlej',

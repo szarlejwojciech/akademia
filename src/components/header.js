@@ -16,7 +16,7 @@ const Header = () => (
   <StyledHeader>
     <MobileNav />
     <div className="top-bar">
-      <HamburgerBtn />
+      <HamburgerBtn label="Menu" />
       <Link
         className="logo-link"
         to="/"
@@ -25,7 +25,7 @@ const Header = () => (
       >
         <StyledLogo role="img" />
       </Link>
-      <StyledNavList aria-labelledby="primary-navigation">
+      <StyledNavList aria-label="navigation">
         <ul>
           <li>
             <Link to="/" activeClassName="active">

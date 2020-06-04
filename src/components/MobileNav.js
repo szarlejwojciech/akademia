@@ -86,7 +86,7 @@ const MobileNav = () => {
     <StyledMobileNav
       className={navOpen && 'is-open'}
       aria-label="mobile-menu"
-      aria-hidden={navOpen}
+      aria-hidden={!navOpen}
       aria-labelledby="mobile-navigation"
     >
       <ul role="menubar" className="menubar">
@@ -112,7 +112,6 @@ const MobileNav = () => {
             <li role="none">
               <Link
                 activeClassName="active"
-                partiallyActive={true}
                 to="/produkty"
                 role="menuitem"
                 tabIndex="-1"
@@ -144,7 +143,6 @@ const MobileNav = () => {
             <li role="none">
               <Link
                 activeClassName="active"
-                partiallyActive={true}
                 to="/zabiegi"
                 role="menuitem"
                 tabIndex="-1"

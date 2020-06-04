@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
   .top-bar {
     height: 5rem;
     position: relative;
-    padding: 0 1rem;
+    padding: 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -28,6 +28,11 @@ const StyledHeader = styled.header`
     opacity: 0.7;
   }
 
+  @media (min-width: 500px) {
+    .top-bar {
+      padding: 0 1rem;
+    }
+  }
   @media (min-width: 768px) {
     .top-bar {
       height: 6.2rem;

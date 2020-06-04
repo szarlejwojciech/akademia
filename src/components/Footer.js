@@ -5,11 +5,12 @@ import PhoneIcon from '../assets/svg/phone-icon.svg'
 import MessageIcon from '../assets/svg/message-icon.svg'
 import ClockIcon from '../assets/svg/clock-icon.svg'
 import LocationIcon from '../assets/svg/location-icon.svg'
+import LogoBig from '../assets/svg/logo-big.svg'
 const Footer = () => (
   <StyledFooter>
     <div className="wrapper">
-      <div className="logo">
-        <img src="/logo-big.png" alt="logo" />
+      <div className="logo" role="img" title="Logo Akademia Urody">
+        <LogoBig />
       </div>
       <div className="personal-info">
         <ul>
