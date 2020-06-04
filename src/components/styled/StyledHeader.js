@@ -1,10 +1,18 @@
 import styled from 'styled-components'
 
 const StyledHeader = styled.header`
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  will-change: transform;
+  transition: 0.2s transform ease-in;
+  transform: translateY(0);
+
+  &.hidden {
+    transform: translateY(-120%);
+  }
+
   .top-bar {
     height: 5rem;
     position: relative;

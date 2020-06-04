@@ -27,9 +27,9 @@ const StyledLink = styled.a`
   @media (min-width: 1024px) {
     span {
       display: inline;
-      svg {
-        margin-right: 0.5em;
-      }
+    }
+    svg {
+      margin-right: 0.5em;
     }
   }
 `
