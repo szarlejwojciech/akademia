@@ -6,8 +6,9 @@ const StyledHeader = styled.header`
   left: 0;
   width: 100%;
   will-change: transform;
-  transition: 0.2s transform ease-in;
+  transition: 0.125s transform ease-in;
   transform: translateY(0);
+  z-index: 4;
 
   &.hidden {
     transform: translateY(-120%);
@@ -26,6 +27,7 @@ const StyledHeader = styled.header`
   }
   /* z-index: 15; */
   .logo-link {
+    max-width: 22rem;
     flex: 1;
     display: block;
   }
@@ -44,6 +46,10 @@ const StyledHeader = styled.header`
   @media (min-width: 768px) {
     .top-bar {
       height: 6.2rem;
+      .logo-link {
+        max-width: 24rem;
+        flex: 1;
+      }
     }
   }
 
@@ -58,6 +64,10 @@ const StyledHeader = styled.header`
     .top-bar {
       height: 10rem;
       padding: 0 6rem;
+      .logo-link {
+        max-width: 33rem;
+        flex: 1;
+      }
     }
   }
 `

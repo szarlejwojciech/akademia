@@ -22,8 +22,7 @@ const scroll = keyframes`
 
 const StyledScrollIcon = styled.span`
   position: absolute;
-  top: calc(50% + 9rem + 11vh);
-  /* bottom: 8rem; */
+  top: calc(50% + 13rem + 11vh);
   left: 50%;
   width: 2.5rem;
   height: 4rem;

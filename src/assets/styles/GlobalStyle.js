@@ -11,26 +11,13 @@ const GlobalStyle = createGlobalStyle`
   }
 
   body{
-    --padding-top: 5rem;
-    padding: var(--padding-top) 0rem 0;
+    padding: 0;
     margin: 0;
     font-family: 'Open Sans';
     font-size: 160%;
     color: ${({ theme }) => theme.colors.primaryDark};
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-
-    @media (min-width: 768px) {
-      --padding-top: 6.2rem;
-    }
-
-    @media (min-width: 1024px) {
-      --padding-top: 8rem;
-    }
-
-    @media (min-width: 1440px) {
-      --padding-top: 10rem;
-    }
   }
 
   button {

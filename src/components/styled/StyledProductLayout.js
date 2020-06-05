@@ -1,8 +1,9 @@
 import styled from 'styled-components'
 
 const StyledProductPreview = styled.article`
+  --padding-top: 5rem;
   position: relative;
-  padding: 0 2.5rem 3rem;
+  padding: var(--padding-top) 2.5rem 3rem;
   margin: 0 auto;
 
   h1,
@@ -71,7 +72,8 @@ const StyledProductPreview = styled.article`
   }
 
   @media (min-width: 768px) {
-    padding: 0 3rem 3rem;
+    --padding-top: 6.2rem;
+    padding: var(--padding-top) 3rem 3rem;
     ul {
       font-size: 1.5rem;
     }
@@ -114,7 +116,8 @@ const StyledProductPreview = styled.article`
     }
   }
   @media (min-width: 1024px) {
-    padding: 0 5rem 4.5rem;
+    --padding-top: 8rem;
+    padding: var(--padding-top) 5rem 4.5rem;
     ul {
       font-size: 1.6rem;
       line-height: 160%;
@@ -131,7 +134,8 @@ const StyledProductPreview = styled.article`
     }
   }
   @media (min-width: 1440px) {
-    padding: 0 12rem 6rem;
+    --padding-top: 10rem;
+    padding: var(--padding-top) 12rem 6rem;
     ul {
       font-size: 1.6rem;
       line-height: 160%;

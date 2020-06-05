@@ -8,7 +8,7 @@ const StyledMobileNav = styled.nav`
   left: 0;
   width: 100vw;
   max-width: 50rem;
-  bottom: 0px;
+  height: calc(100vh - var(--top-padding));
   background-color: ${({ theme }) => theme.colors.secondaryLight};
   z-index: 10;
   transform: translateX(-110%);

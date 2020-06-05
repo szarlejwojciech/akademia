@@ -16,10 +16,10 @@ import FacebookIcon from '../assets/svg/facebook-icon.svg'
 const Header = () => {
   const prevScrollY = useRef(0)
 
-  const [goingUp, setGoingUp] = useState(false)
+  const [goingUp, setGoingUp] = useState(true)
 
   useEffect(() => {
-    window.myDebounce = debounce(handleScroll, 700)
+    window.myDebounce = debounce(handleScroll, 100)
     window.addEventListener('scroll', window.myDebounce, { passive: true })
 
     return () => {

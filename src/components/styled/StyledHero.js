@@ -11,7 +11,7 @@ const scaling = keyframes`
 
 const StyledHero = styled.div`
   --padding-top: 5rem;
-  height: calc(100vh - var(--padding-top));
+  height: 100vh;
   width: 100%;
   background-color: ${({ theme }) => theme.colors.secondaryLight};
   position: relative;
@@ -38,7 +38,7 @@ const StyledHero = styled.div`
   .cta {
     max-width: 23ch;
     text-align: center;
-    margin: 5vw;
+    margin: var(--padding-top) 5vw 0;
     p {
       margin: 1.15em 0;
     }
@@ -54,7 +54,7 @@ const StyledHero = styled.div`
       background-position-x: 27vw !important;
     }
     .cta {
-      margin: 14vh;
+      margin: var(--padding-top) 14vh 0;
     }
   }
   @media (min-width: 768px) {
@@ -64,14 +64,14 @@ const StyledHero = styled.div`
       background-position-x: 21vw !important;
     }
     .cta {
-      margin: 11vw;
+      margin: var(--padding-top) 11vw 0;
       max-width: 28ch;
     }
   }
   @media (min-width: 1024px) {
     --padding-top: 8rem;
     .cta {
-      margin: 13vw;
+      margin: var(--padding-top) 13vw 0;
       max-width: 28ch;
     }
   }

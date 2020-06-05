@@ -91,10 +91,10 @@ const StyledSectionWrapper = styled(StyledSection)`
       z-index: -1;
     }
     .authent {
-      left: calc(50% - 20rem);
+      left: calc(50% - 21rem);
     }
     .embellir-small {
-      right: calc(50% - 20rem);
+      right: calc(50% - 21rem);
     }
     .gallery-btn {
       margin-top: 1.6em;
