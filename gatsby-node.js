@@ -18,8 +18,9 @@ const toCebabCase = str => {
     .replace(/ć/gi, 'c')
     .replace(/ń/gi, 'n')
     .trim()
-    .replace(/[^a-z0-9ęóąśłżźćń]{1,}/gi, '-')
     .toLowerCase()
+    .match(/([a-z0-9]{1,})/gi)
+    .join('-')
 }
 exports.onCreateWebpackConfig = ({ getConfig, stage }) => {
   const config = getConfig()

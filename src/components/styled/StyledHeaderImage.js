@@ -40,13 +40,17 @@ const StyledHeaderImage = styled.section`
       }
     }
   }
-  @media (min-width: 1024) {
+  @media (min-width: 1024px) {
     --padding-top: 8rem;
-    padding: 80rem 0;
+    header {
+      padding: calc(var(--padding-top) + 8rem) 0 8rem;
+    }
   }
-  @media (min-width: 1440) {
+  @media (min-width: 1440px) {
     --padding-top: 10rem;
-    padding: 110rem 0;
+    header {
+      /* padding: calc(var(--padding-top) + 11rem) 0 11rem; */
+    }
     p {
       font-size: 1.8rem;
     }

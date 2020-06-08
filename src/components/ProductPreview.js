@@ -1,6 +1,5 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { Link } from 'gatsby'
 import Img from 'gatsby-image'
 import StyledProductPreview from './styled/StyledProductPreview'
 import ButtonLink from './ButtonLink'
@@ -30,4 +29,13 @@ ProductPreview.propTypes = {
   excerpt: PropTypes.string.isRequired,
   title: PropTypes.string.isRequired,
   slug: PropTypes.string.isRequired,
+  fluid: PropTypes.shape({
+    aspectRatio: PropTypes.number,
+    sizes: PropTypes.string,
+    src: PropTypes.string,
+    srcSet: PropTypes.string,
+    srcSetWebp: PropTypes.string,
+    srcWebp: PropTypes.string,
+    tracedSVG: PropTypes.string,
+  }).isRequired,
 }

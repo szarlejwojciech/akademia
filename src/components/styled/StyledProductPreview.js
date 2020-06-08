@@ -73,12 +73,15 @@ const StyledProductPreview = styled(Link)`
         will-change: transform;
         transition: 0.5s transform ease-in;
       }
+      figcaption {
+        position: relative;
+      }
       p {
         transform: translateX(0%);
       }
       .btn {
         position: absolute;
-        top: 70%;
+        top: 50%;
         left: 50%;
         transform: translateX(150%);
       }
@@ -107,6 +110,10 @@ const StyledProductPreview = styled(Link)`
   }
   @media (min-width: 1024px) {
     --margin: 2rem;
+  }
+
+  @media (min-width: 1210px) {
+    max-width: calc(100% / 3 - 2 * var(--margin));
   }
 `
 
