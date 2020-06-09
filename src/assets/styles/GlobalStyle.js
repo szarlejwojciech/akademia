@@ -11,6 +11,10 @@ const GlobalStyle = createGlobalStyle`
   }
   *,*::after,::before{
     box-sizing: inherit;
+
+  }
+  *:focus{
+    outline: 2px solid Highlight !important;
   }
 
   body{

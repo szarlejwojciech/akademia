@@ -38,7 +38,6 @@ const PrevUrlButton = () => {
   const [prevPath, setPrevPath] = useState('')
   useEffect(() => {
     const path = pathname.split('/').slice(0, -1).join('/')
-    console.log(path)
     setPrevPath(path ? path : '/')
   }, [pathname])
 

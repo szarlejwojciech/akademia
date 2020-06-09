@@ -5,6 +5,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { MobileNavStateProvider, useNavState } from '../hooks/localeState'
 import PropTypes from 'prop-types'
+import ScrollTopButton from '../components/ScrollTopButton'
 
 const theme = {
   colors: {
@@ -32,6 +33,7 @@ const GlobalLayout = ({ children }) => {
         <MobileNavStateProvider>
           <GlobalStyle />
           <Header />
+          <ScrollTopButton />
           {children}
           <Footer />
         </MobileNavStateProvider>

@@ -12,32 +12,10 @@ import contact from '../utils/contact'
 import MessageIcon from '../assets/svg/message-icon.svg'
 import PhoneIcon from '../assets/svg/phone-icon.svg'
 import FacebookIcon from '../assets/svg/facebook-icon.svg'
+import useScroll from '../hooks/useScroll'
 
 const Header = () => {
-  const prevScrollY = useRef(0)
-
-  const [goingUp, setGoingUp] = useState(true)
-
-  useEffect(() => {
-    window.myDebounce = debounce(handleScroll, 100)
-    window.addEventListener('scroll', window.myDebounce, { passive: true })
-
-    return () => {
-      window.removeEventListener('scroll', window.myDebounce)
-      delete window.myDebounce
-    }
-  }, [goingUp])
-
-  const handleScroll = () => {
-    const currentScrollY = window.scrollY
-    if (prevScrollY.current < currentScrollY && goingUp) {
-      setGoingUp(false)
-    }
-    if (prevScrollY.current > currentScrollY && !goingUp) {
-      setGoingUp(true)
-    }
-    prevScrollY.current = currentScrollY
-  }
+  const goingUp = useScroll()
 
   return (
     <StyledHeader className={goingUp ? '' : 'hidden'}>
