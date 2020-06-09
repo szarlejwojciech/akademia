@@ -5,7 +5,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: 62.5%;
     box-sizing: border-box;
   }
-
+  ::selection{
+    color: ${({ theme }) => theme.colors.secondaryLight};
+    background-color: ${({ theme }) => theme.colors.accent};
+  }
   *,*::after,::before{
     box-sizing: inherit;
   }

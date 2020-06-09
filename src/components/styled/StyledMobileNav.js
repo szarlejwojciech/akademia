@@ -39,7 +39,10 @@ const StyledMobileNav = styled.nav`
       opacity: 1;
     }
   }
-
+  .separator {
+    height: 3rem;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.2);
+  }
   [role='menuitem'] {
     font-size: 1.5rem;
     width: 100%;
@@ -81,6 +84,7 @@ const StyledMobileNav = styled.nav`
     top: 0;
     z-index: 20;
     height: 100vh;
+    overflow-y: auto;
     & > button {
       margin: 1rem;
     }
@@ -96,6 +100,7 @@ const StyledMobileNav = styled.nav`
       flex: 1;
       z-index: 0;
       transform: translateX(0);
+      overflow: initial;
       & > button {
         display: none;
       }

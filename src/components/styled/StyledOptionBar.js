@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 const StyledOptionBar = styled.div`
-  min-height: 4rem;
+  height: 5rem;
   max-width: 120rem;
   margin: 0 auto;
   display: flex;
@@ -9,10 +9,10 @@ const StyledOptionBar = styled.div`
   justify-content: space-between;
 
   @media (min-width: 768px) {
-    min-height: 5rem;
+    height: 6.2rem;
   }
-  @media (min-width: 1440px) {
-    min-height: 6rem;
+  @media (min-width: 1024px) {
+    height: 8rem;
   }
 `
 export default StyledOptionBar

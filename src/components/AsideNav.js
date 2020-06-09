@@ -6,6 +6,7 @@ import useCategories from '../hooks/useCategories'
 import StyledNav from './styled/StyledMobileNav'
 import HamburgerBtn from './HamburgerBtn'
 import { useNavState } from '../hooks/localeState'
+import Search from './Search'
 const AsideNav = ({ type, isOpen }) => {
   const categories = useCategories(type)
   const { toggleCategoryNav } = useNavState()
@@ -13,6 +14,7 @@ const AsideNav = ({ type, isOpen }) => {
   return (
     <StyledNav className={`aside-nav ${isOpen ? 'is-open' : ''}`}>
       <HamburgerBtn label="Zamknij kategorie" onClick={toggleCategoryNav} />
+      <Search />
       <ul role="menubar" className="menubar">
         <li role="none">
           <Link
@@ -36,6 +38,7 @@ const AsideNav = ({ type, isOpen }) => {
             <ArrowIcon role="none" className="icon" />
           </Link>
         </li>
+        <li role="none" className="separator"></li>
         {categories.map(({ path, name }) => {
           return (
             <li key={path} role="none">
