@@ -8,8 +8,7 @@ import Gallery from '../components/Gallery'
 const GalleryPage = ({ data }) => (
   <>
     <SEO
-      title="Akademia Urody | Kontakt"
-      description="Już dziś umów swoją wizytę i odwiedź Akademie Urody w Nowym Targu an ulicy Kolejowej 2."
+      title="Akademia Urody | Galeria, salon kosmetyczny Nowy Targ"
       url="http://www.akademiaurody-nowytarg/kontakt"
     />
     <HeaderImageLayout

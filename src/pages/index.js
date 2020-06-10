@@ -7,7 +7,7 @@ import Home from '../components/Home'
 
 const IndexPage = () => (
   <>
-    <SEO title="Akademia Urody | Home" />
+    <SEO title="Akademia Urody | Home, salon kosmetyczny Nowy Targ" />
     <Home />
   </>
 )

@@ -65,20 +65,32 @@ const StyledSectionWrapper = styled(StyledSection)`
     position: relative;
     z-index: 0;
     .bottle3-decor,
-    .gallery-decor {
+    .gallery-decor,
+    .phone-decor,
+    .contact-bottle {
       position: absolute;
+      height: auto;
       opacity: 0.2;
     }
-
+    .phone-decor {
+      left: -16vw;
+      height: auto;
+      width: 10rem;
+      top: 50%;
+      transform: translateY(-50%);
+    }
+    .contact-bottle {
+      right: -9rem;
+      bottom: -2rem;
+      width: 11rem;
+    }
     .bottle3-decor {
       width: 5.3rem;
-      height: auto;
       top: -1rem;
       left: 0;
     }
     .gallery-decor {
       width: 8.4rem;
-      height: auto;
       bottom: -1.5rem;
       right: 0;
     }
@@ -87,7 +99,6 @@ const StyledSectionWrapper = styled(StyledSection)`
       position: absolute !important;
       bottom: 2.5rem;
       width: 7.2rem;
-      height: auto;
       z-index: -1;
     }
     .authent {
@@ -152,6 +163,16 @@ const StyledSectionWrapper = styled(StyledSection)`
         width: 11rem;
         bottom: 0;
         right: -13rem;
+      }
+
+      .contact-bottle {
+        right: -10rem;
+        width: 9rem;
+      }
+
+      .phone-decor {
+        left: -9rem;
+        width: 7rem;
       }
 
       .gallery-btn {
@@ -219,6 +240,17 @@ const StyledSectionWrapper = styled(StyledSection)`
         width: 12.5rem;
         right: -16rem;
       }
+      .contact-bottle {
+        right: -12rem;
+        bottom: 50%;
+        width: 9rem;
+        transform: translateY(50%);
+      }
+
+      .phone-decor {
+        left: -13rem;
+        width: 10rem;
+      }
       .authent,
       .embellir-small {
         width: 18rem;
@@ -270,6 +302,14 @@ const StyledSectionWrapper = styled(StyledSection)`
       .gallery-decor {
         width: 17.5rem;
         right: -19.5rem;
+      }
+      .contact-bottle {
+        right: -14rem;
+        width: 11rem;
+      }
+      .phone-decor {
+        left: -16rem;
+        width: 13rem;
       }
       .authent,
       .embellir-small {

@@ -1,10 +1,10 @@
-import React, { useRef, useEffect, useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { debounce } from 'lodash'
 import styled from 'styled-components'
 import ScrollTopIcon from '../assets/svg/scroll-top-icon.svg'
 
-const StyledButton = styled.button`
-  font-size: 3rem;
+const StyledScrollTopButton = styled.button`
+  font-size: 4.5rem;
   position: fixed;
   bottom: 3rem;
   right: 2rem;
@@ -28,13 +28,13 @@ const StyledButton = styled.button`
   }
 
   @media (min-width: 768px) {
-    font-size: 4rem;
-  }
-  @media (min-width: 1024px) {
     font-size: 5rem;
   }
-  @media (min-width: 1440px) {
+  @media (min-width: 1024px) {
     font-size: 5.5rem;
+  }
+  @media (min-width: 1440px) {
+    font-size: 6rem;
   }
 `
 
@@ -65,7 +65,7 @@ const ScrollTopButton = () => {
     })
 
   return (
-    <StyledButton
+    <StyledScrollTopButton
       type="button"
       title="Wróć do góry"
       aria-label="Wróć do góry"
@@ -73,7 +73,7 @@ const ScrollTopButton = () => {
       style={{ opacity }}
     >
       <ScrollTopIcon />
-    </StyledButton>
+    </StyledScrollTopButton>
   )
 }
 

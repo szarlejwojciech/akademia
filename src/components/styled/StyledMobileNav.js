@@ -10,7 +10,7 @@ const StyledMobileNav = styled.nav`
   max-width: 50rem;
   height: calc(100vh - var(--top-padding));
   background-color: ${({ theme }) => theme.colors.secondaryLight};
-  z-index: 10;
+  z-index: 11;
   transform: translateX(-110%);
   will-change: transform;
   transition: 1.3s transform cubic-bezier(0.18, 0.47, 0, 1);
@@ -98,7 +98,6 @@ const StyledMobileNav = styled.nav`
       max-width: 32rem;
       padding-right: 1rem;
       flex: 1;
-      z-index: 0;
       transform: translateX(0);
       overflow: initial;
       & > button {

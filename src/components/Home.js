@@ -2,15 +2,19 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
-import ButtonLink from './ButtonLink'
 import StyledHero from './styled/StyledHero'
 import StyledSection from './styled/StyledSection'
+import StyledScrollIcon from './styled/StyledScrollIcon'
+import StyledSectionWrapper from './styled/StyledSectionWrapper'
+import ButtonLink from './ButtonLink'
 import CustomSlider from './CustomSlider'
 import HeadingDecoration from '../assets/svg/heading-decoration.svg'
 import MenardLogo from '../assets/svg/menard-logo.svg'
 import ArrowRightIcon from '../assets/svg/arrow-right-icon.svg'
 import PhoneIcon from '../assets/svg/phone-icon.svg'
-import StyledScrollIcon from './styled/StyledScrollIcon'
+import PhoneDecor from '../assets/svg/phone-decor.svg'
+import ContactBottle from '../assets/svg/contact-bottle.svg'
+import StyledButtonLink from './styled/StyledButtonLink'
 
 const query = graphql`
   query {
@@ -73,6 +77,24 @@ const Home = () => {
         <StyledScrollIcon role="none" />
       </StyledHero>
       <main>
+        <StyledSectionWrapper dark>
+          <div className="wrapper">
+            <PhoneDecor className="phone-decor" />
+            <ContactBottle className="contact-bottle" />
+            <p>Zadzwoń do Nas i umów wizytę telefonicznie!</p>
+            <StyledButtonLink
+              as="a"
+              className="gallery-btn"
+              color="light"
+              href="tel:+48 722 396 495"
+              title="Umów wizytę."
+              aria-label="Umów-wizytę."
+            >
+              <span>Zadzwoń</span>
+              <PhoneIcon />
+            </StyledButtonLink>
+          </div>
+        </StyledSectionWrapper>
         <StyledSection>
           <div className="wrapper">
             <div className="content">

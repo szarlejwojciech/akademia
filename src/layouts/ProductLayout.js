@@ -12,6 +12,7 @@ import SEO from '../components/Seo'
 export const query = graphql`
   query singleProductQuery($title: String!) {
     mdx(frontmatter: { title: { eq: $title } }) {
+      excerpt(pruneLength: 110)
       frontmatter {
         title
         line
@@ -32,6 +33,7 @@ const ProductLayout = ({
   data: {
     mdx: {
       body,
+      excerpt,
       frontmatter: {
         title,
         line,
@@ -45,7 +47,7 @@ const ProductLayout = ({
   <>
     <SEO
       title={title}
-      description={`${title} | Akademia Urody, salon kosmetyczny Nowy Targ, ul. Klejowa 2`}
+      description={excerpt}
       url={`http://www.akademiaurody-nowytarg/${path}`}
     />
     <StyledProductLayout>

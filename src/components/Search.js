@@ -1,11 +1,10 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import Downshift from 'downshift'
 import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
 import { navigate } from '@reach/router'
 import { toCebabCase } from '../utils/toCebabCase'
 import { DropDown, DropDownItem, SearchStyles } from './styled/StyledSearch'
-import { isNull } from 'lodash'
 
 const query = graphql`
   {
@@ -27,31 +26,38 @@ const query = graphql`
     }
   }
 `
-const getSlug = (type, categories, title) =>
-  `/${type === 'products' ? 'produkty' : 'zabiegi'}/${toCebabCase(
-    categories[0]
-  )}/${toCebabCase(title)}`
-
-const handleChange = selection => {
-  const {
-    frontmatter: { type, categories, title },
-  } = selection
-  navigate(getSlug(type, categories, title))
-}
-
-const filterItems = (item, inputValue) => {
-  const matchersArray = inputValue
-    .match(/([a-z0-9ęóąśłżźćń]{1,})/gi)
-    .map(word =>
-      item.frontmatter.title.toLowerCase().includes(word.toLowerCase())
-    )
-  return !inputValue || !matchersArray.includes(false)
-}
 
 const Search = () => {
   const {
     allMdx: { nodes: items },
   } = useStaticQuery(query)
+  const isMoving = useRef()
+  // let isMoving
+
+  const getSlug = (type, categories, title) =>
+    `/${type === 'products' ? 'produkty' : 'zabiegi'}/${toCebabCase(
+      categories[0]
+    )}/${toCebabCase(title)}`
+
+  const handleChange = selection => {
+    const {
+      frontmatter: { type, categories, title },
+    } = selection
+    navigate(getSlug(type, categories, title))
+  }
+
+  const handleTouchMove = () => {
+    isMoving.current = true
+  }
+  const filterItems = (item, inputValue) => {
+    const matchersArray = inputValue
+      .match(/([a-z0-9ęóąśłżźćń]{1,})/gi)
+      .map(word =>
+        item.frontmatter.title.toLowerCase().includes(word.toLowerCase())
+      )
+    return !inputValue || !matchersArray.includes(false)
+  }
+
   return (
     <SearchStyles>
       <Downshift
@@ -107,8 +113,18 @@ const Search = () => {
                             index,
                             item,
                             highlighted: highlightedIndex === index,
+                            onTouchStart() {
+                              window.addEventListener(
+                                'touchmove',
+                                handleTouchMove
+                              )
+                            },
                             onTouchEnd() {
-                              selectItem(item)
+                              if (!isMoving.current) selectItem(item)
+                              window.removeEventListener(
+                                'touchmove',
+                                handleTouchMove
+                              )
                             },
                           })}
                         >
