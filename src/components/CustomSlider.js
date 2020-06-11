@@ -25,14 +25,20 @@ const StyledCarousel = styled(Carousel)`
     height: 4.8rem;
     line-height: 4.8rem;
     transform: translateX(-40%);
+    z-index: 1;
+    transition: none;
     &.rec-arrow-right {
       left: unset;
       right: 0.4rem;
       transform: translateX(50%);
     }
-    &:hover {
+    &:hover,
+    &:hover:enabled,
+    &:focus:enabled {
       color: inherit;
       opacity: 0.7;
+      background-color: transparent;
+      box-shadow: none;
     }
   }
   @media (min-width: 768px) {

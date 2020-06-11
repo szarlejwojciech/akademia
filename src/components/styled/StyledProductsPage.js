@@ -11,6 +11,7 @@ const StyledProdutctsPage = styled(Layout)`
       flex: 2;
       display: flex;
       flex-wrap: wrap;
+      height: max-content;
     }
   }
   @media (min-width: 768px) {
