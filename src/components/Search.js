@@ -69,11 +69,12 @@ const Search = () => {
           getItemProps,
           getLabelProps,
           selectItem,
+
           isOpen,
           inputValue,
           highlightedIndex,
         }) => (
-          <div className="searche-box">
+          <div className="searche-box" role="search">
             <input
               {...getInputProps({
                 type: 'searche',

@@ -2,6 +2,7 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { useStaticQuery, graphql } from 'gatsby'
 import ProductPage from '../components/ProductsPage'
+import SEO from '../components/Seo'
 
 const query = graphql`
   {
@@ -40,12 +41,23 @@ const CategoryPageLayout = ({ path, pageContext: { products } }) => {
     },
   } = useStaticQuery(query)
   return (
-    <ProductPage
-      products={products}
-      type={type}
-      bgImageFluid={type === 'produkty' ? productsBgImage : treatmentsBgImage}
-      subTitle={type === 'produkty' ? subTitle.products : subTitle.treatments}
-    />
+    <>
+      <SEO
+        title={`Akademia Urody - ${type}, salon kosmetyczny Nowy Targ`}
+        description={
+          type === 'produkty' || type === 'products'
+            ? subTitle.products
+            : subTitle.treatments
+        }
+        keywords="produkty, zabiegi, antypigmentacyjne, nawilżające, oczyszczające, odżywiająco regenerujące, peelingi i eksfoliatoryton, przeciwstarzeniowe, przeciwsłoneczne, specjalistyczne, tonizujące"
+      />
+      <ProductPage
+        products={products}
+        type={type}
+        bgImageFluid={type === 'produkty' ? productsBgImage : treatmentsBgImage}
+        subTitle={type === 'produkty' ? subTitle.products : subTitle.treatments}
+      />
+    </>
   )
 }
 

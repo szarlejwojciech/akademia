@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 
 const StyledProductPreview = styled(Link)`
   --margin: 1rem;
-  height: max-content;
+  height: auto;
   display: block;
   flex: 1 0 22.5rem;
   justify-content: center;
