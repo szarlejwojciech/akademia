@@ -3,6 +3,7 @@ import { Link } from 'gatsby'
 
 const StyledProductPreview = styled(Link)`
   --margin: 1rem;
+  height: max-content;
   display: block;
   flex: 1 0 22.5rem;
   justify-content: center;
@@ -13,6 +14,7 @@ const StyledProductPreview = styled(Link)`
   box-shadow: 0 8.5px 13px -5px rgba(0, 0, 0, 0.16),
     0 6.7px 3.5px -5px rgba(0, 0, 0, 0.07);
   h6 {
+    font-size: 1.6rem;
     height: 2em;
     line-height: 2em;
     padding: 0 0.5rem;
@@ -51,9 +53,15 @@ const StyledProductPreview = styled(Link)`
   @media (min-width: 500px) {
     margin: 0 var(--margin) calc(var(--margin) * 2);
     max-width: calc(50% - 2 * var(--margin));
+    h6 {
+      font-size: 1.5rem;
+    }
   }
   @media (min-width: 755px) {
     max-width: calc(100% / 3 - 2 * var(--margin));
+    h6 {
+      font-size: 1.6rem;
+    }
   }
   @media (min-width: 768px) {
     --margin: 1.5rem;
@@ -110,6 +118,9 @@ const StyledProductPreview = styled(Link)`
   }
   @media (min-width: 1024px) {
     --margin: 2rem;
+    h6 {
+      font-size: 1.8rem;
+    }
   }
 
   @media (min-width: 1210px) {

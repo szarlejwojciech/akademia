@@ -18,7 +18,7 @@ const StyledProductPreview = styled.article`
     margin-bottom: 0.8rem;
   }
   p {
-    padding-left: 0.8em;
+    padding: 0.5em 0 0.5em 0.8em;
   }
   hr {
     background: ${({ theme }) => theme.colors.accent};

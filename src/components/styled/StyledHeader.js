@@ -8,7 +8,7 @@ const StyledHeader = styled.header`
   will-change: transform;
   transition: 0.125s transform ease-in;
   transform: translateY(0);
-  z-index: 15;
+  z-index: 25;
 
   &.hidden {
     transform: translateY(-120%);

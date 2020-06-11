@@ -1,6 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
-import { debounce } from 'lodash'
 import HamburgerBtn from './HamburgerBtn'
 import MobileNav from './MobileNav'
 import StyledNavList from './styled/StyledNavList'

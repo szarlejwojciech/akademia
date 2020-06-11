@@ -36,16 +36,19 @@ const StyledHero = styled.div`
     height: auto;
   }
   .cta {
+    display: flex;
+    flex-direction: column;
     max-width: 23ch;
-    text-align: center;
+    text-align: left;
     margin: var(--padding-top) 5vw 0;
     p {
-      margin: 1.15em 0;
+      margin: 1.4em 0;
     }
     a {
       svg {
         width: 1em;
       }
+      align-self: flex-end;
     }
   }
   @media (orientation: landscape) and (max-width: 767.9px) {

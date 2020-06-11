@@ -61,7 +61,10 @@ const Home = () => {
       <StyledHero>
         <div className="cta">
           <MenardLogo />
-          <p>Dla kobiet poszukujących prawdziwego piękna na całym świecie.</p>
+          <p>
+            Linia produktów stworzonych dla kobiet poszukujących prawdziwego
+            piękna na całym świecie.
+          </p>
           <ButtonLink to="/produkty" title="Przeglądaj Menard">
             <span>Przeglądaj</span>
             <ArrowRightIcon />

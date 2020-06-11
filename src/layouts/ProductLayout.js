@@ -15,7 +15,6 @@ export const query = graphql`
       excerpt(pruneLength: 110)
       frontmatter {
         title
-        line
         featuredImage {
           childImageSharp {
             fluid(maxWidth: 500, quality: 90) {
@@ -36,7 +35,6 @@ const ProductLayout = ({
       excerpt,
       frontmatter: {
         title,
-        line,
         featuredImage: {
           childImageSharp: { fluid },
         },
@@ -57,7 +55,6 @@ const ProductLayout = ({
       <header>
         <h1>{title}</h1>
       </header>
-      {line !== 'none' && <p>{line}</p>}
       <section>
         <div className="mdx-wrapper">
           <ProductDecor />
