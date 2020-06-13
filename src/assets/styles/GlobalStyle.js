@@ -14,7 +14,7 @@ const GlobalStyle = createGlobalStyle`
 
   }
   *:focus{
-    outline: 2px solid Highlight !important;
+    outline: 2px solid Highlight;
   }
 
   body{
