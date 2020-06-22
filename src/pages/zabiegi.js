@@ -14,7 +14,7 @@ const treatmentsPage = ({
 }) => (
   <>
     <SEO
-      title="Akademia Urody | Zabiegi, Salon kosmetyczny Nowy Targ"
+      title="Zabiegi, Akademia Urody, Salon kosmetyczny Nowy Targ"
       description="Obejrzyj naszą oferte zabiegów na dłonie i paznokcie, stopy, twarz i włosy."
       url="http://www.akademiaurody-nowytarg/zabiegi"
     />

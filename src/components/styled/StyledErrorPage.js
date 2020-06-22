@@ -54,6 +54,7 @@ const StyledErrorPage = styled.section`
     .container {
       flex-direction: row;
       margin: 0 7vw;
+      max-width: unset;
       .cta {
         margin: 0;
         max-width: 60ch;

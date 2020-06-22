@@ -89,7 +89,7 @@ const Header = () => {
           </li>
           <li>
             <CustomLink
-              href="https://bit.ly/2LzJc14"
+              href="https://www.facebook.com/AkademiaUrodyNT/"
               title="Odwiedź naszego facebooka!"
               target="_blanc"
             >

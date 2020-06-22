@@ -66,6 +66,9 @@ const StyledFooter = styled.footer`
       text-align: center;
       font-size: 1em;
       line-height: 3;
+      a {
+        color: ${({ theme }) => theme.colors.secondaryLight};
+      }
     }
   }
 

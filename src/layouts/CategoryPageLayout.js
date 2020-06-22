@@ -43,7 +43,7 @@ const CategoryPageLayout = ({ path, pageContext: { products } }) => {
   return (
     <>
       <SEO
-        title={`Akademia Urody - ${type}, salon kosmetyczny Nowy Targ`}
+        title={`${type}, Akademia Urody, salon kosmetyczny Nowy Targ`}
         description={
           type === 'produkty' || type === 'products'
             ? subTitle.products

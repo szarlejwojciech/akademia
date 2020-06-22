@@ -6,6 +6,8 @@ import MessageIcon from '../assets/svg/message-icon.svg'
 import ClockIcon from '../assets/svg/clock-icon.svg'
 import LocationIcon from '../assets/svg/location-icon.svg'
 import LogoBig from '../assets/svg/logo-big.svg'
+import CustomLink from './CustomLink'
+
 const Footer = () => (
   <StyledFooter>
     <div className="wrapper">
@@ -38,7 +40,16 @@ const Footer = () => (
       </div>
     </div>
     <div className="copyright">
-      <p>© copyright 2020 — Designed by Wojciech Szarlej</p>
+      <p>
+        © copyright 2020 — Designed by{' '}
+        <CustomLink
+          href="https://www.facebook.com/szarlej.wojciech"
+          title="Profil facebook twórcy strony"
+          target="_blanc"
+        >
+          Wojciech Szarlej
+        </CustomLink>
+      </p>
     </div>
   </StyledFooter>
 )

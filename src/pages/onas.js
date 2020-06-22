@@ -8,7 +8,7 @@ import HeaderImageLayout from '../layouts/HeaderImageLayout'
 const AboutPage = ({ data }) => (
   <>
     <SEO
-      title="Akademia Urody | O nas, salon kosmetyczny Nowy Targ"
+      title="O nas, Akademia Urody, salon kosmetyczny Nowy Targ"
       description="Akademia Urody jest salonem o 12-letnim doświadczeniu posiadający metody nakładania produktów, metody których skuteczność potwierdziła się w setkach przypadków."
       url="http://www.akademiaurody-nowytarg/onas"
     />

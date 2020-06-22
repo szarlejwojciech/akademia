@@ -8,7 +8,7 @@ import Contact from '../components/Contact'
 const ContactPage = ({ data }) => (
   <>
     <SEO
-      title="Akademia Urody | Kontakt, salon kosmetyczny Nowy Targ"
+      title="Kontakt, Akademia Urody, salon kosmetyczny Nowy Targ"
       description="Już dziś umów swoją wizytę i odwiedź Akademie Urody w Nowym Targu an ulicy Kolejowej 2."
       url="http://www.akademiaurody-nowytarg/kontakt"
     />

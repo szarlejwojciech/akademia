@@ -2,7 +2,7 @@ import styled from 'styled-components'
 
 const StyledLink = styled.a`
   padding: 0.26em 0.44em;
-  font-size: 1.6em;
+  font-size: 1.6rem;
   color: ${({ theme }) => theme.colors.primaryLight};
   will-change: opacity;
   transition: 0.15s opacity ease-in-out;

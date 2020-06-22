@@ -15,7 +15,7 @@ const productsPage = ({
 }) => (
   <>
     <SEO
-      title="Akademia Urody | Oferta, Salon kosmetyczny Nowy Targ"
+      title="Oferta, Akademia Urody, Salon kosmetyczny Nowy Targ"
       description="Zawsze podejmujemy wszelkie starania by oferować najlepsze produkty, dlatego w naszej ofercie zgromadziliśmy marki spełniające najwyższe wymagania."
       url="http://www.akademiaurody-nowytarg/produkty"
     />
