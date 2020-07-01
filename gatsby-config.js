@@ -48,17 +48,24 @@ module.exports = {
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `products`,
-        path: `${__dirname}/src/data/products`,
+        name: `posts`,
+        path: `${__dirname}/src/data`,
       },
     },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `treatments`,
-        path: `${__dirname}/src/data/treatments`,
-      },
-    },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `products`,
+    //     path: `${__dirname}/src/data/products`,
+    //   },
+    // },
+    // {
+    //   resolve: `gatsby-source-filesystem`,
+    //   options: {
+    //     name: `treatments`,
+    //     path: `${__dirname}/src/data/treatments`,
+    //   },
+    // },
     {
       resolve: `gatsby-plugin-prefetch-google-fonts`,
       options: {

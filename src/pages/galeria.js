@@ -7,7 +7,7 @@ import Gallery from '../components/Gallery'
 
 const GalleryPage = ({ data }) => (
   <>
-    <SEO
+    <SEO 
       title="Galeria, Akademia Urody, salon kosmetyczny Nowy Targ"
       url="http://www.akademiaurody-nowytarg/kontakt"
     />
