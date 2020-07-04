@@ -1,34 +1,49 @@
 import { useStaticQuery, graphql } from 'gatsby'
-import { toCebabCase } from '../utils/toCebabCase'
+import slugify from 'slugify'
 const query = graphql`
-  {
-    treatments: allMdx(
-      filter: { frontmatter: { type: { eq: "treatments" } } }
-    ) {
-      group(field: frontmatter___categories) {
-        fieldValue
-      }
+  fragment AllCategories on MdxConnection {
+    group(field: frontmatter___categories) {
+      fieldValue
     }
-    products: allMdx(filter: { frontmatter: { type: { eq: "products" } } }) {
-      group(field: frontmatter___categories) {
-        fieldValue
-      }
+  }
+
+  query categoriiesQuery {
+    treatments: allMdx(filter: { frontmatter: { type: { eq: "zabiegi" } } }) {
+      ...AllCategories
+    }
+    products: allMdx(filter: { frontmatter: { type: { eq: "produkty" } } }) {
+      ...AllCategories
+    }
+    perfumes: allMdx(filter: { frontmatter: { type: { eq: "perfumy" } } }) {
+      ...AllCategories
     }
   }
 `
 
 function useCategories(type) {
   const data = useStaticQuery(query)
-  const productsCategories = data.products.group.map(({ fieldValue }) => ({
-    path: `/produkty/${toCebabCase(fieldValue)}`,
-    name: fieldValue,
-  }))
-  const treatmentsCategories = data.treatments.group.map(({ fieldValue }) => ({
-    path: `/zabiegi/${toCebabCase(fieldValue)}`,
-    name: fieldValue,
-  }))
-  if (type === 'products' || type === 'produkty') return productsCategories
-  else return treatmentsCategories
+  switch (type) {
+    case 'products':
+    case 'produkty':
+      return data.products.group.map(({ fieldValue }) => ({
+        path: `/produkty/${slugify(fieldValue, { lower: true, strict: true })}`,
+        name: fieldValue,
+      }))
+    case 'treatments':
+    case 'zabiegi':
+      return data.treatments.group.map(({ fieldValue }) => ({
+        path: `/zabiegi/${slugify(fieldValue, { lower: true, strict: true })}`,
+        name: fieldValue,
+      }))
+    case 'perfumes':
+    case 'perfumy':
+      return data.perfumes.group.map(({ fieldValue }) => ({
+        path: `/perfumy/${slugify(fieldValue, { lower: true, strict: true })}`,
+        name: fieldValue,
+      }))
+    default:
+      return null
+  }
 }
 
 export default useCategories

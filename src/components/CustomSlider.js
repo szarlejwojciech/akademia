@@ -1,9 +1,9 @@
 import React from 'react'
 import Carousel from 'react-elastic-carousel'
 import styled from 'styled-components'
+import slugify from 'slugify'
 import { graphql, useStaticQuery } from 'gatsby'
 import CarouselItem from './CarouselItem'
-import { toCebabCase } from '../utils/toCebabCase'
 const StyledCarousel = styled(Carousel)`
   margin: 0 auto;
   max-width: 120rem;
@@ -50,6 +50,9 @@ const query = graphql`
   {
     allMdx(limit: 10) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           title
           type
@@ -88,18 +91,20 @@ const CustomSlider = () => {
       {nodes.map(
         ({
           excerpt,
+          fields: { slug },
           frontmatter: { title, type, categories, featuredImage },
         }) => {
-          const url = `/${
-            type === 'products' || type === 'produkty' ? 'produkty' : 'zabiegi'
-          }/${toCebabCase(categories[0])}/${toCebabCase(title)}`
+          const newSlug = `/${type}/${slugify(categories[0], {
+            lower: true,
+            strict: true,
+          })}/${slug}`
           return (
             <CarouselItem
               fluid={featuredImage.childImageSharp.fluid}
-              key={title}
+              key={slug}
               title={title}
               description={excerpt}
-              url={url}
+              url={newSlug}
             />
           )
         }

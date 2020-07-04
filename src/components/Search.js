@@ -1,15 +1,18 @@
 import React, { useRef } from 'react'
 import Downshift from 'downshift'
-import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import slugify from 'slugify'
+import { graphql, useStaticQuery } from 'gatsby'
 import { navigate } from '@reach/router'
-import { toCebabCase } from '../utils/toCebabCase'
 import { DropDown, DropDownItem, SearchStyles } from './styled/StyledSearch'
 
 const query = graphql`
   {
     allMdx {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           title
           type
@@ -32,18 +35,16 @@ const Search = () => {
     allMdx: { nodes: items },
   } = useStaticQuery(query)
   const isMoving = useRef()
-  // let isMoving
 
-  const getSlug = (type, categories, title) =>
-    `/${type === 'products' ? 'produkty' : 'zabiegi'}/${toCebabCase(
-      categories[0]
-    )}/${toCebabCase(title)}`
+  const getSlug = (type, categories, slug) =>
+    `/${type}/${slugify(categories[0], { lower: true, strict: true })}/${slug}`
 
   const handleChange = selection => {
     const {
-      frontmatter: { type, categories, title },
+      fields: { slug },
+      frontmatter: { type, categories },
     } = selection
-    navigate(getSlug(type, categories, title))
+    navigate(getSlug(type, categories, slug))
   }
 
   const handleTouchMove = () => {
@@ -98,6 +99,7 @@ const Search = () => {
                     .filter(item => filterItems(item, inputValue))
                     .map((item, index) => {
                       const {
+                        fields: { slug },
                         frontmatter: {
                           title,
                           featuredImage: {
@@ -108,9 +110,9 @@ const Search = () => {
 
                       return (
                         <DropDownItem
-                          key={title}
+                          key={slug}
                           {...getItemProps({
-                            key: title,
+                            key: slug,
                             index,
                             item,
                             highlighted: highlightedIndex === index,

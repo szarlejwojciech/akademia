@@ -80,8 +80,10 @@ const Submenu = ({ children, label, length }) => {
 
 const MobileNav = () => {
   const { navOpen } = useNavState()
-  const productsCategories = useCategories('products')
-  const treatmentsCategories = useCategories('treatments')
+  const productsCategories = useCategories('produkty')
+  const treatmentsCategories = useCategories('zabiegi')
+  const perfumesCategories = useCategories('perfumy')
+
   return (
     <StyledMobileNav
       className={navOpen && 'is-open'}
@@ -154,6 +156,37 @@ const MobileNav = () => {
             {treatmentsCategories &&
               !!treatmentsCategories.length &&
               treatmentsCategories.map(({ name, path }) => (
+                <li key={path} role="none">
+                  <Link
+                    activeClassName="active"
+                    partiallyActive={true}
+                    to={path}
+                    role="menuitem"
+                    tabIndex="-1"
+                  >
+                    <span className="text">{name.replace('-', ' ')}</span>
+                    <ArrowIcon role="none" className="icon" />
+                  </Link>
+                </li>
+              ))}
+          </Submenu>
+        </li>
+        <li role="none">
+          <Submenu length={perfumesCategories.length} label="perfumy">
+            <li role="none">
+              <Link
+                activeClassName="active"
+                to="/zabiegi"
+                role="menuitem"
+                tabIndex="-1"
+              >
+                <span className="text">wszystko</span>
+                <ArrowIcon role="none" className="icon" />
+              </Link>
+            </li>
+            {perfumesCategories &&
+              !!perfumesCategories.length &&
+              perfumesCategories.map(({ name, path }) => (
                 <li key={path} role="none">
                   <Link
                     activeClassName="active"

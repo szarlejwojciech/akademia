@@ -14,14 +14,14 @@ const treatmentsPage = ({
 }) => (
   <>
     <SEO
-      title="Zabiegi, Akademia Urody, Salon kosmetyczny Nowy Targ"
+      title="Perfumy, Akademia Urody, Salon kosmetyczny Nowy Targ"
       description="Obejrzyj naszą oferte zabiegów na dłonie i paznokcie, stopy, twarz i włosy."
-      url="http://www.akademiaurody-nowytarg/zabiegi"
+      url="http://www.akademiaurody-nowytarg/perfumy"
     />
     {/* <PageIsBuilding /> */}
     <TreatmentsPage
       products={nodes}
-      type="zabiegi"
+      type="perfumy"
       bgImageFluid={fluid}
       subTitle="Od najmłodszych lat nasza skóra musi się mierzyć z różnymi problemami i walczyć z rosnącymi zagrożeniami."
     ></TreatmentsPage>
@@ -40,7 +40,7 @@ treatmentsPage.propTypes = {
 export const queryProducts = graphql`
   {
     treatmentsImages: allMdx(
-      filter: { frontmatter: { type: { eq: "zabiegi" } } }
+      filter: { frontmatter: { type: { eq: "perfumy" } } }
     ) {
       nodes {
         fields {
@@ -64,7 +64,7 @@ export const queryProducts = graphql`
         excerpt(pruneLength: 70)
       }
     }
-    bgImage: file(name: { eq: "zabiegi-bg" }) {
+    bgImage: file(name: { eq: "perfumy-bg" }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG

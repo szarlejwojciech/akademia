@@ -38,6 +38,17 @@ const AsideNav = ({ type, isOpen }) => {
             <ArrowIcon role="none" className="icon" />
           </Link>
         </li>
+        <li role="none">
+          <Link
+            to="/perfumy"
+            role="menuitem"
+            activeClassName="active"
+            partiallyActive={true}
+          >
+            <span className="text">Perfumy</span>
+            <ArrowIcon role="none" className="icon" />
+          </Link>
+        </li>
         <li role="none" className="separator"></li>
         {categories.map(({ path, name }) => {
           return (
