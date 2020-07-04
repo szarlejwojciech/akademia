@@ -1,72 +1,44 @@
-import React from 'react'
+import React, { useRef } from 'react'
 import PropTypes from 'prop-types'
 import { Link } from 'gatsby'
 import ArrowIcon from '../assets/svg/arrow-right-icon.svg'
 import useCategories from '../hooks/useCategories'
 import StyledNav from './styled/StyledMobileNav'
+import MobileNav from './MobileNav'
 import HamburgerBtn from './HamburgerBtn'
 import { useNavState } from '../hooks/localeState'
 import Search from './Search'
-const AsideNav = ({ type, isOpen }) => {
-  const categories = useCategories(type)
+const AsideNav = ({ isOpen }) => {
   const { toggleCategoryNav } = useNavState()
 
+  const productsCategories = useCategories('produkty')
+  const treatmentsCategories = useCategories('zabiegi')
+  const perfumesCategories = useCategories('perfumy')
+  const menuLinks = useRef([
+    {
+      label: 'Produkty',
+      to: '/produkty',
+      subMenu: true,
+      subMenuItems: productsCategories,
+    },
+    {
+      label: 'Zabiegi',
+      to: '/zabiegi',
+      subMenu: true,
+      subMenuItems: treatmentsCategories,
+    },
+    {
+      label: 'Perfumy',
+      to: '/perfumy',
+      subMenu: true,
+      subMenuItems: perfumesCategories,
+    },
+  ])
   return (
-    <StyledNav className={`aside-nav ${isOpen ? 'is-open' : ''}`}>
+    <MobileNav menuLinks={menuLinks.current} className="aside-nav">
       <HamburgerBtn label="Zamknij kategorie" onClick={toggleCategoryNav} />
       <Search />
-      <ul role="menubar" className="menubar">
-        <li role="none">
-          <Link
-            to="/produkty"
-            role="menuitem"
-            activeClassName="active"
-            partiallyActive={true}
-          >
-            <span className="text">Produkty</span>
-            <ArrowIcon role="none" className="icon" />
-          </Link>
-        </li>
-        <li role="none">
-          <Link
-            to="/zabiegi"
-            role="menuitem"
-            activeClassName="active"
-            partiallyActive={true}
-          >
-            <span className="text">Zabiegi</span>
-            <ArrowIcon role="none" className="icon" />
-          </Link>
-        </li>
-        <li role="none">
-          <Link
-            to="/perfumy"
-            role="menuitem"
-            activeClassName="active"
-            partiallyActive={true}
-          >
-            <span className="text">Perfumy</span>
-            <ArrowIcon role="none" className="icon" />
-          </Link>
-        </li>
-        <li role="none" className="separator"></li>
-        {categories.map(({ path, name }) => {
-          return (
-            <li key={path} role="none">
-              <Link
-                to={path}
-                role="menuitem"
-                activeClassName="active"
-                partiallyActive={true}
-              >
-                <span className="text">{name.replace(/-/g, ' ')}</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-          )
-        })}
-      </ul>
-    </StyledNav>
+    </MobileNav>
   )
 }
 

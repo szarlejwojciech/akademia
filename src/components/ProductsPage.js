@@ -12,7 +12,7 @@ import StyledOptionBar from './styled/StyledOptionBar'
 import ListIcon from '../assets/svg/list-icon.svg'
 
 const ProductPage = ({ products, type, category, bgImageFluid, subTitle }) => {
-  const { categoryNavOpen, toggleCategoryNav } = useNavState()
+  const { toggleCategoryNav } = useNavState()
   return (
     <HeaderImageLayout fluid={bgImageFluid} title={type} subTitle={subTitle}>
       <StyledProductsPage as="section">
@@ -24,7 +24,7 @@ const ProductPage = ({ products, type, category, bgImageFluid, subTitle }) => {
           <PrevUrlButton />
         </StyledOptionBar>
         <div className="wrapper">
-          <AsideNav type={type} isOpen={categoryNavOpen} />
+          <AsideNav />
           <div className="products-grid">
             {(!products || !products.length) && (
               <p>Dokładamy wszelkich starań aby uzupełnić ofertę.</p>

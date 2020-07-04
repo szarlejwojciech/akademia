@@ -33,10 +33,26 @@ const StyledMobileNav = styled.nav`
     z-index: -1;
   }
 
-  &.is-open {
+  &.mobile-nav.mobile-nav-is-open {
     transform: translateX(0%);
     &::before {
       opacity: 1;
+    }
+  }
+  &.aside-nav {
+    top: 0;
+    z-index: 25;
+    height: 100vh;
+    overflow-y: auto;
+    & > button {
+      margin: 1rem;
+    }
+
+    &.aside-nav-is-open {
+      transform: translateX(0%);
+      &::before {
+        opacity: 1;
+      }
     }
   }
   .separator {
@@ -79,16 +95,9 @@ const StyledMobileNav = styled.nav`
     will-change: height;
     transition: 1.3s height cubic-bezier(0.18, 0.47, 0, 1);
     padding-left: 1.5em;
+    list-style-type: none;
   }
-  &.aside-nav {
-    top: 0;
-    z-index: 20;
-    height: 100vh;
-    overflow-y: auto;
-    & > button {
-      margin: 1rem;
-    }
-  }
+
   @media (min-width: 768px) {
     --top-padding: 6.2rem;
     &.aside-nav {

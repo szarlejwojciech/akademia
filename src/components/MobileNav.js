@@ -4,7 +4,6 @@ import { Link } from 'gatsby'
 import styled from 'styled-components'
 import StyledMobileNav from './styled/StyledMobileNav'
 import { useNavState } from '../hooks/localeState'
-import useCategories from '../hooks/useCategories'
 import { useLocation } from '@reach/router'
 
 const ArrowIcon = styled.span`
@@ -51,18 +50,20 @@ const Submenu = ({ children, label, length }) => {
 
   useEffect(() => {
     setIsCollapsed(true)
+    if (pathname.includes(label.toLowerCase())) setIsCollapsed(false)
   }, [pathname])
 
   const toggleCollapse = () => {
     setIsCollapsed(!isCollapsed)
   }
+
   return (
     <>
       <button
         type="button"
         ref={btnElement}
         className={`submenu-toggler ${isCollapsed ? 'is-collapsed' : ''} ${
-          pathname.includes(label) ? 'active' : ''
+          pathname.includes(label.toLowerCase()) ? 'active' : ''
         }`}
         role="menuitem"
         tabIndex="-1"
@@ -78,152 +79,68 @@ const Submenu = ({ children, label, length }) => {
   )
 }
 
-const MobileNav = () => {
+const MobileNav = ({ children, menuLinks, className }) => {
   const { navOpen } = useNavState()
-  const productsCategories = useCategories('produkty')
-  const treatmentsCategories = useCategories('zabiegi')
-  const perfumesCategories = useCategories('perfumy')
+  const { categoryNavOpen } = useNavState()
 
   return (
     <StyledMobileNav
-      className={navOpen && 'is-open'}
-      aria-label="mobile-menu"
+      className={`${navOpen ? 'mobile-nav-is-open' : ''} ${
+        categoryNavOpen ? 'aside-nav-is-open' : ''
+      } ${className}`}
+      aria-label={className}
       aria-hidden={!navOpen}
       aria-labelledby="mobile-navigation"
     >
+      {children}
       <ul role="menubar" className="menubar">
-        <li role="none">
-          <Link activeClassName="active" to="/" role="menuitem" tabIndex="-1">
-            <span className="text">Home</span>
-            <ArrowIcon role="none" className="icon" />
-          </Link>
-        </li>
-        <li role="none">
-          <Link
-            activeClassName="active"
-            to="/onas"
-            role="menuitem"
-            tabIndex="-1"
-          >
-            <span className="text">O nas</span>
-            <ArrowIcon role="none" className="icon" />
-          </Link>
-        </li>
-        <li role="none">
-          <Submenu length={productsCategories.length} label="produkty">
-            <li role="none">
-              <Link
-                activeClassName="active"
-                to="/produkty"
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            {productsCategories &&
-              !!productsCategories.length &&
-              productsCategories.map(({ name, path }) => (
-                <li key={path} role="none">
+        {menuLinks.map(({ label, to, subMenu, subMenuItems }) =>
+          subMenu ? (
+            <li role="none" key={to}>
+              <Submenu length={subMenuItems.length} label={label}>
+                <li role="none">
                   <Link
                     activeClassName="active"
-                    partiallyActive={true}
-                    to={path}
+                    to={to}
                     role="menuitem"
                     tabIndex="-1"
                   >
-                    <span className="text">{name.replace('-', ' ')}</span>
+                    <span className="text">wszystko</span>
                     <ArrowIcon role="none" className="icon" />
                   </Link>
                 </li>
-              ))}
-          </Submenu>
-        </li>
-        <li role="none">
-          <Submenu length={treatmentsCategories.length} label="zabiegi">
-            <li role="none">
+                {subMenuItems &&
+                  !!subMenuItems.length &&
+                  subMenuItems.map(({ name, path }) => (
+                    <li key={path} role="none">
+                      <Link
+                        activeClassName="active"
+                        partiallyActive={true}
+                        to={path}
+                        role="menuitem"
+                        tabIndex="-1"
+                      >
+                        <span className="text">{name.replace('-', ' ')}</span>
+                        <ArrowIcon role="none" className="icon" />
+                      </Link>
+                    </li>
+                  ))}
+              </Submenu>
+            </li>
+          ) : (
+            <li role="none" key={to}>
               <Link
                 activeClassName="active"
-                to="/zabiegi"
+                to={to}
                 role="menuitem"
                 tabIndex="-1"
               >
-                <span className="text">wszystko</span>
+                <span className="text">{label}</span>
                 <ArrowIcon role="none" className="icon" />
               </Link>
             </li>
-            {treatmentsCategories &&
-              !!treatmentsCategories.length &&
-              treatmentsCategories.map(({ name, path }) => (
-                <li key={path} role="none">
-                  <Link
-                    activeClassName="active"
-                    partiallyActive={true}
-                    to={path}
-                    role="menuitem"
-                    tabIndex="-1"
-                  >
-                    <span className="text">{name.replace('-', ' ')}</span>
-                    <ArrowIcon role="none" className="icon" />
-                  </Link>
-                </li>
-              ))}
-          </Submenu>
-        </li>
-        <li role="none">
-          <Submenu length={perfumesCategories.length} label="perfumy">
-            <li role="none">
-              <Link
-                activeClassName="active"
-                to="/zabiegi"
-                role="menuitem"
-                tabIndex="-1"
-              >
-                <span className="text">wszystko</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-            {perfumesCategories &&
-              !!perfumesCategories.length &&
-              perfumesCategories.map(({ name, path }) => (
-                <li key={path} role="none">
-                  <Link
-                    activeClassName="active"
-                    partiallyActive={true}
-                    to={path}
-                    role="menuitem"
-                    tabIndex="-1"
-                  >
-                    <span className="text">{name.replace('-', ' ')}</span>
-                    <ArrowIcon role="none" className="icon" />
-                  </Link>
-                </li>
-              ))}
-          </Submenu>
-        </li>
-        <li role="none">
-          <Link
-            activeClassName="active"
-            to="/galeria"
-            role="menuitem"
-            tabIndex="-1"
-          >
-            <span className="text">Galeria</span>
-            <ArrowIcon role="none" className="icon" />
-          </Link>
-        </li>
-        <li role="none">
-          <Link
-            activeClassName="active"
-            to="/kontakt"
-            role="menuitem"
-            tabIndex="-1"
-          >
-            <span className="text">kontakt</span>
-            <ArrowIcon role="none" className="icon" />
-          </Link>
-        </li>
+          )
+        )}
       </ul>
     </StyledMobileNav>
   )
@@ -236,4 +153,16 @@ Submenu.propTypes = {
     .isRequired,
   label: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
+}
+MobileNav.defaultPropTypes = {
+  children: null,
+  className: '',
+}
+MobileNav.propTypes = {
+  menuLinks: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.oneOfType([
+    PropTypes.element,
+    PropTypes.arrayOf(PropTypes.element),
+  ]),
+  className: PropTypes.string,
 }
