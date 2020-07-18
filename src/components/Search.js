@@ -52,11 +52,11 @@ const Search = () => {
   }
   const filterItems = (item, inputValue) => {
     const matchersArray = inputValue
-      .match(/([a-z0-9ęóąśłżźćń]{1,})/gi)
-      .map(word =>
+      .match(/([^ \n]{1,})/gi)
+      ?.map(word =>
         item.frontmatter.title.toLowerCase().includes(word.toLowerCase())
       )
-    return !inputValue || !matchersArray.includes(false)
+    return !inputValue || !matchersArray?.includes(false)
   }
 
   return (

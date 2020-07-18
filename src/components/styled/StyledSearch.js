@@ -1,11 +1,25 @@
 import styled from 'styled-components'
 
 const DropDown = styled.ul`
+  --top-padding: 5rem;
   position: absolute;
   width: 100%;
+  max-height: calc(80vh - var(--padding-top));
+  overflow-y: auto;
   z-index: 2;
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
   list-style-type: none;
+
+  @media (min-width: 768px) {
+    --top-padding: 6.2rem;
+  }
+
+  @media (min-width: 1048px) {
+    --top-padding: 8rem;
+  }
+  @media (min-width: 1440px) {
+    --top-padding: 10rem;
+  }
 `
 
 const DropDownItem = styled.li`
@@ -60,6 +74,18 @@ const SearchStyles = styled.div`
 
   @media (min-width: 768px) {
     padding: 0 0 1.5em 0;
+
+    --top-padding: 6.2rem;
+    position: sticky;
+    top: calc(2.3rem + var(--top-padding));
+    z-index: 1;
+  }
+
+  @media (min-width: 1024px) {
+    --top-padding: 8rem;
+  }
+  @media (min-width: 1440px) {
+    --top-padding: 10rem;
   }
 `
 

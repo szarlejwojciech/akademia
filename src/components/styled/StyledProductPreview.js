@@ -14,10 +14,13 @@ const StyledProductPreview = styled(Link)`
   box-shadow: 0 8.5px 13px -5px rgba(0, 0, 0, 0.16),
     0 6.7px 3.5px -5px rgba(0, 0, 0, 0.07);
   h6 {
+    height: auto;
+    line-height: 1.2;
+    padding: 0.5em 0.3em;
+    /* height: 2em; */
+    /* line-height: 2em; */
+    /* padding: 0 0.5rem; */
     font-size: 1.6rem;
-    height: 2em;
-    line-height: 2em;
-    padding: 0 0.5rem;
     font-family: 'Open Sans';
     font-weight: ${({ theme }) => theme.font.fw400};
     border-top-left-radius: 0.4rem;

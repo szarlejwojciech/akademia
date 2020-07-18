@@ -42,12 +42,12 @@ const Header = () => {
       subMenu: true,
       subMenuItems: treatmentsCategories,
     },
-    {
-      label: 'Perfumy',
-      to: '/perfumy',
-      subMenu: true,
-      subMenuItems: perfumesCategories,
-    },
+    // {
+    //   label: 'Perfumy',
+    //   to: '/perfumy',
+    //   subMenu: true,
+    //   subMenuItems: perfumesCategories,
+    // },
     {
       label: 'Galeria',
       to: '/galeria',
