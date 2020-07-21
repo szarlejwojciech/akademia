@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React from 'react'
 import { Link } from 'gatsby'
 import HamburgerBtn from './HamburgerBtn'
 import MobileNav from './MobileNav'
@@ -18,8 +18,8 @@ const Header = () => {
   const goingUp = useScroll()
   const productsCategories = useCategories('produkty')
   const treatmentsCategories = useCategories('zabiegi')
-  const perfumesCategories = useCategories('perfumy')
-  const menuLinks = useRef([
+  // const perfumesCategories = useCategories('perfumy')
+  const menuLinks = [
     {
       label: 'Home',
       to: '/',
@@ -58,10 +58,10 @@ const Header = () => {
       to: '/kontakt',
       subMenu: false,
     },
-  ])
+  ]
   return (
     <StyledHeader className={goingUp ? '' : 'hidden'}>
-      <MobileNav menuLinks={menuLinks.current} className="mobile-nav" />
+      <MobileNav menuLinks={menuLinks} className="mobile-nav" tabIndex="-1" />
       <div className="top-bar">
         <HamburgerBtn label="Menu" />
         <Link

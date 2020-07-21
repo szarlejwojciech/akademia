@@ -38,7 +38,7 @@ const PlusIcon = styled.span`
   }
 `
 
-const Submenu = ({ children, label, length }) => {
+const Submenu = ({ label, length, tabIndex, to, subMenuItems }) => {
   const [isCollapsed, setIsCollapsed] = useState(true)
   const [height, setHeight] = useState(0)
   const btnElement = useRef(null)
@@ -66,20 +66,50 @@ const Submenu = ({ children, label, length }) => {
           pathname.includes(label.toLowerCase()) ? 'active' : ''
         }`}
         role="menuitem"
-        tabIndex="-1"
+        tabIndex={tabIndex}
         onClick={toggleCollapse}
       >
         <span className="text">{label}</span>
         <PlusIcon role="none" className="icon" />
       </button>
-      <ul style={{ height: `${height}px` }} className="sub-menu" role="menu">
-        {children}
+      <ul
+        style={{ maxHeight: `${height * 2}px` }}
+        className="sub-menu"
+        role="menu"
+      >
+        <li role="none">
+          <Link
+            activeClassName="active"
+            to={to}
+            role="menuitem"
+            tabIndex={isCollapsed ? '-1' : tabIndex}
+          >
+            <span className="text">wszystko</span>
+            <ArrowIcon role="none" className="icon" />
+          </Link>
+        </li>
+        {subMenuItems &&
+          !!subMenuItems.length &&
+          subMenuItems.map(({ name, path }) => (
+            <li key={path} role="none">
+              <Link
+                activeClassName="active"
+                partiallyActive={true}
+                to={path}
+                role="menuitem"
+                tabIndex={isCollapsed ? '-1' : tabIndex}
+              >
+                <span className="text">{name.replace(/-/g, ' ')}</span>
+                <ArrowIcon role="none" className="icon" />
+              </Link>
+            </li>
+          ))}
       </ul>
     </>
   )
 }
 
-const MobileNav = ({ children, menuLinks, className }) => {
+const MobileNav = ({ children, menuLinks, className, tabIndex }) => {
   const { navOpen } = useNavState()
   const { categoryNavOpen } = useNavState()
 
@@ -97,35 +127,13 @@ const MobileNav = ({ children, menuLinks, className }) => {
         {menuLinks.map(({ label, to, subMenu, subMenuItems }) =>
           subMenu ? (
             <li role="none" key={to}>
-              <Submenu length={subMenuItems.length} label={label}>
-                <li role="none">
-                  <Link
-                    activeClassName="active"
-                    to={to}
-                    role="menuitem"
-                    tabIndex="-1"
-                  >
-                    <span className="text">wszystko</span>
-                    <ArrowIcon role="none" className="icon" />
-                  </Link>
-                </li>
-                {subMenuItems &&
-                  !!subMenuItems.length &&
-                  subMenuItems.map(({ name, path }) => (
-                    <li key={path} role="none">
-                      <Link
-                        activeClassName="active"
-                        partiallyActive={true}
-                        to={path}
-                        role="menuitem"
-                        tabIndex="-1"
-                      >
-                        <span className="text">{name.replace('-', ' ')}</span>
-                        <ArrowIcon role="none" className="icon" />
-                      </Link>
-                    </li>
-                  ))}
-              </Submenu>
+              <Submenu
+                length={subMenuItems.length}
+                label={label}
+                tabIndex={tabIndex}
+                subMenuItems={subMenuItems}
+                to={to}
+              ></Submenu>
             </li>
           ) : (
             <li role="none" key={to}>
@@ -133,7 +141,7 @@ const MobileNav = ({ children, menuLinks, className }) => {
                 activeClassName="active"
                 to={to}
                 role="menuitem"
-                tabIndex="-1"
+                tabIndex={tabIndex}
               >
                 <span className="text">{label}</span>
                 <ArrowIcon role="none" className="icon" />
@@ -149,10 +157,11 @@ const MobileNav = ({ children, menuLinks, className }) => {
 export default MobileNav
 
 Submenu.propTypes = {
-  children: PropTypes.oneOfType([PropTypes.element, PropTypes.array])
-    .isRequired,
   label: PropTypes.string.isRequired,
   length: PropTypes.number.isRequired,
+  tabIndex: PropTypes.string.isRequired,
+  to: PropTypes.string.isRequired,
+  subMenuItems: PropTypes.array.isRequired,
 }
 MobileNav.defaultPropTypes = {
   children: null,
@@ -165,4 +174,5 @@ MobileNav.propTypes = {
     PropTypes.arrayOf(PropTypes.element),
   ]),
   className: PropTypes.string,
+  tabIndex: PropTypes.string.isRequired,
 }

@@ -1,4 +1,5 @@
 import React, { useRef } from 'react'
+import PropTypes from 'prop-types'
 import Downshift from 'downshift'
 import Img from 'gatsby-image'
 import slugify from 'slugify'
@@ -30,7 +31,7 @@ const query = graphql`
   }
 `
 
-const Search = () => {
+const Search = ({ tabIndex }) => {
   const {
     allMdx: { nodes: items },
   } = useStaticQuery(query)
@@ -83,6 +84,7 @@ const Search = () => {
                 title: 'Przeszukaj oferte',
                 id: 'searche',
                 name: 'searche',
+                tabIndex,
               })}
             />
             <label
@@ -157,3 +159,7 @@ const Search = () => {
 }
 
 export default Search
+
+Search.propTypes = {
+  tabIndex: PropTypes.string.isRequired,
+}

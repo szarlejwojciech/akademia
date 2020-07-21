@@ -125,7 +125,8 @@ const StyledSectionWrapper = styled(StyledSection)`
     .image-wrapper {
       flex: 1;
       max-width: unset;
-      &.embellir {
+      &.embellir,
+      &.tsukika {
         margin: 0 2rem 0 0;
         order: 0;
       }
@@ -207,7 +208,8 @@ const StyledSectionWrapper = styled(StyledSection)`
     }
     .image-wrapper {
       flex: 2;
-      &.embellir {
+      &.embellir,
+      &.tsukika {
         margin: 0 4rem 0 0;
       }
       &.saranari {
@@ -271,7 +273,8 @@ const StyledSectionWrapper = styled(StyledSection)`
     }
     .image-wrapper {
       flex: 5;
-      &.embellir {
+      &.embellir,
+      &.tsukika {
         margin: 0 6rem 0 0;
       }
       &.saranari {

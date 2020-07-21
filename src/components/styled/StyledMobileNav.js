@@ -71,6 +71,7 @@ const StyledMobileNav = styled.nav`
     font-weight: ${({ theme }) => theme.font.fw600};
     text-transform: uppercase;
     border: none;
+    border-left: 3px solid transparent;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     background-color: inherit;
     .text {
@@ -82,10 +83,15 @@ const StyledMobileNav = styled.nav`
     .icon::before {
       transform: scaleY(0);
     }
+    &:hover,
+    &:focus {
+      border-left-color: ${({ theme }) => theme.colors.accent};
+      outline: none;
+    }
   }
 
   .is-collapsed + ul {
-    height: 0px;
+    max-height: 0px;
   }
   .is-collapsed {
     .icon::before {
@@ -94,8 +100,8 @@ const StyledMobileNav = styled.nav`
   }
   .sub-menu {
     overflow: hidden;
-    will-change: height;
-    transition: 1.3s height cubic-bezier(0.18, 0.47, 0, 1);
+    will-change: max-height;
+    transition: 1.3s max-height cubic-bezier(0.18, 0.47, 0, 1);
     padding-left: 1.5em;
     list-style-type: none;
   }

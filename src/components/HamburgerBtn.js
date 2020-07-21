@@ -1,9 +1,9 @@
 import React from 'react'
+import PropTypes from 'prop-types'
 import StyledHamburgerBtn from './styled/StyledHamburgerBtn'
 import { useNavState } from '../hooks/localeState'
-import PropTypes from 'prop-types'
 
-const HamburgerBtn = ({ onClick, label }) => {
+const HamburgerBtn = ({ onClick, label, tabIndex }) => {
   const { toggleNav, navOpen, categoryNavOpen } = useNavState()
 
   return (
@@ -13,6 +13,7 @@ const HamburgerBtn = ({ onClick, label }) => {
       aria-label={label}
       navOpen={navOpen}
       categoryNavOpen={categoryNavOpen}
+      tabIndex={tabIndex}
     >
       <span />
       <span />
@@ -26,8 +27,10 @@ export default HamburgerBtn
 HamburgerBtn.defaultPropTypes = {
   onClick: null,
   label: 'Menu',
+  tabIndex: '-1',
 }
 HamburgerBtn.propTypes = {
   onClick: PropTypes.func,
   label: PropTypes.string,
+  tabIndex: PropTypes.string,
 }

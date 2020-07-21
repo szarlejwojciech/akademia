@@ -5,7 +5,7 @@ import ProductPage from '../components/ProductsPage'
 import SEO from '../components/Seo'
 
 export const query = graphql`
-  query MyQuery($type: String!, $category: String!) {
+  query MyQuery($type: String!, $category: String!, $regex: String!) {
     allMdx(
       filter: {
         frontmatter: { type: { eq: $type }, categories: { eq: $category } }
@@ -35,7 +35,7 @@ export const query = graphql`
       }
     }
 
-    file(name: { ne: $type }) {
+    file(name: { regex: $regex }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
