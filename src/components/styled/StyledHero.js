@@ -18,6 +18,10 @@ const StyledHero = styled.div`
   display: flex;
   align-items: center;
   overflow: hidden;
+  .rm-hero-slider {
+    width: 100%;
+    height: 100%;
+  }
   .image-wrapper {
     height: 100%;
     flex: 1;

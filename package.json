@@ -27,6 +27,7 @@
     "gatsby-plugin-styled-components": "^3.3.10",
     "gatsby-source-filesystem": "^2.3.20",
     "gatsby-transformer-sharp": "^2.5.11",
+    "hero-slider": "^2.0.3",
     "intersection-observer": "^0.11.0",
     "lodash": "^4.17.19",
     "prop-types": "^15.7.2",

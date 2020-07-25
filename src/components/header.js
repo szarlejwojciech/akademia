@@ -18,7 +18,8 @@ const Header = () => {
   const goingUp = useScroll()
   const productsCategories = useCategories('produkty')
   const treatmentsCategories = useCategories('zabiegi')
-  // const perfumesCategories = useCategories('perfumy')
+  const perfumesCategories = useCategories('perfumy')
+
   const menuLinks = [
     {
       label: 'Home',
@@ -42,12 +43,12 @@ const Header = () => {
       subMenu: true,
       subMenuItems: treatmentsCategories,
     },
-    // {
-    //   label: 'Perfumy',
-    //   to: '/perfumy',
-    //   subMenu: true,
-    //   subMenuItems: perfumesCategories,
-    // },
+    {
+      label: 'Perfumy',
+      to: '/perfumy',
+      subMenu: true,
+      subMenuItems: perfumesCategories,
+    },
     {
       label: 'Galeria',
       to: '/galeria',

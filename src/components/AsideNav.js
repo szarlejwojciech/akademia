@@ -8,7 +8,7 @@ const AsideNav = () => {
   const { toggleCategoryNav } = useNavState()
   const productsCategories = useCategories('produkty')
   const treatmentsCategories = useCategories('zabiegi')
-  // const perfumesCategories = useCategories('perfumy')
+  const perfumesCategories = useCategories('perfumy')
   const [tabIndex, setTabIndex] = useState('-1')
   useEffect(() => {
     setTabIndex(window.outerWidth >= 768 ? '0' : '-1')
@@ -26,12 +26,12 @@ const AsideNav = () => {
       subMenu: true,
       subMenuItems: treatmentsCategories,
     },
-    // {
-    //   label: 'Perfumy',
-    //   to: '/perfumy',
-    //   subMenu: true,
-    //   subMenuItems: perfumesCategories,
-    // },
+    {
+      label: 'Perfumy',
+      to: '/perfumy',
+      subMenu: true,
+      subMenuItems: perfumesCategories,
+    },
   ])
   return (
     <MobileNav
