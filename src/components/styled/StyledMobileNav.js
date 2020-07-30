@@ -121,14 +121,20 @@ const StyledMobileNav = styled.nav`
       & > button {
         display: none;
       }
+      & > div {
+        position: sticky;
+        z-index: 0;
+        top: calc(2.3rem + var(--top-padding));
+        /* z-index: 1; */
+      }
       ul.menubar {
         height: unset;
         box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
 
-        position: sticky;
-        top: calc(8.8rem + var(--top-padding));
+        /* position: sticky; */
+        /* top: calc(8.8rem + var(--top-padding)); */
+        /* z-index: 0; */
         max-height: calc(80vh - var(--top-padding));
-        z-index: 0;
       }
     }
   }

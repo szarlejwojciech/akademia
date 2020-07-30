@@ -51,6 +51,17 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+      allSubCategories: allMdx {
+        group(field: frontmatter___subCategories) {
+          fieldValue
+          nodes {
+            frontmatter {
+              type
+              categories
+            }
+          }
+        }
+      }
     }
   `)
   if (errors) reporter.panicOnBuild('ERROR: Loading "createPages" query!!!')
@@ -68,6 +79,25 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           context: { category, type, regex: `/${type}/ig` },
         })
       }
+      data.allSubCategories.group.forEach(
+        ({ fieldValue: subCategory, nodes }) => {
+          if (type === nodes[0].frontmatter.type && category === 'makijaż') {
+            const slug = `${type}/${slugify(category, {
+              lower: true,
+              strict: true,
+            })}/${slugify(subCategory, {
+              lower: true,
+              strict: true,
+            })}`
+            createPage({
+              path: slug,
+              component: path.resolve('src/layouts/CategoryPageLayout.js'),
+              context: { subCategory, category, type, regex: `/${type}/ig` },
+            })
+            console.log(slug)
+          }
+        }
+      )
     })
   })
 

@@ -75,10 +75,10 @@ const SearchStyles = styled.div`
   @media (min-width: 768px) {
     padding: 0 0 1.5em 0;
 
-    --top-padding: 6.2rem;
+    /* --top-padding: 6.2rem;
     position: sticky;
     top: calc(2.3rem + var(--top-padding));
-    z-index: 1;
+    z-index: 1; */
   }
 
   @media (min-width: 1024px) {

@@ -10,6 +10,7 @@ const ProductPreview = ({ excerpt, title, slug, fluid }) => {
     <StyledProductPreview to={slug} title={title} aria-label={title}>
       <h6>{title}</h6>
       <figure>
+        {console.log(title)}
         <Img className="gatsby-image" fluid={fluid} alt={title} title={title} />
         <figcaption>
           <p>{excerpt}</p>

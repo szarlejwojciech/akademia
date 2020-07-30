@@ -20,11 +20,6 @@ const StyledSlide = styled(Slide)`
   }
 `
 
-const SlideFullImg = styled(Img)`
-  height: 100% !important;
-  width: 100% !important;
-`
-
 const StyledCta = styled.div`
   background-color: ${({ nebu, xerjoff }) =>
     nebu ? 'rgba(0,0,0,.7)' : xerjoff ? 'rgba(67,39,100,.7)' : 'transparent'};
@@ -136,7 +131,7 @@ const HeroSliderWrapper = () => {
               sceny.
             </p>
             <ButtonLink
-              to="/produkty"
+              to="/produkty/makijaz"
               color="light"
               title="Przeglądaj Nebu Milano"
             >
@@ -145,7 +140,6 @@ const HeroSliderWrapper = () => {
             </ButtonLink>
           </StyledCta>
         </div>
-        {/* <SlideFullImg fluid={nebu} /> */}
       </StyledSlide>
       <StyledSlide
         background={{
@@ -167,7 +161,6 @@ const HeroSliderWrapper = () => {
             </ButtonLink>
           </StyledCta>
         </div>
-        {/* <SlideFullImg fluid={xerjoff} /> */}
       </StyledSlide>
     </HeroSlider>
   )

@@ -19,7 +19,6 @@ const Header = () => {
   const productsCategories = useCategories('produkty')
   const treatmentsCategories = useCategories('zabiegi')
   const perfumesCategories = useCategories('perfumy')
-
   const menuLinks = [
     {
       label: 'Home',

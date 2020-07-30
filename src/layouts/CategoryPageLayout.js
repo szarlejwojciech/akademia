@@ -5,10 +5,19 @@ import ProductPage from '../components/ProductsPage'
 import SEO from '../components/Seo'
 
 export const query = graphql`
-  query MyQuery($type: String!, $category: String!, $regex: String!) {
+  query MyQuery(
+    $type: String!
+    $category: String!
+    $subCategory: String
+    $regex: String!
+  ) {
     allMdx(
       filter: {
-        frontmatter: { type: { eq: $type }, categories: { eq: $category } }
+        frontmatter: {
+          type: { eq: $type }
+          categories: { eq: $category }
+          subCategories: { eq: $subCategory }
+        }
       }
     ) {
       nodes {
@@ -19,6 +28,7 @@ export const query = graphql`
           title
           type
           categories
+          subCategories
           featuredImage {
             childImageSharp {
               fluid(
@@ -57,7 +67,10 @@ const getSubTitle = type => {
   }
 }
 
-const CategoryPageLayout = ({ data, pageContext: { type, category } }) => {
+const CategoryPageLayout = ({
+  data,
+  pageContext: { type, category, subCategory },
+}) => {
   return (
     <>
       <SEO
@@ -69,6 +82,7 @@ const CategoryPageLayout = ({ data, pageContext: { type, category } }) => {
         products={data.allMdx.nodes}
         type={type}
         category={category}
+        subCategory={subCategory}
         bgImageFluid={data.file.childImageSharp.fluid}
         subTitle={getSubTitle(type)}
       />
@@ -81,6 +95,7 @@ export default CategoryPageLayout
 CategoryPageLayout.propTypes = {
   pageContext: PropTypes.shape({
     category: PropTypes.string,
+    subCategory: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     type: PropTypes.string,
   }).isRequired,
   data: PropTypes.objectOf(PropTypes.object).isRequired,

@@ -5,6 +5,10 @@ const query = graphql`
     group(field: frontmatter___categories) {
       fieldValue
     }
+
+    makeup: group(field: frontmatter___subCategories) {
+      fieldValue
+    }
   }
 
   query categoriiesQuery {
@@ -39,6 +43,14 @@ function useCategories(type) {
     case 'perfumy':
       return data.perfumes.group.map(({ fieldValue }) => ({
         path: `/perfumy/${slugify(fieldValue, { lower: true, strict: true })}`,
+        name: fieldValue,
+      }))
+    case 'makijaż':
+      return data.products.makeup.map(({ fieldValue }) => ({
+        path: `/produkty/makijaz/${slugify(fieldValue, {
+          lower: true,
+          strict: true,
+        })}`,
         name: fieldValue,
       }))
     default:

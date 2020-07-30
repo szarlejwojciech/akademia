@@ -5,15 +5,14 @@ import styled from 'styled-components'
 import StyledMobileNav from './styled/StyledMobileNav'
 import { useNavState } from '../hooks/localeState'
 import { useLocation } from '@reach/router'
+import useCategories from '../hooks/useCategories'
+import slugify from 'slugify'
 
 const ArrowIcon = styled.span`
   position: relative;
-  width: 0.6em;
-  height: 0.6em;
-  border: 2px solid ${({ theme }) => theme.colors.primaryDark};
-  border-left: transparent;
-  border-bottom: transparent;
-  transform: translateX(-25%) rotate(45deg);
+  border-left: 0.6em solid #1a171b;
+  border-top: 0.25em solid transparent;
+  border-bottom: 0.25em solid transparent;
 `
 
 const PlusIcon = styled.span`
@@ -50,7 +49,8 @@ const Submenu = ({ label, length, tabIndex, to, subMenuItems }) => {
 
   useEffect(() => {
     setIsCollapsed(true)
-    if (pathname.includes(label.toLowerCase())) setIsCollapsed(false)
+    if (pathname.includes(slugify(label, { lower: true, strict: true })))
+      setIsCollapsed(false)
   }, [pathname])
 
   const toggleCollapse = () => {
@@ -63,7 +63,9 @@ const Submenu = ({ label, length, tabIndex, to, subMenuItems }) => {
         type="button"
         ref={btnElement}
         className={`submenu-toggler ${isCollapsed ? 'is-collapsed' : ''} ${
-          pathname.includes(label.toLowerCase()) ? 'active' : ''
+          pathname.includes(slugify(label, { lower: true, strict: true }))
+            ? 'active'
+            : ''
         }`}
         role="menuitem"
         tabIndex={tabIndex}
@@ -77,33 +79,48 @@ const Submenu = ({ label, length, tabIndex, to, subMenuItems }) => {
         className="sub-menu"
         role="menu"
       >
-        <li role="none">
-          <Link
-            activeClassName="active"
-            to={to}
-            role="menuitem"
-            tabIndex={isCollapsed ? '-1' : tabIndex}
-          >
-            <span className="text">wszystko</span>
-            <ArrowIcon role="none" className="icon" />
-          </Link>
-        </li>
+        {subMenuItems.length > 1 ? (
+          <li role="none">
+            <Link
+              activeClassName="active"
+              to={to}
+              role="menuitem"
+              tabIndex={isCollapsed ? '-1' : tabIndex}
+            >
+              <span className="text">wszystko</span>
+              <ArrowIcon role="none" className="icon" />
+            </Link>
+          </li>
+        ) : null}
         {subMenuItems &&
           !!subMenuItems.length &&
-          subMenuItems.map(({ name, path }) => (
-            <li key={path} role="none">
-              <Link
-                activeClassName="active"
-                partiallyActive={true}
-                to={path}
-                role="menuitem"
-                tabIndex={isCollapsed ? '-1' : tabIndex}
-              >
-                <span className="text">{name.replace(/-/g, ' ')}</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-          ))}
+          subMenuItems.map(({ name, path }) => {
+            const subCategories = useCategories(name)
+            return (
+              <li key={path} role="none">
+                {subCategories ? (
+                  <Submenu
+                    length={subCategories.length}
+                    label={name}
+                    tabIndex={tabIndex}
+                    subMenuItems={subCategories}
+                    to={path}
+                  ></Submenu>
+                ) : (
+                  <Link
+                    activeClassName="active"
+                    partiallyActive={true}
+                    to={path}
+                    role="menuitem"
+                    tabIndex={isCollapsed ? '-1' : tabIndex}
+                  >
+                    <span className="text">{name.replace(/-/g, ' ')}</span>
+                    <ArrowIcon role="none" className="icon" />
+                  </Link>
+                )}
+              </li>
+            )
+          })}
       </ul>
     </>
   )
@@ -122,34 +139,36 @@ const MobileNav = ({ children, menuLinks, className, tabIndex }) => {
       aria-hidden={!navOpen}
       aria-labelledby="mobile-navigation"
     >
-      {children}
-      <ul role="menubar" className="menubar">
-        {menuLinks.map(({ label, to, subMenu, subMenuItems }) =>
-          subMenu ? (
-            <li role="none" key={to}>
-              <Submenu
-                length={subMenuItems.length}
-                label={label}
-                tabIndex={tabIndex}
-                subMenuItems={subMenuItems}
-                to={to}
-              ></Submenu>
-            </li>
-          ) : (
-            <li role="none" key={to}>
-              <Link
-                activeClassName="active"
-                to={to}
-                role="menuitem"
-                tabIndex={tabIndex}
-              >
-                <span className="text">{label}</span>
-                <ArrowIcon role="none" className="icon" />
-              </Link>
-            </li>
-          )
-        )}
-      </ul>
+      <div>
+        {children}
+        <ul role="menubar" className="menubar">
+          {menuLinks.map(({ label, to, subMenu, subMenuItems }) =>
+            subMenu ? (
+              <li role="none" key={to}>
+                <Submenu
+                  length={subMenuItems.length}
+                  label={label}
+                  tabIndex={tabIndex}
+                  subMenuItems={subMenuItems}
+                  to={to}
+                ></Submenu>
+              </li>
+            ) : (
+              <li role="none" key={to}>
+                <Link
+                  activeClassName="active"
+                  to={to}
+                  role="menuitem"
+                  tabIndex={tabIndex}
+                >
+                  <span className="text">{label}</span>
+                  <ArrowIcon role="none" className="icon" />
+                </Link>
+              </li>
+            )
+          )}
+        </ul>
+      </div>
     </StyledMobileNav>
   )
 }
