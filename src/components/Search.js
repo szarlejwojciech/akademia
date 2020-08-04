@@ -26,6 +26,7 @@ const query = graphql`
             }
           }
         }
+        excerpt(pruneLength: 2000)
       }
     }
   }
@@ -54,8 +55,10 @@ const Search = ({ tabIndex }) => {
   const filterItems = (item, inputValue) => {
     const matchersArray = inputValue
       .match(/([^ \n]{1,})/gi)
-      ?.map(word =>
-        item.frontmatter.title.toLowerCase().includes(word.toLowerCase())
+      ?.map(
+        word =>
+          item.frontmatter.title.toLowerCase().includes(word.toLowerCase()) ||
+          item.excerpt.toLowerCase().includes(word.toLowerCase())
       )
     return !inputValue || !matchersArray?.includes(false)
   }
