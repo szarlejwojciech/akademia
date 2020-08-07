@@ -2,22 +2,29 @@ import React from 'react'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import BackgroundImage from 'gatsby-background-image'
-import StyledButtonLink from './styled/StyledButtonLink'
-import ButtonLink from './ButtonLink'
-import CustomSlider from './CustomSlider'
-import HeroSlider from './HeroSlider'
 import StyledHero from './styled/StyledHero'
 import StyledSection from './styled/StyledSection'
 import StyledScrollIcon from './styled/StyledScrollIcon'
 import StyledSectionWrapper from './styled/StyledSectionWrapper'
+import ButtonLink from './ButtonLink'
+import CustomSlider from './CustomSlider'
 import HeadingDecoration from '../assets/svg/heading-decoration.svg'
+import MenardLogo from '../assets/svg/menard-logo.svg'
 import ArrowRightIcon from '../assets/svg/arrow-right-icon.svg'
 import PhoneIcon from '../assets/svg/phone-icon.svg'
 import PhoneDecor from '../assets/svg/phone-decor.svg'
 import ContactBottle from '../assets/svg/contact-bottle.svg'
+import StyledButtonLink from './styled/StyledButtonLink'
 
 const query = graphql`
   query {
+    hero: file(name: { eq: "hero" }) {
+      childImageSharp {
+        fluid(maxWidth: 1807, maxHeight: 2000, quality: 90) {
+          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+        }
+      }
+    }
     salon1: file(name: { eq: "salon-1" }) {
       childImageSharp {
         fluid(maxWidth: 330, maxHeight: 200, quality: 80) {
@@ -44,6 +51,7 @@ const query = graphql`
 
 const Home = () => {
   const data = useStaticQuery(query)
+  const hero = data.hero.childImageSharp.fluid
   const salon1 = data.salon1.childImageSharp.fluid
   const salon2 = data.salon2.childImageSharp.fluid
   const sectionBg = data.sectionBg.childImageSharp.fluid
@@ -51,7 +59,24 @@ const Home = () => {
   return (
     <>
       <StyledHero>
-        <HeroSlider />
+        <div className="cta">
+          <MenardLogo />
+          <p>
+            Linia produktów stworzonych dla kobiet poszukujących prawdziwego
+            piękna na całym świecie.
+          </p>
+          <ButtonLink to="/produkty" title="Przeglądaj Menard">
+            <span>Przeglądaj</span>
+            <ArrowRightIcon />
+          </ButtonLink>
+        </div>
+        <div className="image-wrapper">
+          <Img
+            className="hero-gatsby-img"
+            fluid={hero}
+            backgroundColor={`#FFFFFF`}
+          />
+        </div>
         <StyledScrollIcon role="none" />
       </StyledHero>
       <main>

@@ -11,54 +11,43 @@ import GalleryIcon from '../assets/svg/gallery-icon.svg'
 import HeadingDecor from '../assets/svg/heading-decoration.svg'
 
 const query = graphql`
-  fragment ImageSharpLineImages on File {
-    childImageSharp {
-      fluid(maxWidth: 850, quality: 90) {
-        ...GatsbyImageSharpFluid_tracedSVG
-      }
-    }
-  }
-
-  fragment ImageSharpDecorationImages on File {
-    childImageSharp {
-      fluid(maxWidth: 220, maxHeight: 220, quality: 90) {
-        ...GatsbyImageSharpFluid_tracedSVG
-      }
-    }
-  }
-
   {
     embellir: file(name: { eq: "embellir-line" }) {
-      ...ImageSharpLineImages
+      childImageSharp {
+        fluid(maxWidth: 850, maxHeight: 537, quality: 90) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
     }
     saranari: file(name: { eq: "saranari-line" }) {
-      ...ImageSharpLineImages
-    }
-    tsukika: file(name: { eq: "tsukika-line" }) {
-      ...ImageSharpLineImages
+      childImageSharp {
+        fluid(maxWidth: 850, maxHeight: 483, quality: 90) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
     }
     authent: file(name: { eq: "authent-ii" }) {
-      ...ImageSharpDecorationImages
+      childImageSharp {
+        fluid(maxWidth: 220, maxHeight: 220, quality: 90) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
     }
     embellirSmall: file(name: { eq: "embellir-make-up-base" }) {
-      ...ImageSharpDecorationImages
+      childImageSharp {
+        fluid(maxWidth: 220, maxHeight: 220, quality: 90) {
+          ...GatsbyImageSharpFluid_tracedSVG
+        }
+      }
     }
   }
 `
 const AboutUs = () => {
-  const YEAR_OF_ESTABLISHMENT = 2004
-
   const data = useStaticQuery(query)
   const embellir = data.embellir.childImageSharp.fluid
   const saranari = data.saranari.childImageSharp.fluid
-  const tsukika = data.tsukika.childImageSharp.fluid
   const authent = data.authent.childImageSharp.fluid
   const embellirSmall = data.embellirSmall.childImageSharp.fluid
-
-  const getYearOfExist = () => {
-    const currentYear = new Date().getFullYear()
-    return currentYear - YEAR_OF_ESTABLISHMENT
-  }
   return (
     <>
       <StyledSectionWrapper>
@@ -68,26 +57,15 @@ const AboutUs = () => {
         <div className="content-wrapper">
           <BottleDecor className="bottle-decor" />
           <div className="content">
-            <h2>Co przyświeca akademii urody?</h2>
+            <h2>Doświadczenie</h2>
             <div className="paragraph-box">
               <p>
-                Najistotniejszym oraz najcenniejszym aspektem w życiu człowieka
-                jest pasja, gdyż tylko dzięki niej chcemy się rozwijać i na tej
-                płaszczyźnie jesteśmy wciąż nienasyceni. Akademia Urody,
-                prowadzona przez Panią Annę Jaskierską to firma z
-                &quot;pasją&quot;.{' '}
-              </p>
-              <p>
-                Pani Anna stale i konsekwentnie dąży do podnoszenia swoich
-                kwalifikacji, czego namacalnym dowodem jest choćby zdobyty z
-                wyróżnieniem tytuł &quot;Eksperta zdrowia i urody w zakresie
-                zabiegów pielęgnacyjnych&quot;.{' '}
-              </p>
-              <p>
-                Instytut, jakim jest Akademia Urody, istnieje od{' '}
-                {getYearOfExist()} lat. W tym czasie zarówno nazwa, jak i zakres
-                pielęgnacji oraz uwaga skierowana na potrzeby klienta
-                ewoluowała.
+                Dwunastoletnie doświadczenie naszego salonu kosmetycznego,
+                niezwykłe metody nakładania produktów, metody których
+                skuteczność potwierdziła się w setkach przypadków, wyjątkowa
+                znajomość tego, co niepokoi i zajmuje kobiety i mężczyzn jeśli
+                chodzi o ich urodę, śledzenie światowych nowości w dziedzinie
+                kosmetologii – wszystko to leży u podstaw naszego sukcesu.
               </p>
             </div>
           </div>
@@ -100,47 +78,23 @@ const AboutUs = () => {
         <div className="content-wrapper">
           <Bottle2Decor className="bottle2-decor" />
           <div className="content">
-            <h2>Nasze motto</h2>
+            <h2>Nasza filozofia</h2>
             <div className="paragraph-box">
               <p>
-                Nadrzędnym celem oraz założeniem naszego Instytutu jest
-                skrupulatne oraz indywidualne podejście do klienta. Mając na
-                uwadze to, jak ważne jest nasze zdrowie, nie ograniczamy się
-                tylko do zabiegów zewnętrznych, lecz w dużej mierze zwracamy
-                także uwagę na te wewnętrzne.
+                Filozofią naszego salonu jest poważne traktowanie problemów
+                związanych z urodą. Zapewnia to zadowolenie klientów, wymierne
+                efekty i zaufanie do naszego salonu. Zawsze podejmujemy wszelkie
+                starania by oferować najlepsze produkty oraz dobre i rzetelne
+                porady.
               </p>
               <p>
-                Połączenie pielęgnacji oraz zdrowego odżywiania, poprzez
-                odpowiednią suplementację, której to istotnym celem jest zdrowy
-                układ pokarmowy jest naszym mottem.
-              </p>
-            </div>
-          </div>
-        </div>
-      </StyledSectionWrapper>
-      <StyledSectionWrapper>
-        <div className="image-wrapper tsukika">
-          <Img fluid={tsukika} alt="zdjęcie linii Tsukika" />
-        </div>
-        <div className="content-wrapper">
-          <BottleDecor className="bottle-decor" />
-          <div className="content">
-            <h2>Co nas wyróżnia?</h2>
-            <div className="paragraph-box">
-              <p>
-                Kwestia naszego zdrowia, piękna sylwetki i samopoczucia okazuje
-                się być uzależniona od tego, co mieszka w naszych jelitach.
-                Zdrowe jelita to takie, których właściciel zwraca uwagę na
-                odpowiednią dietę oraz suplementację organizmu. W zamian, nasz
-                organizm odwdzięcza się poprawą zdrowia, a co za tym idzie -
-                zadbaną i piękną skórą oraz dobrym samopoczuciem.
-              </p>
-              <p>
-                Akademia Urody scala te wszystkie elementy, w związku z czym
-                nasz Instytut oraz niezwykle starannie i profesjonalnie
-                stosowana oferta z całą pewnością bardzo wyraźnie wyróżnia nas
-                na tle innych firm, których wiodącym priorytetem jest głęboka i
-                często wręcz niebezpieczna ingerencja medyczna.
+                Komfortowy gabinet oraz profesjonalny, wykwalifikowany personel
+                tworzy niezapomnianą atmosferę. Tutaj krok po kroku,
+                przeprowadzimy Cię przez świat piękna. Przygoda ta pozwoli Ci
+                odkryć kreatywne możliwości naszych ekspertów piękna. Pozwól, by
+                nasi specjaliści zatroszczyli się o Ciebie, Twoje włosy, dłonie
+                i ciało. Oferujemy Ci przedłużanie włosów, rzęs, stylizację i
+                pielęgnację paznokci. Stwórz z nami swój nowy wizerunek.
               </p>
             </div>
           </div>

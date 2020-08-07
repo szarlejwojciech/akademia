@@ -1,10 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import styled from 'styled-components'
 import { useLocation, navigate } from '@reach/router'
-import { Link } from 'gatsby'
 import ArrowIcon from '../assets/svg/arrow-right-icon.svg'
 
-const PrevLink = styled(Link)`
+const PrevLink = styled.button`
   padding: 1em;
   height: 100%;
   color: ${({ theme }) => theme.colors.accent};
@@ -47,7 +46,7 @@ const PrevUrlButton = () => {
   }
 
   return (
-    <PrevLink to="../" aria-label="powrót" onClick={handleGoBack}>
+    <PrevLink to={prevPath} aria-label="powrót" onClick={handleGoBack}>
       <ArrowIcon />
       <span>wróć</span>
     </PrevLink>

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import AsideNav from './AsideNav'
 import { useNavState } from '../hooks/localeState'
 import HeaderImageLayout from '../layouts/HeaderImageLayout'
-import slugify from 'slugify'
+import { toCebabCase } from '../utils/toCebabCase'
 import ProductPreview from './ProductPreview'
 import PrevUrlButton from './PrevUrlButton'
 import StyledProductsPage from './styled/StyledProductsPage'
@@ -11,8 +11,8 @@ import StyledCategoryBtn from './styled/StyledCategoryBtn'
 import StyledOptionBar from './styled/StyledOptionBar'
 import ListIcon from '../assets/svg/list-icon.svg'
 
-const ProductPage = ({ products, type, category, bgImageFluid, subTitle }) => {
-  const { toggleCategoryNav } = useNavState()
+const ProductPage = ({ products, type, bgImageFluid, subTitle }) => {
+  const { categoryNavOpen, toggleCategoryNav } = useNavState()
   return (
     <HeaderImageLayout fluid={bgImageFluid} title={type} subTitle={subTitle}>
       <StyledProductsPage as="section">
@@ -24,34 +24,38 @@ const ProductPage = ({ products, type, category, bgImageFluid, subTitle }) => {
           <PrevUrlButton />
         </StyledOptionBar>
         <div className="wrapper">
-          <AsideNav />
+          <AsideNav type={type} isOpen={categoryNavOpen} />
           <div className="products-grid">
             {(!products || !products.length) && (
               <p>Dokładamy wszelkich starań aby uzupełnić ofertę.</p>
             )}
             {products &&
               !!products.length &&
-              products.map(data => {
-                const { slug } = data.fields
-                const { categories, title } = data.frontmatter
-                const { fluid } = data.frontmatter.featuredImage.childImageSharp
-                const newSlug = `/${type}/${slugify(
-                  category ? category : categories[0],
-                  {
-                    lower: true,
-                    strict: true,
-                  }
-                )}/${slug}`
-                return (
-                  <ProductPreview
-                    key={slug}
-                    excerpt={data.excerpt}
-                    title={title}
-                    slug={newSlug}
-                    fluid={fluid}
-                  ></ProductPreview>
-                )
-              })}
+              products.map(
+                ({
+                  excerpt,
+                  frontmatter: {
+                    categories,
+                    title,
+                    featuredImage: {
+                      childImageSharp: { fluid },
+                    },
+                  },
+                }) => {
+                  const slug = `/${type}/${toCebabCase(
+                    categories[0]
+                  )}/${toCebabCase(title)}`
+                  return (
+                    <ProductPreview
+                      key={slug}
+                      excerpt={excerpt}
+                      title={title}
+                      slug={slug}
+                      fluid={fluid}
+                    ></ProductPreview>
+                  )
+                }
+              )}
           </div>
         </div>
       </StyledProductsPage>
@@ -63,7 +67,6 @@ export default ProductPage
 
 ProductPage.defaultPropTypes = {
   subTitle: null,
-  category: null,
 }
 ProductPage.propTypes = {
   products: PropTypes.arrayOf(PropTypes.object).isRequired,
@@ -77,6 +80,5 @@ ProductPage.propTypes = {
     tracedSVG: PropTypes.string,
   }).isRequired,
   type: PropTypes.string.isRequired,
-  category: PropTypes.string,
   subTitle: PropTypes.string,
 }

@@ -1,52 +1,67 @@
-import React, { useRef, useState, useEffect } from 'react'
+import React from 'react'
+import PropTypes from 'prop-types'
+import { Link } from 'gatsby'
+import ArrowIcon from '../assets/svg/arrow-right-icon.svg'
 import useCategories from '../hooks/useCategories'
-import MobileNav from './MobileNav'
+import StyledNav from './styled/StyledMobileNav'
 import HamburgerBtn from './HamburgerBtn'
 import { useNavState } from '../hooks/localeState'
 import Search from './Search'
-const AsideNav = () => {
+const AsideNav = ({ type, isOpen }) => {
+  const categories = useCategories(type)
   const { toggleCategoryNav } = useNavState()
-  const productsCategories = useCategories('produkty')
-  const treatmentsCategories = useCategories('zabiegi')
-  const perfumesCategories = useCategories('perfumy')
-  const [tabIndex, setTabIndex] = useState('-1')
-  useEffect(() => {
-    setTabIndex(window.outerWidth >= 768 ? '0' : '-1')
-  }, [])
-  const menuLinks = useRef([
-    {
-      label: 'Produkty',
-      to: '/produkty',
-      subMenu: true,
-      subMenuItems: productsCategories,
-    },
-    {
-      label: 'Zabiegi',
-      to: '/zabiegi',
-      subMenu: true,
-      subMenuItems: treatmentsCategories,
-    },
-    {
-      label: 'Perfumy',
-      to: '/perfumy',
-      subMenu: true,
-      subMenuItems: perfumesCategories,
-    },
-  ])
+
   return (
-    <MobileNav
-      menuLinks={menuLinks.current}
-      className="aside-nav"
-      tabIndex={tabIndex}
-    >
-      <HamburgerBtn
-        label="Zamknij kategorie"
-        onClick={toggleCategoryNav}
-        tabIndex={tabIndex}
-      />
-      <Search tabIndex={tabIndex} />
-    </MobileNav>
+    <StyledNav className={`aside-nav ${isOpen ? 'is-open' : ''}`}>
+      <HamburgerBtn label="Zamknij kategorie" onClick={toggleCategoryNav} />
+      <Search />
+      <ul role="menubar" className="menubar">
+        <li role="none">
+          <Link
+            to="/produkty"
+            role="menuitem"
+            activeClassName="active"
+            partiallyActive={true}
+          >
+            <span className="text">Produkty</span>
+            <ArrowIcon role="none" className="icon" />
+          </Link>
+        </li>
+        <li role="none">
+          <Link
+            to="/zabiegi"
+            role="menuitem"
+            activeClassName="active"
+            partiallyActive={true}
+          >
+            <span className="text">Zabiegi</span>
+            <ArrowIcon role="none" className="icon" />
+          </Link>
+        </li>
+        <li role="none" className="separator"></li>
+        {categories.map(({ path, name }) => {
+          return (
+            <li key={path} role="none">
+              <Link
+                to={path}
+                role="menuitem"
+                activeClassName="active"
+                partiallyActive={true}
+              >
+                <span className="text">{name.replace(/-/g, ' ')}</span>
+                <ArrowIcon role="none" className="icon" />
+              </Link>
+            </li>
+          )
+        })}
+      </ul>
+    </StyledNav>
   )
 }
 
 export default AsideNav
+
+AsideNav.propTypes = {
+  type: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
+}
