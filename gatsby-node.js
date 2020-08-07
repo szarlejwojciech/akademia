@@ -94,7 +94,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
               component: path.resolve('src/layouts/CategoryPageLayout.js'),
               context: { subCategory, category, type, regex: `/${type}/ig` },
             })
-            console.log(slug)
           }
         }
       )
