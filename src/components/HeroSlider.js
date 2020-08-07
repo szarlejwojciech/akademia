@@ -61,14 +61,14 @@ const query = graphql`
     nebu: file(name: { eq: "nebu-milano-slide" }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid
         }
       }
     }
     xerjoff: file(name: { eq: "xerjoff-slide" }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 90) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+          ...GatsbyImageSharpFluid
         }
       }
     }
@@ -120,6 +120,7 @@ const HeroSliderWrapper = () => {
         background={{
           backgroundImage: nebu.src,
           backgroundAttachment: 'fixed',
+          alt: 'Zdjęcie kolekcji Nebu Milano',
         }}
       >
         <div className="wrapper">
@@ -145,6 +146,7 @@ const HeroSliderWrapper = () => {
         background={{
           backgroundImage: xerjoff.src,
           backgroundAttachment: 'fixed',
+          alt: 'Zdjęcie kolekcji Xerjoff 5',
         }}
       >
         <div className="wrapper">
