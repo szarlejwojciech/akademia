@@ -1,20 +1,51 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import { useStaticQuery, graphql } from 'gatsby'
+import { graphql } from 'gatsby'
 import ProductPage from '../components/ProductsPage'
 import SEO from '../components/Seo'
 
-const query = graphql`
-  {
-    treatmentsBgImage: file(name: { eq: "treatments-bg" }) {
-      childImageSharp {
-        fluid(maxWidth: 2000, quality: 100) {
-          ...GatsbyImageSharpFluid_withWebp_tracedSVG
+export const query = graphql`
+  query MyQuery(
+    $type: String!
+    $category: String!
+    $subCategory: String
+    $regex: String!
+  ) {
+    allMdx(
+      filter: {
+        frontmatter: {
+          type: { eq: $type }
+          categories: { eq: $category }
+          subCategories: { eq: $subCategory }
         }
+      }
+    ) {
+      nodes {
+        fields {
+          slug
+        }
+        frontmatter {
+          title
+          type
+          categories
+          subCategories
+          featuredImage {
+            childImageSharp {
+              fluid(
+                maxWidth: 170
+                quality: 90
+                traceSVG: { color: "#4F5053", background: "#EEF6F7" }
+              ) {
+                ...GatsbyImageSharpFluid_tracedSVG
+              }
+            }
+          }
+        }
+        excerpt(pruneLength: 70)
       }
     }
 
-    productsBgImage: file(name: { eq: "products-bg" }) {
+    file(name: { regex: $regex }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
@@ -23,39 +54,37 @@ const query = graphql`
     }
   }
 `
-const subTitle = {
-  products:
-    'Aby jak najdłużej zachować piękną i zdrową skórę należy podtrzymywać jej równowagę poprzez codzienne dostarczanie niezbędnych elementów.',
-  treatments:
-    'Od najmłodszych lat nasza skóra musi się mierzyć z różnymi problemami i walczyć z rosnącymi zagrożeniami.',
+const getSubTitle = type => {
+  switch (type) {
+    case 'produkty':
+      return 'Aby jak najdłużej zachować piękną i zdrową skórę należy podtrzymywać jej równowagę poprzez codzienne dostarczanie niezbędnych elementów.'
+    case 'zabiegi':
+      return 'Od najmłodszych lat nasza skóra musi się mierzyć z różnymi problemami i walczyć z rosnącymi zagrożeniami.'
+    case 'perfumy':
+      return 'Perfumy Od najmłodszych lat nasza skóra musi się mierzyć z różnymi problemami i walczyć z rosnącymi zagrożeniami.'
+    default:
+      return null
+  }
 }
 
-const CategoryPageLayout = ({ path, pageContext: { products } }) => {
-  const type = path.split('/')[1]
-  const {
-    productsBgImage: {
-      childImageSharp: { fluid: productsBgImage },
-    },
-    treatmentsBgImage: {
-      childImageSharp: { fluid: treatmentsBgImage },
-    },
-  } = useStaticQuery(query)
+const CategoryPageLayout = ({
+  data,
+  pageContext: { type, category, subCategory },
+}) => {
   return (
     <>
       <SEO
         title={`${type}, Akademia Urody, salon kosmetyczny Nowy Targ`}
-        description={
-          type === 'produkty' || type === 'products'
-            ? subTitle.products
-            : subTitle.treatments
-        }
+        description={getSubTitle(type)}
         keywords="produkty, zabiegi, antypigmentacyjne, nawilżające, oczyszczające, odżywiająco regenerujące, peelingi i eksfoliatoryton, przeciwstarzeniowe, przeciwsłoneczne, specjalistyczne, tonizujące"
       />
       <ProductPage
-        products={products}
+        products={data.allMdx.nodes}
         type={type}
-        bgImageFluid={type === 'produkty' ? productsBgImage : treatmentsBgImage}
-        subTitle={type === 'produkty' ? subTitle.products : subTitle.treatments}
+        category={category}
+        subCategory={subCategory}
+        bgImageFluid={data.file.childImageSharp.fluid}
+        subTitle={getSubTitle(type)}
       />
     </>
   )
@@ -66,7 +95,8 @@ export default CategoryPageLayout
 CategoryPageLayout.propTypes = {
   pageContext: PropTypes.shape({
     category: PropTypes.string,
-    products: PropTypes.arrayOf(PropTypes.object),
+    subCategory: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
+    type: PropTypes.string,
   }).isRequired,
-  path: PropTypes.string.isRequired,
+  data: PropTypes.objectOf(PropTypes.object).isRequired,
 }

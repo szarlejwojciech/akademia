@@ -38,9 +38,12 @@ productsPage.propTypes = {
 export const queryProducts = graphql`
   {
     productsImages: allMdx(
-      filter: { frontmatter: { type: { eq: "products" } } }
+      filter: { frontmatter: { type: { eq: "produkty" } } }
     ) {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           title
           categories
@@ -59,7 +62,7 @@ export const queryProducts = graphql`
         excerpt(pruneLength: 70)
       }
     }
-    bgImage: file(name: { eq: "products-bg" }) {
+    bgImage: file(name: { eq: "produkty-bg" }) {
       childImageSharp {
         fluid(maxWidth: 2000, quality: 100) {
           ...GatsbyImageSharpFluid_withWebp_tracedSVG
