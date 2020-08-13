@@ -22,7 +22,8 @@ const scroll = keyframes`
 
 const StyledScrollIcon = styled.span`
   position: absolute;
-  top: calc(50% + 13rem + 11vh);
+  /* top: calc(50% + 13rem + 11vh); */
+  bottom: 2rem;
   left: 50%;
   width: 2.5rem;
   height: 4rem;
@@ -32,6 +33,7 @@ const StyledScrollIcon = styled.span`
   transform: translateX(-50%);
   border: 1px solid ${({ theme }) => theme.colors.primaryDark};
   border-radius: 4rem;
+  z-index: 2;
 
   &::before {
     content: '';
@@ -43,8 +45,8 @@ const StyledScrollIcon = styled.span`
   }
 
   @media (min-width: 768px) {
-    top: unset;
-    bottom: 2rem;
+    /* top: unset; */
+    /* bottom: 2rem; */
   }
 
   @media (min-width: 1024px) {

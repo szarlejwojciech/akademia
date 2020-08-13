@@ -19,10 +19,11 @@ const StyledMobileNav = styled.nav`
     height: 100%;
     background-color: inherit;
   }
-  &::before {
+  /* &::before {
+    --top-padding: 5rem;
     content: '';
     position: absolute;
-    top: 0;
+    top: var(--top-padding);
     bottom: 0;
     left: 0;
     right: 0;
@@ -31,12 +32,28 @@ const StyledMobileNav = styled.nav`
     transition: 0.5s opacity ease-in-out;
     box-shadow: 150px 0px 200px 400px rgba(0, 0, 0, 0.6);
     z-index: -1;
-  }
+  } */
 
-  &.is-open {
+  &.mobile-nav.mobile-nav-is-open {
     transform: translateX(0%);
-    &::before {
+    /* &::before {
       opacity: 1;
+    } */
+  }
+  &.aside-nav {
+    top: 0;
+    z-index: 25;
+    height: 100vh;
+    overflow-y: auto;
+    & > button {
+      margin: 1rem;
+    }
+
+    &.aside-nav-is-open {
+      transform: translateX(0%);
+      &::before {
+        opacity: 1;
+      }
     }
   }
   .separator {
@@ -45,6 +62,7 @@ const StyledMobileNav = styled.nav`
   }
   [role='menuitem'] {
     font-size: 1.5rem;
+    line-height: normal;
     width: 100%;
     display: flex;
     justify-content: space-between;
@@ -53,6 +71,7 @@ const StyledMobileNav = styled.nav`
     font-weight: ${({ theme }) => theme.font.fw600};
     text-transform: uppercase;
     border: none;
+    border-left: 3px solid transparent;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     background-color: inherit;
     .text {
@@ -64,10 +83,15 @@ const StyledMobileNav = styled.nav`
     .icon::before {
       transform: scaleY(0);
     }
+    &:hover,
+    &:focus {
+      border-left-color: ${({ theme }) => theme.colors.accent};
+      outline: none;
+    }
   }
 
   .is-collapsed + ul {
-    height: 0px;
+    max-height: 0px;
   }
   .is-collapsed {
     .icon::before {
@@ -76,19 +100,12 @@ const StyledMobileNav = styled.nav`
   }
   .sub-menu {
     overflow: hidden;
-    will-change: height;
-    transition: 1.3s height cubic-bezier(0.18, 0.47, 0, 1);
+    will-change: max-height;
+    transition: 1.3s max-height cubic-bezier(0.18, 0.47, 0, 1);
     padding-left: 1.5em;
+    list-style-type: none;
   }
-  &.aside-nav {
-    top: 0;
-    z-index: 20;
-    height: 100vh;
-    overflow-y: auto;
-    & > button {
-      margin: 1rem;
-    }
-  }
+
   @media (min-width: 768px) {
     --top-padding: 6.2rem;
     &.aside-nav {
@@ -100,16 +117,32 @@ const StyledMobileNav = styled.nav`
       flex: 1;
       transform: translateX(0);
       overflow: initial;
+      z-index: 0;
       & > button {
         display: none;
+      }
+      & > div {
+        position: sticky;
+        z-index: 0;
+        top: calc(2.3rem + var(--top-padding));
+        /* z-index: 1; */
       }
       ul.menubar {
         height: unset;
         box-shadow: 0 0.5rem 0.5rem rgba(0, 0, 0, 0.1);
-        position: sticky;
-        top: 3rem;
+
+        /* position: sticky; */
+        /* top: calc(8.8rem + var(--top-padding)); */
+        /* z-index: 0; */
+        max-height: calc(80vh - var(--top-padding));
       }
     }
+  }
+  @media (min-width: 1024px) {
+    --top-padding: 8rem;
+  }
+  @media (min-width: 1440px) {
+    --top-padding: 10rem;
   }
 `
 export default StyledMobileNav

@@ -35,6 +35,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
           }
         }
       }
+
       allType: allMdx {
         group(field: frontmatter___type) {
           fieldValue

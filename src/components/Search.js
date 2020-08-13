@@ -1,15 +1,19 @@
 import React, { useRef } from 'react'
+import PropTypes from 'prop-types'
 import Downshift from 'downshift'
-import { graphql, useStaticQuery } from 'gatsby'
 import Img from 'gatsby-image'
+import slugify from 'slugify'
+import { graphql, useStaticQuery } from 'gatsby'
 import { navigate } from '@reach/router'
-import { toCebabCase } from '../utils/toCebabCase'
 import { DropDown, DropDownItem, SearchStyles } from './styled/StyledSearch'
 
 const query = graphql`
   {
     allMdx {
       nodes {
+        fields {
+          slug
+        }
         frontmatter {
           title
           type
@@ -22,28 +26,27 @@ const query = graphql`
             }
           }
         }
+        excerpt(pruneLength: 2000)
       }
     }
   }
 `
 
-const Search = () => {
+const Search = ({ tabIndex }) => {
   const {
     allMdx: { nodes: items },
   } = useStaticQuery(query)
   const isMoving = useRef()
-  // let isMoving
 
-  const getSlug = (type, categories, title) =>
-    `/${type === 'products' ? 'produkty' : 'zabiegi'}/${toCebabCase(
-      categories[0]
-    )}/${toCebabCase(title)}`
+  const getSlug = (type, categories, slug) =>
+    `/${type}/${slugify(categories[0], { lower: true, strict: true })}/${slug}`
 
   const handleChange = selection => {
     const {
-      frontmatter: { type, categories, title },
+      fields: { slug },
+      frontmatter: { type, categories },
     } = selection
-    navigate(getSlug(type, categories, title))
+    navigate(getSlug(type, categories, slug))
   }
 
   const handleTouchMove = () => {
@@ -51,11 +54,13 @@ const Search = () => {
   }
   const filterItems = (item, inputValue) => {
     const matchersArray = inputValue
-      .match(/([a-z0-9ęóąśłżźćń]{1,})/gi)
-      .map(word =>
-        item.frontmatter.title.toLowerCase().includes(word.toLowerCase())
+      .match(/([^ \n]{1,})/gi)
+      ?.map(
+        word =>
+          item.frontmatter.title.toLowerCase().includes(word.toLowerCase()) ||
+          item.excerpt.toLowerCase().includes(word.toLowerCase())
       )
-    return !inputValue || !matchersArray.includes(false)
+    return !inputValue || !matchersArray?.includes(false)
   }
 
   return (
@@ -82,6 +87,7 @@ const Search = () => {
                 title: 'Przeszukaj oferte',
                 id: 'searche',
                 name: 'searche',
+                tabIndex,
               })}
             />
             <label
@@ -98,6 +104,7 @@ const Search = () => {
                     .filter(item => filterItems(item, inputValue))
                     .map((item, index) => {
                       const {
+                        fields: { slug },
                         frontmatter: {
                           title,
                           featuredImage: {
@@ -108,9 +115,9 @@ const Search = () => {
 
                       return (
                         <DropDownItem
-                          key={title}
+                          key={slug}
                           {...getItemProps({
-                            key: title,
+                            key: slug,
                             index,
                             item,
                             highlighted: highlightedIndex === index,
@@ -155,3 +162,7 @@ const Search = () => {
 }
 
 export default Search
+
+Search.propTypes = {
+  tabIndex: PropTypes.string.isRequired,
+}
