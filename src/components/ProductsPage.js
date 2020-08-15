@@ -29,6 +29,7 @@ const ProductPage = ({ products, type, category, bgImageFluid, subTitle }) => {
             {(!products || !products.length) && (
               <p>Dokładamy wszelkich starań aby uzupełnić ofertę.</p>
             )}
+
             {products &&
               !!products.length &&
               products.map(data => {
