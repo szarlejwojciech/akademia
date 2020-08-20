@@ -14,11 +14,53 @@ import FacebookIcon from '../assets/svg/facebook-icon.svg'
 import useScroll from '../hooks/useScroll'
 import useCategories from '../hooks/useCategories'
 
+const menuLinks = [
+  {
+    label: 'Home',
+    to: '/',
+    subMenu: false,
+  },
+  {
+    label: 'O nas',
+    to: '/onas',
+    subMenu: false,
+  },
+  {
+    label: 'Produkty',
+    to: '/produkty',
+    subMenu: true,
+    subMenuItems: productsCategories,
+  },
+  {
+    label: 'Zabiegi',
+    to: '/zabiegi',
+    subMenu: true,
+    subMenuItems: treatmentsCategories,
+  },
+  {
+    label: 'Perfumy',
+    to: '/perfumy',
+    subMenu: true,
+    subMenuItems: perfumesCategories,
+  },
+  {
+    label: 'Galeria',
+    to: '/galeria',
+    subMenu: false,
+  },
+  {
+    label: 'Kontakt',
+    to: '/kontakt',
+    subMenu: false,
+  },
+]
+
 const Header = () => {
   const goingUp = useScroll()
   const productsCategories = useCategories('produkty')
   const treatmentsCategories = useCategories('zabiegi')
   const perfumesCategories = useCategories('perfumy')
+<<<<<<< HEAD
 
   const menuLinks = [
     {
@@ -60,6 +102,8 @@ const Header = () => {
       subMenu: false,
     },
   ]
+=======
+>>>>>>> 46db4699ca2d2080d75794a2ff2407d14895ac01
   return (
     <StyledHeader className={goingUp ? '' : 'hidden'}>
       <MobileNav menuLinks={menuLinks} className="mobile-nav" tabIndex="-1" />
