@@ -19,6 +19,10 @@ const Header = () => {
   const productsCategories = useCategories('produkty')
   const treatmentsCategories = useCategories('zabiegi')
   const perfumesCategories = useCategories('perfumy')
+<<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> c301431af6e700e87a22188c111f1b7cdae946fa
 
   const menuLinks = [
     {
@@ -60,6 +64,11 @@ const Header = () => {
       subMenu: false,
     },
   ]
+<<<<<<< HEAD
+=======
+=======
+>>>>>>> 46db4699ca2d2080d75794a2ff2407d14895ac01
+>>>>>>> c301431af6e700e87a22188c111f1b7cdae946fa
   return (
     <StyledHeader className={goingUp ? '' : 'hidden'}>
       <MobileNav menuLinks={menuLinks} className="mobile-nav" tabIndex="-1" />
